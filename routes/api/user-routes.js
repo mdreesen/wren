@@ -56,6 +56,8 @@ WHERE id = 1;
 */
 router.put('/:id', (req, res) => {
     User.update(req.body, {
+            // "individualHooks" has to be set for the bcrypt hashing
+            individualHooks: true,
             where: {
                 id: req.params.id
             }
