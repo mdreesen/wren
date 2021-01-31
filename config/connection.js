@@ -1,6 +1,7 @@
 // import sequelize constructor from library
-const { Sequelize } = require('sequelize')
-const sequelize = require('sequelize')
+const Sequelize = require('sequelize')
+
+require('dotenv').config();
 
 // create connection to the wren_db, pass in MySql information
 const sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PW, {

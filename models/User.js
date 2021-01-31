@@ -1,14 +1,19 @@
 // Need to import Model and DataTypes from Sequelize
-const { userInfo } = require('os');
 const { Model, DataTypes } = require('sequelize');
 // Need to look at the connection file
 const sequelize = require('../config/connection');
+// Nee to use bcrypt to crypt password
+const bcrypt = require('bcrypt');
 
 // Create the User Model
-class User extends Model {}
+class User extends Model {
+    checkPassword(loginPw) {
+        return bcrypt.compareSync(loginPw, this.password)
+    }
+}
 
 // Define table columns and configuration
-userInfo.init({
+User.init({
     id: {
         // Use the special Sequelize DataTypes object
         type: DataTypes.INTEGER,
