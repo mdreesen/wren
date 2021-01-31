@@ -21,3 +21,8 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+
+# Notes in the project
+notes_sql.md
+notes.md
