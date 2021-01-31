@@ -1,0 +1,12 @@
+// import sequelize constructor from library
+const { Sequelize } = require('sequelize')
+const sequelize = require('sequelize')
+
+// create connection to the wren_db, pass in MySql information
+const sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PW, {
+    host: 'localhost',
+    dialect: 'mysql',
+    port: 3306
+});
+
+module.exports = sequelize;
