@@ -1,5 +1,4 @@
 const router = require('express').Router();
-const { valueFromAST } = require('graphql');
 const { User } = require('../../models');
 
 // GET /api/users

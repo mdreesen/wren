@@ -20,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/mdreesen/wren/issues"
   },
-  "homepage": "https://github.com/mdreesen/wren#readme"
+  "homepage": "https://github.com/mdreesen/wren#readme",
+  "dependencies": {
+    "concurrently": "^6.0.0"
+  }
 }
