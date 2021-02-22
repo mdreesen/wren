@@ -4,7 +4,7 @@ function SignupModal() {
     return(
         <div>
             {/* Button trigger modal */}
-            <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#signUpModal">
+            <button type="button" className="btn" data-toggle="modal" data-target="#signUpModal">
                 Signup
             </button>
 

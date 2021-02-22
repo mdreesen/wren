@@ -4,7 +4,7 @@ function LoginModal() {
     return(
         <div>
             {/* Button trigger modal */}
-            <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#loginModal">
+            <button type="button" id="loginBtn" className="btn" data-toggle="modal" data-target="#loginModal">
                 Login
             </button>
             {/* Modal */}

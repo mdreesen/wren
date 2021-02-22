@@ -14,7 +14,7 @@ function Landing() {
                     <SignupModal/>
                 </div>
             </section>
-            <section>
+            <section className="aboutSection">
                 <h2>About</h2>
                 <p>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
