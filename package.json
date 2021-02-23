@@ -22,6 +22,9 @@
   },
   "homepage": "https://github.com/mdreesen/wren#readme",
   "dependencies": {
-    "concurrently": "^6.0.0"
+    "bootstrap": "^4.6.0",
+    "concurrently": "^6.0.0",
+    "react-bootstrap": "^1.5.0",
+    "react-router-dom": "^5.2.0"
   }
 }
