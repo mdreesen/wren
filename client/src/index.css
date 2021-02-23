@@ -9,7 +9,9 @@ body {
 
 .title {
   font-size: 80px;
-  margin-bottom: 30%;
+  padding-top: 5%;
+  margin-top: auto;
+  margin-bottom: 16%;
   color: #c2983d;
   font-weight: 700;
   letter-spacing: 5px;
@@ -17,16 +19,16 @@ body {
 
 .btn {
   background-color: #252425;
-  color: white;
+  color: #c2983d;
   /* box-shadow: 0 8px 6px -6px black; */
 }
 
 .landingHero {
-    background-image: url("./images/landingHero.jpg");
-    background: linear-gradient(rgba(0, 0, 0, .2), rgba(0, 0, 0, .2)), url("./images/landingHero.jpg");
-    background-size: cover;
+    background-image: url("./images/blueWren.gif");
+    background: linear-gradient(rgba(0, 0, 0, .1), rgba(0, 0, 0, .4)), url("./images/blueWren.gif");
+    /* background-size: cover; */
     background-position: center;
-    padding: 15%;
+    /* padding: 15%; */
     box-shadow: 0 8px 6px -6px black;
   }
 
@@ -34,6 +36,7 @@ body {
     align-content: center;
     display: flex;
     justify-content: space-around;
+    padding-bottom: 5%;
   }
 
   .aboutSection {
