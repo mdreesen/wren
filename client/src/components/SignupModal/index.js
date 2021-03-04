@@ -1,6 +1,43 @@
 import React from 'react';
 
 function SignupModal() {
+
+    function signupFormHandler(event) {
+        event.preventDefault();
+
+        const username = document.querySelector('#signup-username-input').value.trim();
+        const email = document.querySelector('#signup-email-input').value.trim();
+        const password = document.querySelector('#signup-password-input').value.trim();
+
+        console.log('button was clicked, yeay!')
+
+        if (username && email && password) {
+            try {
+                const response = fetch('/api/users',{
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        username,
+                        email,
+                        password
+                    })
+                })
+    
+                console.log(response);
+
+                if (response) {
+                    console.log('success');
+                    document.location.replace('/home')
+                } else {
+                    console.log('oops')
+                }
+    
+            } catch (err) {
+                console.error(err.message);
+            }
+        } 
+    }
+
     return(
         <div>
             {/* Button trigger modal */}
@@ -18,7 +55,7 @@ function SignupModal() {
                     </button>
                 </div>
                 {/* Modal Body (username, email, password, and button) */}
-                <div className="modal-body">
+                <div className="modal-body" type="text">
                     <div>
                         <label id="signupUsernameLabel" htmlFor="signup-username">Username</label>
                         <div><input id="signup-username-input" name="username" placeholder="Required" /></div>
@@ -35,7 +72,7 @@ function SignupModal() {
                     </div>
                 </div>
                 <div className="modal-footer">
-                    <button type="click" id="signupModalBtn" className="btn btn-primary">Signup</button>
+                    <button type="click" id="signupModalBtn" className="btn btn-primary" onClick={signupFormHandler}>Signup</button>
                 </div>
                 </div>
             </div>
