@@ -1,6 +1,41 @@
 import React from 'react';
 
 function LoginModal() {
+
+    function loginFormHandler(event) {
+        event.preventDefault();
+
+        const email = document.querySelector('#login-email-input').value.trim();
+        const password = document.querySelector('#login-password-input').value.trim();
+
+        if (email && password) {
+
+            if (!email && !password) {
+                <p>Please enter email and password</p>
+            } else {
+                try {
+                    const response = fetch('/api/users/login',{
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            email,
+                            password
+                        })
+                    })
+    
+                    if (response.ok) {
+                        console.log('success');
+                        document.location.replace('/home')
+                    } else {
+                        console.log('oops')
+                    }
+                } catch (err) {
+                    console.error(err.message);
+                }
+            }
+        }
+    }
+
     return(
         <div>
             {/* Button trigger modal */}
@@ -20,8 +55,8 @@ function LoginModal() {
                         {/* Modal Body (inputs and buttons) */}
                         <div className="modal-body">
                             <div>
-                                <label id="usernameLabel" htmlFor="login-username">Username</label>
-                                <div><input id="login-username-input" name="Username" /></div>
+                                <label id="usernameLabel" htmlFor="login-username">email</label>
+                                <div><input id="login-email-input" name="Username" /></div>
                             </div>
                             <div>
                             <br />
@@ -32,7 +67,7 @@ function LoginModal() {
                             </div>
                         </div>
                         <div className="modal-footer">
-                            <button type="button" id="loginModalBtn" className="btn btn-primary">Login</button>
+                            <button type="button" id="loginModalBtn" className="btn btn-primary" onClick={loginFormHandler}>Login</button>
                         </div>
                     </div>
                 </div>
