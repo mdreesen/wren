@@ -1,8 +1,9 @@
+import { ok } from 'assert';
 import React from 'react';
 
 function LoginModal() {
 
-    function loginFormHandler(event) {
+    async function loginFormHandler(event) {
         event.preventDefault();
 
         const email = document.querySelector('#login-email-input').value.trim();
@@ -10,28 +11,28 @@ function LoginModal() {
 
         if (email && password) {
 
-            if (!email && !password) {
-                <p>Please enter email and password</p>
-            } else {
-                try {
-                    const response = fetch('/api/users/login',{
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({
-                            email,
-                            password
-                        })
+            try {
+                const response = await fetch('/api/users/login',{
+                    method: 'post',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        email,
+                        password
                     })
-    
-                    if (response.ok) {
-                        console.log('success');
-                        document.location.replace('/home')
-                    } else {
-                        console.log('oops')
-                    }
-                } catch (err) {
-                    console.error(err.message);
+                })
+
+                if (response.ok) {
+                    console.log('success');
+                    document.location.replace('/home')
+                } else {
+                    console.log('what went wrong?')
+                    console.log(response.statusCode)
+                    // console.log(response.statusText === true)
                 }
+
+
+            } catch (err) {
+                console.error(err.message);
             }
         }
     }

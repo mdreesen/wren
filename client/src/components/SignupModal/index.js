@@ -13,8 +13,8 @@ function SignupModal() {
 
         if (username && email && password) {
             try {
-                const response = fetch('/api/users',{
-                    method: 'POST',
+                const response = fetch('/api/users', {
+                    method: 'post',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
                         username,
