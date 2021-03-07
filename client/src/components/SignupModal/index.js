@@ -27,7 +27,7 @@ function SignupModal() {
 
                 if (response) {
                     console.log('success');
-                    document.location.replace('/first-time-page')
+                    document.location.replace('/user-info')
                 } else {
                     console.log('oops')
                 }

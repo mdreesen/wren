@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 // Import pages
 import Landing from './pages/Landing';
-import FirstTimePage from './pages/FirstTimePage';
+import UserInfoPage from './pages/UserInfoPage';
 import Home from './pages/Home';
 import NotAPage from './pages/NotAPage';
 
@@ -14,7 +14,7 @@ function App() {
       <div className="App">
         <Switch>
           <Route exact path="/" component={Landing}/>
-          <Route exact path="/first-time-page" component={FirstTimePage} />
+          <Route exact path="/user-info" component={UserInfoPage} />
           <Route exact path="/home" component={Home}/>
 
           <Route component={NotAPage}/>
