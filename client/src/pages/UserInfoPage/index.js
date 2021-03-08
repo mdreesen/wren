@@ -1,6 +1,6 @@
 import React from 'react';
 
-import UserInfo from '../../components/FirstTimeInfo';
+import UserInfo from '../../components/UserInfo';
 
 function UserInfoPage() {
     return(
