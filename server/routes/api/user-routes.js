@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const { User } = require('../../models');
+const { token } = require('../../utils/auth');
 
 // GET /api/users
 router.get('/', (req, res) => {
@@ -34,11 +35,11 @@ router.get('/:id', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-    // expects {username: 'Lernantino', email: 'lernantino@gmail.com', password: 'password1234'}
+    // expects {username: 'name', email: 'email@email.com', password: 'password1234'}
     User.create({
             username: req.body.username,
             email: req.body.email,
-            password: req.body.password
+            password: req.body.password,
         })
         .then(dbUserData => res.json(dbUserData))
         .catch(err => {
