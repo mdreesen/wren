@@ -1,5 +1,7 @@
 const User = require('./User');
 const Post = require('./Post');
+const MidWife = require('./Midwife');
+const Midwife = require('./Midwife');
 
 // const Seen = require('./Seen');
 
@@ -8,6 +10,10 @@ const Post = require('./Post');
 User.hasMany(Post, {
     foreignKey: 'user_id'
 });
+
+User.belongsTo(Midwife, {
+    foreignKey: 'midwife_id'
+})
 // Post belongs to the user
 Post.belongsTo(User, {
     foreignKey: 'user_id',
@@ -28,5 +34,11 @@ Seen.belongsToMany(User, {
     foreignKey: 'post_id'
 });
 */
+
+Midwife.hasMany(User, {
+    foreignKey: 'user_id'
+});
+
+
 
 module.exports = { User, Post };
