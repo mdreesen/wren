@@ -5,7 +5,7 @@ const sequelize = require('../config/connection');
 // Nee to use bcrypt to crypt password
 const bcrypt = require('bcrypt');
 
-// Create the User Model
+// Create the Midwife Model
 class Midwife extends Model {
     checkPassword(loginPw) {
         return bcrypt.compareSync(loginPw, this.password)
@@ -22,23 +22,23 @@ Midwife.init({
             allowNull: false,
 
             // Instruct that this is primary key
-            // The ID should be the primary key for the user
+            // The ID should be the primary key for the Midwife
             primaryKey: true,
 
             // Turn on auto increment
             autoIncrement: true
         },
 
-        first_name: {
-            // What datatype this username is
+        firstname: {
+            // What datatype this midwife name is
             type: DataTypes.STRING,
 
             // Cannot be null
             allowNull: false
         },
 
-        last_name: {
-            // What datatype this username is
+        lastname: {
+            // What datatype this midwife name is
             type: DataTypes.STRING,
 
             // Cannot be null
@@ -78,18 +78,18 @@ Midwife.init({
     {
         hooks: {
             // set up beforeCreate lifeCycle "hook" functionality
-            // This is for Create User functionality
+            // This is for Create midwife functionality
             // gave saltRounds of 10
-            async beforeCreate(newUserData) {
-                newUserData.password = await bcrypt.hash(newUserData.password, 10);
-                return newUserData;
+            async beforeCreate(newMidwifeData) {
+                newMidwifeData.password = await bcrypt.hash(newMidwifeData.password, 10);
+                return newMidwifeData;
             },
 
-            // This is for Update User functionality
+            // This is for Update midwife functionality
             // Gave saltRounds of 10
-            async beforeUpdate(updatedUserData) {
-                updatedUserData.password = await bcrypt.hash(updatedUserData.password, 10);
-                return updatedUserData;
+            async beforeUpdate(updatedMidwifeData) {
+                updatedMidwifeData.password = await bcrypt.hash(updatedMidwifeData.password, 10);
+                return updatedMidwifeData;
             }
         },
         // Pass imported Sequelize connection
@@ -105,7 +105,7 @@ Midwife.init({
         underscored: true,
 
         // Make it so model name stays lowercase
-        modelName: 'user'
+        modelName: 'midwife'
     });
 
 module.exports = Midwife;

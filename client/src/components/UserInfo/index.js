@@ -18,7 +18,6 @@ function UserInfo() {
         const ttc = document.querySelector('#ttc-btn');
         const pregnant = document.querySelector('#pregnant-btn');
         const postpartum = document.querySelector('#pp-btn');
-        const hang = document.querySelector('#hang-btn');
 
         if (ttc || pregnant || postpartum) {
             try {
@@ -63,12 +62,6 @@ function UserInfo() {
             <div className="form-check">
                 <p>Postpartum</p>
                 <button type="button" onClick={updateUser} className="btn" id="pp-btn">
-                    Update
-                </button>
-            </div>
-            <div className="form-check">
-            <p>Just Wanna Hang</p>
-                <button type="button" className="btn" id="hang-btn">
                     Update
                 </button>
             </div>

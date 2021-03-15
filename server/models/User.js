@@ -37,6 +37,18 @@ User.init({
             allowNull: false
         },
 
+        firstname: {
+            type: DataTypes.STRING,
+
+            allowNull: false
+        },
+
+        lastname: {
+            type: DataTypes.STRING,
+
+            allowNull: false
+        },
+
         email: {
             // What datatype this email is
             type: DataTypes.STRING,
