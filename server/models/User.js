@@ -76,6 +76,22 @@ User.init({
                 // This means the password must be at least 4 characters long
                 len: [4]
             }
+        },
+        ttc: {
+            type: DataTypes.BOOLEAN,
+    
+            allowNull: true,
+        },
+        pregnant: {
+            type: DataTypes.BOOLEAN,
+    
+            allowNull: true
+        },
+    
+        postpartum: {
+            type: DataTypes.BOOLEAN,
+    
+            allowNull: true
         }
     },
 

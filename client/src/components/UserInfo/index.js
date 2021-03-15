@@ -21,8 +21,8 @@ function UserInfo() {
 
         if (ttc || pregnant || postpartum) {
             try {
-                const response = fetch('/api/posts', {
-                    method: 'post',
+                const response = fetch('/api/users', {
+                    method: 'put',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
                         ttc,

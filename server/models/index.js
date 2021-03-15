@@ -1,23 +1,22 @@
 const User = require('./User');
 const Post = require('./Post');
-const MidWife = require('./Midwife');
 const Midwife = require('./Midwife');
 
 // const Seen = require('./Seen');
 
 // create associations
 // Post does not belong to many users, this should only be with one user
-User.hasMany(Post, {
-    foreignKey: 'user_id'
-});
+// User.hasMany(Post, {
+//     foreignKey: 'user_id'
+// });
 
 User.belongsTo(Midwife, {
     foreignKey: 'midwife_id'
 })
 // Post belongs to the user
-Post.belongsTo(User, {
-    foreignKey: 'user_id',
-});
+// Post.belongsTo(User, {
+//     foreignKey: 'user_id',
+// });
 
 // -=- THIS WILL BE ASSOCIATED WITH THE ADMIN-=-
 // Seen belongs to many posts

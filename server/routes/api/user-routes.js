@@ -40,6 +40,9 @@ router.post('/', (req, res) => {
             username: req.body.username,
             firstname: req.body.firstname,
             lastname: req.body.lastname,
+            ttc: req.body.ttc,
+            pregnant: req.body.pregnant,
+            postpartum: req.body.postpartum,
             email: req.body.email,
             password: req.body.password,
         })

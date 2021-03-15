@@ -6,18 +6,22 @@ function SignupModal() {
         event.preventDefault();
 
         const username = document.querySelector('#signup-username-input').value.trim();
+        const firstname = document.querySelector('#signup-firstname-input').value.trim();
+        const lastname = document.querySelector('#signup-lastname-input').value.trim();
         const email = document.querySelector('#signup-email-input').value.trim();
         const password = document.querySelector('#signup-password-input').value.trim();
 
         console.log('button was clicked, yeay!')
 
-        if (username && email && password) {
+        if (username && firstname && lastname && email && password) {
             try {
                 const response = fetch('/api/users', {
                     method: 'post',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
                         username,
+                        firstname,
+                        lastname,
                         email,
                         password
                     })
@@ -59,6 +63,16 @@ function SignupModal() {
                     <div>
                         <label id="signupUsernameLabel" htmlFor="signup-username">Username</label>
                         <div><input id="signup-username-input" name="username" placeholder="Required" /></div>
+                    </div>
+                    <br />
+                    <div>
+                        <label id="signupFirstNameLabel" htmlFor="signup-firstName">First Name</label>
+                        <div><input id="signup-firstname-input" name="firstName" placeholder="Required" /></div>
+                    </div>
+                    <br />
+                    <div>
+                        <label id="signupLastNameLabel" htmlFor="signup-lastName">Last Name</label>
+                        <div><input id="signup-lastname-input" name="lastName" placeholder="Required" /></div>
                     </div>
                     <br />
                     <div>
