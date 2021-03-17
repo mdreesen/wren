@@ -1,6 +1,5 @@
 const router = require('express').Router();
 const { User } = require('../../models');
-const { token } = require('../../utils/auth');
 
 // GET /api/users
 router.get('/', (req, res) => {
@@ -34,6 +33,8 @@ router.get('/:id', (req, res) => {
         });
 });
 
+// This creates the user along with creating the user's session
+// Stores it as a cookie
 router.post('/', (req, res) => {
     // expects {username: 'name', email: 'email@email.com', password: 'password1234'}
     User.create({
@@ -46,7 +47,15 @@ router.post('/', (req, res) => {
             email: req.body.email,
             password: req.body.password,
         })
-        .then(dbUserData => res.json(dbUserData))
+        .then(dbUserData => {
+            req.session.save(() => {
+                req.session.user_id = dbUserData.id;
+                req.session.username = dbUserData.username;
+                req.session.loggedIn = true;
+
+                res.json(dbUserData);
+            })
+        })
         .catch(err => {
             console.log(err);
             res.status(500).json(err);
@@ -74,6 +83,8 @@ router.post('/jwt', (req, res) => {
 */
 
 // POST, login route
+// Logging in restores the User's cookie
+// user's cooke is stored in the db
 router.post('/login', (req, res) => {
     // expects {email: 'email@email.com', password: 'password'}
     User.findOne({
@@ -93,11 +104,38 @@ router.post('/login', (req, res) => {
                 return
             }
 
-            res.json({ user: dbUserData, message: 'You are now logged in' });
+            req.session.save(() => {
+                req.session.user_id = dbUserData.id;
+                req.session.username = dbUserData.username;
+                req.session.loggedIn = true;
 
-            // Verify user
+                res.json({ user: dbUserData, message: 'You are now logged in' });
+            })
         });
 });
+
+// If the user is logged in, redirects the user
+// otherwise, they stay on the landing page
+router.get('/login', (req, res) => {
+    if (req.session.loggedIn) {
+        res.redirect('/home')
+        return
+    } else {
+        res.redirect('/')
+    }
+})
+
+// Logout functionality
+router.post('/logout', (req, res) => {
+    if (req.session.loggedIn) {
+        req.session.destroy(() => {
+            res.status(204).end();
+        });
+    }
+    else {
+        res.status(404).end();
+    }
+})
 
 // PUT /api/users/id
 // syntax would be

@@ -21,14 +21,14 @@ function UserInfo() {
 
         if (ttc || pregnant || postpartum) {
             try {
-                const response = fetch('/api/users', {
+                const response = fetch('/api/users/:id', {
                     method: 'put',
-                    headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
                         ttc,
                         pregnant,
                         postpartum
-                    })
+                    }),
+                    headers: { 'Content-Type': 'application/json' },
                 })
                 console.log(response)
                 if(response) {
