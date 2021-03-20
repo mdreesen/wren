@@ -13,12 +13,11 @@ const SearchMidwifeCard = (props) => {
         const response = await fetch('/api/midwife');
         const responseJson = await response.json();
         setMidwifeCard(responseJson.results)
-        console.log(responseJson);
+        // console.log(responseJson);
     }
 
     return(
         <div>
-        <>
             <div className="card" style={{width: '18rem'}}>
                 <img className="card-img-top" src="..." alt="Card image cap" />
                 <div className="card-body">
@@ -27,7 +26,7 @@ const SearchMidwifeCard = (props) => {
                     <a href="#" className="btn btn-primary">Go somewhere</a>
                 </div>
             </div>
-        </>
+
             <button onClick={midwifeSearch}>See all Midwives</button>
         </div>
 
