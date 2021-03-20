@@ -1,5 +1,8 @@
 import React from 'react';
 
+// import conditionals
+import Conditional from '../Conditional'
+
 function SignupModal() {
 
     function signupFormHandler(event) {
@@ -15,8 +18,8 @@ function SignupModal() {
         console.log('button was clicked, yeay!')
 
         if (!username) {
-            const needUsername = () => <div>please enter a username</div>
             console.log('!username')
+            return <div>please enter a username</div>
         }
 
         else if (!firstname) {
@@ -35,9 +38,8 @@ function SignupModal() {
         }
 
         else if (!password) {
-            const needPassword = () => <div className="errors">please enter your password</div>
+            const needPassword = () => <div>please enter your password</div>
             console.log('!password')
-
         }
 
         else if (password !== confirmPassword) {
@@ -74,7 +76,7 @@ function SignupModal() {
                         document.location.replace('/user-info')
                     } else {
                         console.log('oops')
-                    }
+                    } 
         
                 } catch (err) {
                     console.error(err.message);
@@ -131,8 +133,8 @@ function SignupModal() {
                         <div><input id="signup-confirm-password-input" type="password" name="signup-confirm-password" placeholder="Required" /></div>
                     </div>
                 </div>
-                <div className='errors'>testing</div>
                 <div className="modal-footer">
+                {Conditional}
                     <button type="click" id="signupModalBtn" className="btn btn-primary" onClick={signupFormHandler}>Signup</button>
                 </div>
                 </div>
