@@ -7,6 +7,26 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.footer {
+  position: sticky;
+  background: black;
+  height: 8rem;
+}
+
+.icon-left {
+  position: absolute;
+  text-align: left;
+}
+
+.icon-right {
+  position: relative;
+  text-align: right;
+}
+
+.workerLoginBtn {
+  cursor: pointer;
+}
+
 .title {
   font-size: 80px;
   padding-top: 5%;

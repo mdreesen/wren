@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const { Midwife } = require('../../models');
-const { token } = require('../../utils/auth');
+// const { token } = require('../../utils/auth');
 
 // GET /api/users
 router.get('/', (req, res) => {
