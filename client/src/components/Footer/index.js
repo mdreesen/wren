@@ -1,7 +1,5 @@
 import React from 'react';
 
-import LoginMidwife from '../../components/LoginMidwife';
-
 function Footer() {
 
     return(
@@ -12,7 +10,7 @@ function Footer() {
             <li>icon left</li>
             <li>icon left</li>
             <li>icon left</li>
-            <LoginMidwife />
+            <li><a href="/worker-login">worker login</a></li>
         </ul>
     </div>
     <div className="icon-right">

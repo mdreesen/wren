@@ -13,10 +13,15 @@ const Midwife = require('./Midwife');
 User.belongsTo(Midwife, {
     foreignKey: 'midwife_id'
 })
+
+// Midwife.belongsTo(User, {
+//     foreignKey: 'user_id'
+// })
+
 // Post belongs to the user
-// Post.belongsTo(User, {
-//     foreignKey: 'user_id',
-// });
+Post.belongsTo(User, {
+    foreignKey: 'user_id',
+});
 
 // -=- THIS WILL BE ASSOCIATED WITH THE ADMIN-=-
 // Seen belongs to many posts

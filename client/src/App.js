@@ -7,7 +7,9 @@ import Landing from './pages/Landing';
 import UserInfoPage from './pages/UserInfoPage';
 import Home from './pages/Home';
 import NotAPage from './pages/NotAPage';
-import MidwifeCard from './components/MidwifeCard';
+// import MidwifeCard from './components/MidwifeCard';
+import LoginMidwife from './components/LoginMidwife';
+import WorkerPage from './pages/WorkerPage';
 
 function App() {
   return (
@@ -17,6 +19,8 @@ function App() {
           <Route exact path="/" component={Landing}/>
           <Route exact path="/user-info" component={UserInfoPage} />
           <Route exact path="/home" component={Home}/>
+          <Route exact path="/worker-login" component={LoginMidwife}/>
+          <Route exact path="/worker" component={WorkerPage}/>
           <Route component={NotAPage}/>
         </Switch>
       </div>

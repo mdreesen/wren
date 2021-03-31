@@ -4,6 +4,6 @@ const router = require('express').Router();
 const workerRoutes = require('./worker-routes');
 
 // router.use('/posts', postRoutes);
-router.use('/user', workerRoutes);
+router.use('/worker', workerRoutes);
 
 module.exports = router;

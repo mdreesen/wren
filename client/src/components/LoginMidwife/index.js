@@ -2,27 +2,29 @@ import React from 'react';
 
 function LoginMidwife() {
 
-    async function workerLoginFormHandler(event) {
+    function workerLoginFormHandler(event) {
         event.preventDefault();
 
-        const adminEmail = document.querySelector('#worker-login-email-input').value.trim();
-        const adminPassword = document.querySelector('#worker-login-password-input').value.trim();
+        const workerEmail = document.querySelector('#worker-login-email-input').value.trim();
+        const workerPassword = document.querySelector('#worker-login-password-input').value.trim();
 
-        if (adminEmail && adminPassword) {
+        if (workerEmail && workerPassword) {
 
             try {
-                const response = await fetch('/worker/user/login',{
+                const response = fetch('/wpi/worker/login',{
                     method: 'post',
                     body: JSON.stringify({
-                        adminEmail,
-                        adminPassword
+                        workerEmail,
+                        workerPassword
                     }),
                     headers: { 'Content-Type': 'application/json' },
                 })
 
+                console.log("clicked")
+
                 if (response) {
                     console.log('success');
-                    document.location.replace('/admin')
+                    document.location.replace('/worker')
                 } else {
                     console.log('what went wrong?')
                     console.log(response.statusCode)
@@ -37,33 +39,21 @@ function LoginMidwife() {
     }
 
     return(
-        <div>
-            <div>
-            {/* Button trigger modal */}
-            <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#adminLogin">
-                Launch demo modal
-            </button>
-            {/* Modal */}
-            <div className="adminModal modal fade" id="adminLogin" tabIndex={-1} role="dialog" aria-labelledby="adminModalLabel" aria-hidden="true">
-                <div className="modal-dialog" role="document">
-                <div className="modal-content">
-                    <div className="modal-header">
-                    <h5 className="modal-title" id="adminModalLabel">Modal title</h5>
-                    <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
+       <div>
+            <div className="workerFormContainer">
+                <form>
+                    <div className="form-group">
+                        <label htmlFor="inputWorkerEmail">Email address</label>
+                        <input type="email" className="form-control" id="worker-login-email-input" aria-describedby="emailInput" placeholder="Enter email" />
                     </div>
-                    <div className="modal-body">
-                    ...
+                    <div className="form-group">
+                        <label htmlFor="inputWorkerPassword1">Password</label>
+                        <input type="password" className="form-control" id="worker-login-password-input" placeholder="Password" />
                     </div>
-                    <div className="modal-footer">
-                    <button type="button" className="btn btn-primary">{workerLoginFormHandler}</button>
-                    </div>
-                </div>
-                </div>
+                    <button onClick={workerLoginFormHandler} type="submit" className="btn btn-primary">Login</button>
+                </form>
             </div>
-            </div>
-        </div>
+       </div>
     );
 }
 

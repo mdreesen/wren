@@ -21,7 +21,7 @@ function UserInfo() {
 
         if (ttc || pregnant || postpartum) {
             try {
-                const response = fetch('/api/users/:id', {
+                const response = fetch('/api/posts/:id', {
                     method: 'put',
                     body: JSON.stringify({
                         ttc,
@@ -33,7 +33,7 @@ function UserInfo() {
                 console.log(response)
                 if(response) {
                     console.log('success');
-                    document.location.replace('/home')
+                    document.render(<div>updated</div>)
                 } else {
                     console.log('oops')
                 }
