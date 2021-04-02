@@ -39,19 +39,22 @@ function LoginMidwife() {
     }
 
     return(
-       <div>
+       <div className="workerPage">
             <div className="workerFormContainer">
-                <form>
-                    <div className="form-group">
-                        <label htmlFor="inputWorkerEmail">Email address</label>
-                        <input type="email" className="form-control" id="worker-login-email-input" aria-describedby="emailInput" placeholder="Enter email" />
-                    </div>
-                    <div className="form-group">
-                        <label htmlFor="inputWorkerPassword1">Password</label>
-                        <input type="password" className="form-control" id="worker-login-password-input" placeholder="Password" />
-                    </div>
-                    <button onClick={workerLoginFormHandler} type="submit" className="btn btn-primary">Login</button>
-                </form>
+            <div className="formContainer">
+                <form className="midwifeForm">
+                <h3>Worker Login</h3>
+                        <div className="form-group">
+                            <label htmlFor="inputWorkerEmail">Email address</label>
+                            <input type="email" className="form-control" id="worker-login-email-input" aria-describedby="emailInput" placeholder="Enter email" />
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="inputWorkerPassword1">Password</label>
+                            <input type="password" className="form-control" id="worker-login-password-input" placeholder="Password" />
+                        </div>
+                        <button onClick={workerLoginFormHandler} type="submit" className="btn btn-primary">Login</button>
+                    </form>
+                </div>
             </div>
        </div>
     );
