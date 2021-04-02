@@ -2,16 +2,20 @@ import React from 'react';
 
 function LoginMidwife() {
 
-    function workerLoginFormHandler(event) {
+    async function workerLoginFormHandler(event) {
         event.preventDefault();
 
-        const workerEmail = document.querySelector('#worker-login-email-input').value.trim();
-        const workerPassword = document.querySelector('#worker-login-password-input').value.trim();
+        const workerEmail = document.querySelector('#workerEmail').value.trim();
+        const workerPassword = document.querySelector('#workerPassword').value.trim();
 
-        if (workerEmail && workerPassword) {
+        if (!workerEmail || !workerPassword) {
+            return window.alert('need email and password')
+        }
+
+        else if (workerEmail && workerPassword) {
 
             try {
-                const response = fetch('/wpi/worker/login',{
+                const response = await fetch('/wpi/worker/login',{
                     method: 'post',
                     body: JSON.stringify({
                         workerEmail,
@@ -46,11 +50,11 @@ function LoginMidwife() {
                 <h3>Worker Login</h3>
                         <div className="form-group">
                             <label htmlFor="inputWorkerEmail">Email address</label>
-                            <input type="email" className="form-control" id="worker-login-email-input" aria-describedby="emailInput" placeholder="Enter email" />
+                            <input type="email" className="form-control" id="workerEmail" aria-describedby="emailInput" placeholder="Enter email" />
                         </div>
                         <div className="form-group">
-                            <label htmlFor="inputWorkerPassword1">Password</label>
-                            <input type="password" className="form-control" id="worker-login-password-input" placeholder="Password" />
+                            <label htmlFor="inputWorkerPassword">Password</label>
+                            <input className="form-control" id="workerPassword" placeholder="Password" />
                         </div>
                         <button onClick={workerLoginFormHandler} type="submit" className="btn btn-primary">Login</button>
                     </form>
