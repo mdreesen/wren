@@ -40,6 +40,7 @@ body {
 .btn {
   background-color: #252425;
   color: #c2983d;
+  margin: 1rem;
   /* box-shadow: 0 8px 6px -6px black; */
 }
 

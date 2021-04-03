@@ -1,4 +1,3 @@
-import { ok } from 'assert';
 import React from 'react';
 
 function LoginModal() {

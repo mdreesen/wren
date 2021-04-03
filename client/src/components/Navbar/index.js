@@ -30,13 +30,13 @@ function Navbar() {
         <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav">
                 <li className="nav-item active">
-                    <a className="nav-link" href="/">About <span className="sr-only">(current)</span></a>
+                    <a className="nav-link" href="/home">Home<span className="sr-only">(current)</span></a>
                 </li>
                 <li className="nav-item">
-                    <a className="nav-link" href="">Projects</a>
+                    <a className="nav-link" href="">Two Link</a>
                 </li>
                 <li className="nav-item">
-                    <a className="nav-link" href="">Contact</a>
+                    <a className="nav-link" href="">Three Link (user settings?)</a>
                 </li>
                 <li className="nav-item">
                     <button type="button" id="logout-btn" className="btn btn-primary" onClick={logout}>Logout</button>
