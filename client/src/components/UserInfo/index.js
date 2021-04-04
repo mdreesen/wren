@@ -22,9 +22,9 @@ function UserInfo() {
         const pregnant = document.querySelector('#pregnant-btn');
         const postpartum = document.querySelector('#pp-btn');
 
-        const userUpdateUrl = `/api/posts/${id}`
+        const userUpdateUrl = '/api/posts/:id'
 
-        console.log()
+        console.log(session)
 
         if (ttc || pregnant || postpartum) {
             try {

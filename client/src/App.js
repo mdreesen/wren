@@ -21,7 +21,7 @@ function App() {
           <Route exact path="/user-info" component={UserInfoPage} />
           <Route exact path="/home" component={Home}/>
           <Route exact path="/worker-login" component={LoginMidwife}/>
-          <Route exact path='/user-login' component={SecondaryLoginForm} />
+          <Route exact path="/user-login" component={SecondaryLoginForm} />
           <Route exact path="/worker" component={WorkerPage}/>
           <Route component={NotAPage}/>
         </Switch>
