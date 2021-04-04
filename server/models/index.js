@@ -11,19 +11,23 @@ const Midwife = require('./Midwife');
 // });
 
 User.belongsTo(Midwife, {
-    foreignKey: 'midwife_id'
-})
+    foreignKey: 'midwife_id',
+});
 
-// Midwife.belongsTo(User, {
-//     foreignKey: 'user_id'
-// })
+Midwife.hasMany(User, {
+    foreignKey: 'user_id',
+});
 
 // Post belongs to the user
 Post.belongsTo(User, {
     foreignKey: 'user_id',
 });
 
-// -=- THIS WILL BE ASSOCIATED WITH THE ADMIN-=-
+User.hasMany(Post, {
+    foreignKey: 'post_id',
+});
+
+// -=- THIS WILL BE ASSOCIATED WITH THE MIDWIFE-=-
 // Seen belongs to many posts
 /*
 Seen.belongsTo(Post, {
@@ -38,10 +42,6 @@ Seen.belongsToMany(User, {
     foreignKey: 'post_id'
 });
 */
-
-Midwife.hasMany(User, {
-    foreignKey: 'user_id'
-});
 
 
 

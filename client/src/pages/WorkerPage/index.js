@@ -1,8 +1,13 @@
 import React from 'react';
 
+import NavbarWorker from '../../components/NavbarWorker';
+
 function WorkerPage() {
     return(
-        <div>This is the worker page</div>
+        <div>
+            <NavbarWorker />
+            <p>This is the worker page</p>
+        </div>
     );
 }
 

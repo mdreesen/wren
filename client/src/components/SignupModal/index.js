@@ -1,7 +1,6 @@
 import React from 'react';
 
 // import conditionals
-import Conditional from '../Conditional'
 
 function SignupModal() {
 
@@ -130,7 +129,6 @@ function SignupModal() {
                     </form>
                 </div>
                 <div className="modal-footer">
-                {Conditional}
                     <button type="click" id="signupModalBtn" className="btn btn-primary" onClick={signupFormHandler}>Signup</button>
                 </div>
                 </div>

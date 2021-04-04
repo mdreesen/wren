@@ -1,6 +1,5 @@
 const router = require('express').Router();
 const { Midwife } = require('../../models');
-// const { token } = require('../../utils/auth');
 
 // GET /api/users
 router.get('/', (req, res) => {
@@ -23,7 +22,7 @@ router.get('/:id', (req, res) => {
         })
         .then(dbMidwifeData => {
             if (!dbMidwifeData) {
-                res.status(404).json({ message: 'No user was found with ID' });
+                res.status(404).json({ message: 'No Midwife was found with ID' });
                 return;
             }
             res.json(dbMidwifeData)
@@ -43,7 +42,15 @@ router.post('/', (req, res) => {
             email: req.body.email,
             password: req.body.password,
         })
-        .then(dbMidwifeData => res.json(dbMidwifeData))
+        .then(dbMidwifeData => {
+            req.session.save(() => {
+                req.session.midwife_id = dbMidwifeData.id;
+                req.session.email = dbMidwifeData.email;
+                req.session.loggedIn = true;
+    
+                res.json(dbMidwifeData);
+            })
+        })
         .catch(err => {
             console.log(err);
             res.status(500).json(err);
@@ -90,11 +97,39 @@ router.post('/login', (req, res) => {
                 return
             }
 
-            res.json({ user: dbMidwifeData, message: 'You are now logged in' });
+            req.session.save(() => {
+                req.session.midwife_id = dbMidwifeData.id;
+                req.session.email = dbMidwifeData.email;
+                req.session.loggedIn = true;
 
-            // Verify user
+                res.json({ user: dbMidwifeData, message: 'You are now logged in' });
+            })
         });
 });
+
+// If the user is logged in, redirects the user
+// otherwise, they stay on the landing page
+router.get('/login', (req, res) => {
+    if (req.session.loggedIn) {
+        res.redirect('/home')
+        return
+    } else {
+        res.redirect('/')
+    }
+})
+
+// Logout functionality
+router.post('/logout', (req, res) => {
+    if (req.session.loggedIn) {
+        req.session.destroy(() => {
+            res.status(204).end();
+            res.redirect('/')
+        });
+    }
+    else {
+        res.status(404).end();
+    }
+})
 
 // PUT /api/users/id
 // syntax would be

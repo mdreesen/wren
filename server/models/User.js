@@ -33,6 +33,9 @@ User.init({
             // What datatype this username is
             type: DataTypes.STRING,
 
+            // Has to be unique username
+            unique: true,
+
             // Cannot be null
             allowNull: false
         },

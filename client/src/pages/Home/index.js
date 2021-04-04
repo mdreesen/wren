@@ -1,12 +1,12 @@
 import React from 'react';
 
 // import components
-import Navbar from '../../components/Navbar';
+import NavbarUser from '../../components/NavbarUser';
 
 function Home() {
     return(
         <div>
-            <Navbar/>
+            <NavbarUser/>
         </div>
     );
 }
