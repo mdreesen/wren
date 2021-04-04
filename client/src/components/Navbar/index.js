@@ -36,7 +36,7 @@ function Navbar() {
                     <a className="nav-link" href="">Two Link</a>
                 </li>
                 <li className="nav-item">
-                    <a className="nav-link" href="">Three Link (user settings?)</a>
+                    <a href="/user-info" className="nav-link">Settings</a>
                 </li>
                 <li className="nav-item">
                     <button type="button" id="logout-btn" className="btn btn-primary" onClick={logout}>Logout</button>

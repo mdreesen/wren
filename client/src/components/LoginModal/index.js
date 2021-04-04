@@ -8,10 +8,12 @@ function LoginModal() {
         const email = document.querySelector('#login-email-input').value.trim();
         const password = document.querySelector('#login-password-input').value.trim();
 
+        const userLoginUrl = '/api/users/login'
+
         if (email && password) {
 
             try {
-                const response = await fetch('/api/users/login',{
+                const response = await fetch(userLoginUrl,{
                     method: 'post',
                     body: JSON.stringify({
                         email,
@@ -54,7 +56,8 @@ function LoginModal() {
                         </div>
                         {/* Modal Body (inputs and buttons) */}
                         <div className="modal-body">
-                            <div>
+                        <form>
+                        <div>
                                 <label id="usernameLabel" htmlFor="login-username">email</label>
                                 <div><input id="login-email-input" name="Username" /></div>
                             </div>
@@ -62,9 +65,10 @@ function LoginModal() {
                             <br />
                             <div>
                                 <label id="passwordLabel" htmlFor="login-password">Password</label>
-                                <div><input id="login-password-input" type="password" name="login-password" /></div>
+                                <div><input id="login-password-input" type="password" name="login-password" autoComplete="on"/></div>
                             </div>
                             </div>
+                        </form>
                         </div>
                         <div className="modal-footer">
                             <button type="button" id="loginModalBtn" className="btn btn-primary" onClick={loginFormHandler}>Login</button>

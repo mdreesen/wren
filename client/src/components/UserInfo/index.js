@@ -1,6 +1,9 @@
+import session from 'express-session';
 import React from 'react';
 
 function UserInfo() {
+    console.log(session.sid)
+
 
     // TODO
     // Need to get the user update profile working
@@ -12,16 +15,20 @@ function UserInfo() {
     --- property 'stateNode' closes the circle
     */
 
-    function updateUser(event) {
+    async function updateUser(event) {
         event.preventDefault();
 
         const ttc = document.querySelector('#ttc-btn');
         const pregnant = document.querySelector('#pregnant-btn');
         const postpartum = document.querySelector('#pp-btn');
 
+        const userUpdateUrl = `/api/posts/${id}`
+
+        console.log()
+
         if (ttc || pregnant || postpartum) {
             try {
-                const response = fetch('/api/posts/:id', {
+                const response = await fetch(userUpdateUrl, {
                     method: 'put',
                     body: JSON.stringify({
                         ttc,
@@ -33,12 +40,13 @@ function UserInfo() {
                 console.log(response)
                 if(response) {
                     console.log('success');
-                    document.render(<div>updated</div>)
+                    
                 } else {
                     console.log('oops')
                 }
 
-            } catch (err) {
+            } 
+            catch (err) {
                 console.log(err.message);
             }
         }
