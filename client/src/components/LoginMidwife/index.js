@@ -1,4 +1,6 @@
-import Reacts from 'react';
+import React from 'react';
+import session from 'express-session';
+
 
 // TODO
 // Midwife login form not working for logging in. getting error:
@@ -10,8 +12,8 @@ function LoginMidwife() {
     async function workerLoginFormHandler(event) {
         event.preventDefault();
 
-        const workerEmail = document.querySelector('#workerEmail').value.trim();
-        const workerPassword = document.querySelector('#workerPassword').value.trim();
+        const workerEmail = document.querySelector('#worker-login-email').value.trim();
+        const workerPassword = document.querySelector('#worker-login-password').value.trim();
 
         const workerUrl = "/wpi/worker/login"
 
@@ -19,10 +21,10 @@ function LoginMidwife() {
             return window.alert('need email and password')
         }
 
-        else if (workerEmail && workerPassword) {
+        if (workerEmail && workerPassword) {
 
             try {
-                const response = fetch(workerUrl, {
+                const response = await fetch(workerUrl,{
                     method: 'post',
                     body: JSON.stringify({
                         workerEmail,
@@ -30,16 +32,15 @@ function LoginMidwife() {
                     }),
                     headers: { 'Content-Type': 'application/json' },
                 })
-    
-                console.log(response);
 
-                if (response) {
+                if (response.ok && session) {
                     console.log('success');
-                    document.location.replace('/home')
+                    document.location.replace('/user-info')
                 } else {
-                    console.log('oops')
-                } 
-    
+                    console.log('what went wrong?')
+                    console.log(response.statusCode)
+                    // console.log(response.statusText === true)
+                }
             } catch (err) {
                 console.error(err.message);
             }
@@ -47,27 +48,27 @@ function LoginMidwife() {
     }
 
     return(
-       <div className="workerPage">
+        <div className="workerPage">
             <div className="workerFormContainer">
             <div className="formContainer">
                 <form className="midwifeForm">
-                <h3>Worker Login</h3>
-                        <div className="form-group">
-                            <label for="workerEmail" htmlFor="inputWorkerEmail">Email address</label>
-                            <input type="email" className="form-control" id="workerEmail" aria-describedby="emailInput" placeholder="Enter email" />
-                        </div>
-                        <div className="form-group">
-                            <label for="workerPassword" htmlFor="inputWorkerPassword">Password</label>
-                            <input className="form-control" id="workerPassword" placeholder="Password" />
-                        </div>
-                        <div className="button-container">
-                            <a href="/" className="btn btn-primary">back</a>
-                            <button onClick={workerLoginFormHandler} type="submit" className="btn btn-primary">Login</button>
-                        </div>
-                    </form>
-                </div>
+                    <h3>Login</h3>
+                    <div className="form-group">
+                        <label for="workerEmail" htmlFor="inputWorkerEmail">Email address</label>
+                        <input type="email" className="form-control" id="worker-login-email" aria-describedby="emailInput" placeholder="Enter email" />
+                    </div>
+                    <div className="form-group">
+                        <label for="workerPassword" htmlFor="inputWorkerPassword">Password</label>
+                        <input className="form-control" id="worker-login-password" placeholder="Password" />
+                    </div>
+                    <div className="button-container">
+                        <a href="/" className="btn btn-primary">back</a>
+                        <button onClick={workerLoginFormHandler} type="submit" className="btn btn-primary">Login</button>
+                    </div>
+                </form>
             </div>
-       </div>
+        </div>
+   </div>
     );
 }
 

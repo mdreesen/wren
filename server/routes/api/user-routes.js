@@ -1,4 +1,5 @@
 const router = require('express').Router();
+// const sequelize = require('../../config/connection');
 const { User } = require('../../models');
 
 // GET /api/users
@@ -117,6 +118,7 @@ router.post('/login', (req, res) => {
 // If the user is logged in, redirects the user
 // otherwise, they stay on the landing page
 router.get('/login', (req, res) => {
+    console.log(req.session)
     if (req.session.loggedIn) {
         res.redirect('/home')
         return
@@ -130,12 +132,11 @@ router.post('/logout', (req, res) => {
     if (req.session.loggedIn) {
         req.session.destroy(() => {
             res.status(204).end();
-            res.redirect('/')
         });
     }
     else {
         res.status(404).end();
-    }
+    } 
 })
 
 // PUT /api/users/id

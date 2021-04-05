@@ -87,7 +87,7 @@ router.post('/login', (req, res) => {
         })
         .then(dbMidwifeData => {
             if (!dbMidwifeData) {
-                res.status(400).json({ message: 'No user with that email' });
+                res.status(400).json({ message: 'No Midwife with that email' });
                 return
             }
             const validPassword = dbMidwifeData.checkPassword(req.body.password);
@@ -99,10 +99,10 @@ router.post('/login', (req, res) => {
 
             req.session.save(() => {
                 req.session.midwife_id = dbMidwifeData.id;
-                req.session.email = dbMidwifeData.email;
+                req.session.midwifeUsername = dbMidwifeData.midwifeUsername;
                 req.session.loggedIn = true;
 
-                res.json({ user: dbMidwifeData, message: 'You are now logged in' });
+                res.json({ midwife: dbMidwifeData, message: 'You are now logged in' });
             })
         });
 });
@@ -123,12 +123,11 @@ router.post('/logout', (req, res) => {
     if (req.session.loggedIn) {
         req.session.destroy(() => {
             res.status(204).end();
-            res.redirect('/')
         });
     }
     else {
         res.status(404).end();
-    }
+    } 
 })
 
 // PUT /api/users/id

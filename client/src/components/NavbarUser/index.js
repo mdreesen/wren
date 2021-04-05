@@ -3,22 +3,26 @@ import React from 'react';
 function Navbar() {
 
     // Logout function
-    function logout() {
+    async function logout() {
 
         document.querySelector('#logout-btn')
 
-        const response = fetch('/api/users/logout', {
-            method: 'post',
-            headers: { 'Content-type': 'application/json' }
-        });
+        try {
+            const response = await fetch('/api/users/logout', {
+                method: 'post',
+                headers: { 'Content-type': 'application/json' }
+            });
 
-        console.log(response);
+            if (response.ok) {
+                document.location.replace('/')
+            } else {
+                alert(response.status);
+            }
+    
+            console.log(response);
 
-        if (response) {
-            console.log('success');
-            document.location.replace('/')
-        } else {
-            console.log('oops')
+        } catch (err) {
+            console.log(err.message);
         }
     }
 

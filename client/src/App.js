@@ -13,6 +13,7 @@ import SecondaryLoginForm from './components/SecondaryLoginForm';
 import WorkerPage from './pages/WorkerPage';
 
 function App() {
+
   return (
     <Router>
       <div className="App">

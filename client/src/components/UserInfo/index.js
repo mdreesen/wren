@@ -23,16 +23,61 @@ function UserInfo() {
         const postpartum = document.querySelector('#pp-btn');
 
         const userUpdateUrl = '/api/posts/:id'
+        //|| pregnant || postpartum
 
         console.log(session)
 
-        if (ttc || pregnant || postpartum) {
+        if (ttc) {
             try {
                 const response = await fetch(userUpdateUrl, {
                     method: 'put',
                     body: JSON.stringify({
-                        ttc,
-                        pregnant,
+                        ttc
+                    }),
+                    headers: { 'Content-Type': 'application/json' },
+                })
+                console.log(response)
+                if(response) {
+                    console.log('success');
+                    
+                } else {
+                    console.log('oops')
+                }
+
+            } 
+            catch (err) {
+                console.log(err.message);
+            }
+        }
+
+        if (pregnant) {
+            try {
+                const response = await fetch(userUpdateUrl, {
+                    method: 'put',
+                    body: JSON.stringify({
+                        pregnant
+                    }),
+                    headers: { 'Content-Type': 'application/json' },
+                })
+                console.log(response)
+                if(response) {
+                    console.log('success');
+                    
+                } else {
+                    console.log('oops')
+                }
+
+            } 
+            catch (err) {
+                console.log(err.message);
+            }
+        }
+
+        if (postpartum) {
+            try {
+                const response = await fetch(userUpdateUrl, {
+                    method: 'put',
+                    body: JSON.stringify({
                         postpartum
                     }),
                     headers: { 'Content-Type': 'application/json' },

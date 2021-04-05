@@ -15,7 +15,6 @@ function SignupModal() {
         const confirmPassword= document.querySelector('#signup-confirm-password-input').value.trim();
 
         const userSignupUrl = '/api/users';
-        const userLoginUrl = '/api/users/login';
 
         const signupFields = username && firstname && lastname && email && password && confirmPassword;
 
@@ -33,29 +32,6 @@ function SignupModal() {
                             username,
                             firstname,
                             lastname,
-                            email,
-                            password
-                        }),
-                        headers: { 'Content-Type': 'application/json' },
-                    })
-        
-                    console.log(response);
-    
-                    if (response) {
-                        console.log('success');
-                        document.location.replace('/user-login')
-                    } else {
-                        console.log('oops')
-                    } 
-        
-                } catch (err) {
-                    console.error(err.message);
-                }
-
-                try {
-                    const response = fetch(userLoginUrl, {
-                        method: 'post',
-                        body: JSON.stringify({
                             email,
                             password
                         }),

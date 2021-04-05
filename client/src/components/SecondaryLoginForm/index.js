@@ -1,3 +1,4 @@
+import session from 'express-session';
 import React from 'react';
 
 function SecondaryLoginForm() {
@@ -22,7 +23,7 @@ function SecondaryLoginForm() {
                     headers: { 'Content-Type': 'application/json' },
                 })
 
-                if (response.ok) {
+                if (response.ok && session) {
                     console.log('success');
                     document.location.replace('/user-info')
                 } else {
@@ -30,8 +31,6 @@ function SecondaryLoginForm() {
                     console.log(response.statusCode)
                     // console.log(response.statusText === true)
                 }
-
-
             } catch (err) {
                 console.error(err.message);
             }
