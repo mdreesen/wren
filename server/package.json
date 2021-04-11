@@ -1,7 +1,6 @@
 {
     "name": "wren",
     "version": "1.0.0",
-    "proxy": "https://wren-bird.herokuapp.com/",
     "description": "",
     "main": "server.js",
     "scripts": {
