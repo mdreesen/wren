@@ -9,8 +9,6 @@ function UserInfoPage() {
     // using useState to set the midwife card
     // if there is nothing, return an empty array -> useState([]);
     const [midwifeCard, setMidwifeCard] = useState([]);
-    const [searchMidwife, setSearchMidwife] = useState([]);
-
 
     // midwifeSearch function to get all midwife data from the database
      const midwifeSearch = async () => {
