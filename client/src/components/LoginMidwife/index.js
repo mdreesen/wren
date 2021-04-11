@@ -17,9 +17,9 @@ function LoginMidwife() {
 
         const workerUrl = "/wpi/worker/login"
 
-        if (!workerEmail || !workerPassword) {
-            return window.alert('need email and password')
-        }
+        // if (!workerEmail || !workerPassword) {
+        //     return window.alert('need email and password')
+        // }
 
         if (workerEmail && workerPassword) {
 
@@ -35,7 +35,7 @@ function LoginMidwife() {
 
                 if (response.ok && session) {
                     console.log('success');
-                    document.location.replace('/user-info')
+                    document.location.replace('/home')
                 } else {
                     console.log('what went wrong?')
                     console.log(response.statusCode)
@@ -52,14 +52,14 @@ function LoginMidwife() {
             <div className="workerFormContainer">
             <div className="formContainer">
                 <form className="midwifeForm">
-                    <h3>Login</h3>
+                    <h3>Worker Login</h3>
                     <div className="form-group">
                         <label for="workerEmail" htmlFor="inputWorkerEmail">Email address</label>
                         <input type="email" className="form-control" id="worker-login-email" aria-describedby="emailInput" placeholder="Enter email" />
                     </div>
                     <div className="form-group">
                         <label for="workerPassword" htmlFor="inputWorkerPassword">Password</label>
-                        <input className="form-control" id="worker-login-password" placeholder="Password" />
+                        <input type="password" className="form-control" id="worker-login-password" placeholder="Password" />
                     </div>
                     <div className="button-container">
                         <a href="/" className="btn btn-primary">back</a>
