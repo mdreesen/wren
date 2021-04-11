@@ -7,7 +7,6 @@ const SearchMidwifeCard = (props) => {
         return (
                     <>
                     {props.midwifeCard.map((midwife, index) => (
-                        <div>
                         <div key={midwife.id} className="card" style={{width: '18rem'}}>
                                     <img className="card-img-top" src="..." alt="Card image cap" />
                                 <div className="card-body">
@@ -17,7 +16,6 @@ const SearchMidwifeCard = (props) => {
                                     <a href="#" className="btn btn-primary">Go somewhere</a>
                                 </div>
                             </div>
-                        </div>
                     ))}
                 </>            
         );

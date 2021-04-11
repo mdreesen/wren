@@ -9,6 +9,7 @@ function UserInfoPage() {
     // using useState to set the midwife card
     // if there is nothing, return an empty array -> useState([]);
     const [midwifeCard, setMidwifeCard] = useState([]);
+    const [searchMidwife, setSearchMidwife] = useState([]);
 
 
     // midwifeSearch function to get all midwife data from the database
@@ -30,8 +31,11 @@ function UserInfoPage() {
         <div>
             {/* <Navbar /> */}
             <UserInfo />
-            <MidwifeCard midwifeCard={midwifeCard}/>
-            This is where midwife card will go
+            <div className="row-container">
+                <div className='row'>
+                    <MidwifeCard midwifeCard={midwifeCard}/>
+                </div>
+            </div>
         </div>
     );
 }

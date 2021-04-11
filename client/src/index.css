@@ -103,6 +103,15 @@ body {
     border-radius: 5px;
   }
 
+  /* midwife card and row styling */
+  .row {
+    justify-content: center;
+  }
+
+  .card {
+    margin: 1rem;
+  }
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
