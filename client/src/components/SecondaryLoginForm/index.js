@@ -43,6 +43,7 @@ function SecondaryLoginForm() {
             <div className="formContainer">
                 <form className="midwifeForm">
                     <h3>Login</h3>
+                    <h5>Thank you for signing up, please log in to get started.</h5>
                     <div className="form-group">
                         <label for="workerEmail" htmlFor="inputWorkerEmail">Email address</label>
                         <input type="email" className="form-control" id="secondary-login-email" aria-describedby="emailInput" placeholder="Enter email" />
