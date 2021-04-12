@@ -10,6 +10,10 @@ function LoginModal() {
 
         const userLoginUrl = '/api/users/login'
 
+        // create error message in conditional statement
+        if (!email || !password) {
+            console.log('should hit this');
+        }
         if (email && password) {
 
             try {

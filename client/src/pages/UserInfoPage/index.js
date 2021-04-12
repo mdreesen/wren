@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 import UserInfo from '../../components/UserInfo';
 import MidwifeCard from '../../components/MidwifeCard';
-// import Navbar from '../../components/Navbar';
+import NavbarUser from '../../components/NavbarUser';
 
 function UserInfoPage() {
 
@@ -15,7 +15,7 @@ function UserInfoPage() {
         const url = "/wpi/worker"
         const response = await fetch(url);
         const responseJson = await response.json();
-        console.log(responseJson);
+        // console.log(responseJson);
 
         setMidwifeCard(responseJson)
     }
@@ -27,7 +27,7 @@ function UserInfoPage() {
     return(
 
         <div>
-            {/* <Navbar /> */}
+            <NavbarUser />
             <UserInfo />
             <div className="row-container">
                 <div className='row'>

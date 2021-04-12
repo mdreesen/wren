@@ -2,8 +2,6 @@ import session from 'express-session';
 import React from 'react';
 
 function UserInfo() {
-    console.log(session.sid)
-
 
     // TODO
     // Need to get the user update profile working
@@ -15,19 +13,16 @@ function UserInfo() {
     --- property 'stateNode' closes the circle
     */
 
-    async function updateUser(event) {
+    async function updateTTCUser(event) {
         event.preventDefault();
 
-        const ttc = document.querySelector('#ttc-btn');
-        const pregnant = document.querySelector('#pregnant-btn');
-        const postpartum = document.querySelector('#pp-btn');
+        const ttc = document.querySelector('#ttc-btn').value;
+        // const pregnant = document.querySelector('#pregnant-btn');
+        // const postpartum = document.querySelector('#pp-btn');
 
         const userUpdateUrl = '/api/posts/:id'
         //|| pregnant || postpartum
 
-        console.log(session)
-
-        if (ttc) {
             try {
                 const response = await fetch(userUpdateUrl, {
                     method: 'put',
@@ -48,53 +43,6 @@ function UserInfo() {
             catch (err) {
                 console.log(err.message);
             }
-        }
-
-        if (pregnant) {
-            try {
-                const response = await fetch(userUpdateUrl, {
-                    method: 'put',
-                    body: JSON.stringify({
-                        pregnant
-                    }),
-                    headers: { 'Content-Type': 'application/json' },
-                })
-                console.log(response)
-                if(response) {
-                    console.log('success');
-                    
-                } else {
-                    console.log('oops')
-                }
-
-            } 
-            catch (err) {
-                console.log(err.message);
-            }
-        }
-
-        if (postpartum) {
-            try {
-                const response = await fetch(userUpdateUrl, {
-                    method: 'put',
-                    body: JSON.stringify({
-                        postpartum
-                    }),
-                    headers: { 'Content-Type': 'application/json' },
-                })
-                console.log(response)
-                if(response) {
-                    console.log('success');
-                    
-                } else {
-                    console.log('oops')
-                }
-
-            } 
-            catch (err) {
-                console.log(err.message);
-            }
-        }
     }
 
     return(
@@ -103,18 +51,18 @@ function UserInfo() {
         <p>This helps us better understand how we can help you</p>
         <div className="radio-btn-container">
             <p>Trying To Conceive</p>
-                <button type="button" onClick={updateUser} className="btn" id="ttc-btn">
+                <button type="button" onClick={updateTTCUser} className="btn" id="ttc-btn">
                     Update
                 </button>
             <div className="form-check">
                 <p>Pregnant</p>
-                <button type="button" onClick={updateUser} className="btn" id="pregnant-btn">
+                <button type="button"className="btn" id="pregnant-btn">
                     Update
                 </button>
             </div>
             <div className="form-check">
                 <p>Postpartum</p>
-                <button type="button" onClick={updateUser} className="btn" id="pp-btn">
+                <button type="button" className="btn" id="pp-btn">
                     Update
                 </button>
             </div>

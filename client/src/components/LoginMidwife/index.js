@@ -12,8 +12,8 @@ function LoginMidwife() {
     async function workerLoginFormHandler(event) {
         event.preventDefault();
 
-        const workerEmail = document.querySelector('#worker-login-email').value.trim();
-        const workerPassword = document.querySelector('#worker-login-password').value.trim();
+        const email = document.querySelector('#worker-login-email').value.trim();
+        const password = document.querySelector('#worker-login-password').value.trim();
 
         const workerUrl = "/wpi/worker/login"
 
@@ -21,21 +21,21 @@ function LoginMidwife() {
         //     return window.alert('need email and password')
         // }
 
-        if (workerEmail && workerPassword) {
+        if (email && password) {
 
             try {
                 const response = await fetch(workerUrl,{
                     method: 'post',
                     body: JSON.stringify({
-                        workerEmail,
-                        workerPassword
+                        email,
+                        password
                     }),
                     headers: { 'Content-Type': 'application/json' },
                 })
 
                 if (response.ok && session) {
                     console.log('success');
-                    document.location.replace('/home')
+                    document.location.replace('/worker-home')
                 } else {
                     console.log('what went wrong?')
                     console.log(response.statusCode)
@@ -54,11 +54,11 @@ function LoginMidwife() {
                 <form className="midwifeForm">
                     <h3>Worker Login</h3>
                     <div className="form-group">
-                        <label for="workerEmail" htmlFor="inputWorkerEmail">Email address</label>
+                        <label for="workerEmail">Email address</label>
                         <input type="email" className="form-control" id="worker-login-email" aria-describedby="emailInput" placeholder="Enter email" />
                     </div>
                     <div className="form-group">
-                        <label for="workerPassword" htmlFor="inputWorkerPassword">Password</label>
+                        <label for="workerPassword">Password</label>
                         <input type="password" className="form-control" id="worker-login-password" placeholder="Password" />
                     </div>
                     <div className="button-container">

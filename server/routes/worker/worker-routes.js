@@ -87,7 +87,7 @@ router.post('/login', (req, res) => {
         })
         .then(dbMidwifeData => {
             if (!dbMidwifeData) {
-                res.status(400).json({ message: 'No user with that email' });
+                res.status(400).json({ message: 'No midwife with that email' });
                 return
             }
             const validPassword = dbMidwifeData.checkPassword(req.body.password);
@@ -147,7 +147,7 @@ router.put('/:id', (req, res) => {
         })
         .then(dbMidwifeData => {
             if (!dbMidwifeData[0]) {
-                res.status(404).json({ message: 'No user was found with this ID' });
+                res.status(404).json({ message: 'No midwife was found with this ID' });
                 return;
             }
             res.json(dbMidwifeData);
@@ -167,7 +167,7 @@ router.delete('/:id', (req, res) => {
         })
         .then(dbMidwifeData => {
             if (!dbMidwifeData) {
-                res.status(404).json({ message: 'No user was found with this ID' });
+                res.status(404).json({ message: 'No midwife was found with this ID' });
                 return
             }
             res.json(dbMidwifeData);
