@@ -1,5 +1,5 @@
 import session from 'express-session';
-import React from 'react';
+import React, { useState } from 'react';
 
 function UserInfo() {
 
@@ -12,6 +12,9 @@ function UserInfo() {
     |     property '__reactFiber$96543o44sni' -> object with constructor 'FiberNode'
     --- property 'stateNode' closes the circle
     */
+
+   const [user, setUser] = useState('');
+
 
     async function updateTTCUser(event) {
         event.preventDefault();
@@ -31,6 +34,10 @@ function UserInfo() {
                     }),
                     headers: { 'Content-Type': 'application/json' },
                 })
+                console.log(user);
+                console.log(setUser);
+                console.log(session.sid)
+                console.log(session.Cookie)
                 console.log(response)
                 if(response) {
                     console.log('success');

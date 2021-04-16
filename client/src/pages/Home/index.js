@@ -7,6 +7,7 @@ function Home() {
     return(
         <div>
             <NavbarUser/>
+            <div>Im the homepage</div>
         </div>
     );
 }

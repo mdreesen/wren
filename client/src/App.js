@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch, useParams } from 'react-router-dom';
 
 // Import pages
 import Landing from './pages/Landing';
@@ -11,6 +11,8 @@ import LoginMidwife from './components/LoginMidwife';
 import SecondaryLoginForm from './components/SecondaryLoginForm';
 import WorkerPage from './pages/WorkerPage';
 
+
+
 function App() {
 
   return (
@@ -18,7 +20,7 @@ function App() {
       <div className="App">
         <Switch>
           <Route exact path="/" component={Landing}/>
-          <Route exact path="/user-info" component={UserInfoPage} />
+          <Route exact path="/api/posts/:userId" component={UserInfoPage} />
           <Route exact path="/home" component={Home}/>
           <Route exact path="/worker-login" component={LoginMidwife}/>
           <Route exact path="/user-login" component={SecondaryLoginForm} />

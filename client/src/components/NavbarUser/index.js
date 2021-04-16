@@ -14,6 +14,7 @@ function Navbar() {
             });
 
             if (response.ok) {
+                console.log(response);
                 document.location.replace('/')
             } else {
                 alert(response.status);
@@ -40,7 +41,7 @@ function Navbar() {
                     <a className="nav-link" href="">Two Link</a>
                 </li>
                 <li className="nav-item">
-                    <a href="/user-info" className="nav-link">Settings</a>
+                    <a href="/api/posts/:userId" className="nav-link">Settings</a>
                 </li>
                 <li className="nav-item">
                     <button type="button" id="logout-btn" className="btn btn-primary" onClick={logout}>Logout</button>
