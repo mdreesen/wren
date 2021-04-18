@@ -1,19 +1,22 @@
 import session from 'express-session';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 
 function UserInfo() {
+    // URL params of the user
+    const { user_id } = useParams();
 
-    // TODO
-    // Need to get the user update profile working
-    // Getting this error
-    /* 
-    Converting circular structure to JSON
-    --> starting at object with constructor 'HTMLButtonElement'
-    |     property '__reactFiber$96543o44sni' -> object with constructor 'FiberNode'
-    --- property 'stateNode' closes the circle
-    */
+   const [userOption, setOptionUser] = useState(false);
+   const [getUser, setGetUser] = useState({});
 
-   const [user, setUser] = useState('');
+           const getUserInfo = async () => {
+            const url = `/api/users/${user_id}`
+            const response = await fetch(url);
+            const responseJson = await response.json();
+            console.log(responseJson);
+    
+            setGetUser(responseJson)
+        }
 
 
     async function updateTTCUser(event) {
@@ -23,7 +26,7 @@ function UserInfo() {
         // const pregnant = document.querySelector('#pregnant-btn');
         // const postpartum = document.querySelector('#pp-btn');
 
-        const userUpdateUrl = '/api/posts/:id'
+        const userUpdateUrl = `/api/settings/${user_id}`
         //|| pregnant || postpartum
 
             try {
@@ -34,8 +37,6 @@ function UserInfo() {
                     }),
                     headers: { 'Content-Type': 'application/json' },
                 })
-                console.log(user);
-                console.log(setUser);
                 console.log(session.sid)
                 console.log(session.Cookie)
                 console.log(response)
@@ -52,9 +53,25 @@ function UserInfo() {
             }
     }
 
+        // midwifeSearch function to get all midwife data from the database
+        // const updateTTCUser = async () => {
+        //     const url = `/api/posts/${user_id}`
+        //     const response = await fetch(url);
+        //     const responseJson = await response.json();
+        //     console.log(responseJson);
+    
+        //     setOptionUser(responseJson)
+        // }
+
+        useEffect(() => {
+            getUserInfo();
+        }, [])
+
+
     return(
         <div>
         <h4>Update your profile</h4>
+        <h1>Route params - { user_id }</h1>
         <p>This helps us better understand how we can help you</p>
         <div className="radio-btn-container">
             <p>Trying To Conceive</p>

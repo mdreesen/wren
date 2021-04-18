@@ -1,6 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { Link, useParams } from 'react-router-dom';
 
 function Navbar() {
+
+    const { user_id } = useParams();
+
+    // const [userInfo, setUserInfo] = useState({});
+
+
+    // const getUserId = async () => {
+    //     const user_url = `/api/users/${user_id}`
+    //     const response = await fetch(user_url);
+    //     const responseJson = await response.json();
+
+    //     setUserInfo(responseJson)
+    // }
 
     // Logout function
     async function logout() {
@@ -34,17 +48,24 @@ function Navbar() {
         </button>
         <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav">
-                <li className="nav-item active">
-                    <a className="nav-link" href="/home">Home<span className="sr-only">(current)</span></a>
+                <li className="nav-item">
+                    <Link to="/home" className="nav-link">
+                        Home
+                    </Link>
                 </li>
                 <li className="nav-item">
-                    <a className="nav-link" href="">Two Link</a>
+                    <Link to="" className="nav-link">
+                        Link-Two
+                    </Link>
                 </li>
                 <li className="nav-item">
-                    <a href="/api/posts/:userId" className="nav-link">Settings</a>
+                    <Link to={`/settings/${user_id}`} className="nav-link">
+                        Settings
+                    </Link>
                 </li>
                 <li className="nav-item">
-                    <button type="button" id="logout-btn" className="btn btn-primary" onClick={logout}>Logout</button>
+                <Link className="nav-link" onClick={logout}>Logout</Link>
+                    {/* <button type="button" id="logout-btn" className="btn btn-primary" onClick={logout}>Logout</button> */}
                 </li>
             </ul>
         </div>

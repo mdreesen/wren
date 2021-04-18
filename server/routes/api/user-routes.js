@@ -63,26 +63,6 @@ router.post('/', (req, res) => {
         });
 });
 
-// Testing JWT routes
-/*
-router.post('/jwt', (req, res) => {
-    User.create({
-        username: req.body.username,
-        email: req.body.email,
-        password: req.body.password,
-    })
-    .then(dbUserData => {
-        if (dbUserData) {
-            return token
-        }
-    })
-    .catch(err => {
-        console.log(err);
-        res.status(500).json(err);
-    });
-})
-*/
-
 // POST, login route
 // Logging in restores the User's cookie
 // user's cooke is stored in the db

@@ -1,7 +1,9 @@
 import React from 'react';
+import { Link, useParams } from "react-router-dom";
 
 
 const SearchMidwifeCard = (props) => {
+    // const { id } = useParams
 
 
     return (
@@ -12,7 +14,8 @@ const SearchMidwifeCard = (props) => {
                         <h5 className="card-title">{midwife.firstname}</h5>
                         <h5 className="card-title">{midwife.lastname}</h5>
                         <p className="card-text">Description maybe?</p>
-                        <a href="#" className="btn btn-primary">Affiliate</a>
+                        <Link to='' className="btn btn-primary"></Link>
+                        {/* <a href="#" className="btn btn-primary">Affiliate</a> */}
                     </div>
                 </div>
             ))}

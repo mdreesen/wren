@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './App.css';
 import { BrowserRouter as Router, Route, Switch, useParams } from 'react-router-dom';
 
@@ -20,7 +20,7 @@ function App() {
       <div className="App">
         <Switch>
           <Route exact path="/" component={Landing}/>
-          <Route exact path="/api/posts/:userId" component={UserInfoPage} />
+          <Route exact path="/settings/:user_id" component={UserInfoPage} />
           <Route exact path="/home" component={Home}/>
           <Route exact path="/worker-login" component={LoginMidwife}/>
           <Route exact path="/user-login" component={SecondaryLoginForm} />

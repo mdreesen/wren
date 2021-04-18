@@ -14,8 +14,9 @@ User.belongsTo(Midwife, {
     foreignKey: 'midwife_id',
 });
 
+// Midwife has many users
 Midwife.hasMany(User, {
-    foreignKey: 'user_id',
+    foreignKey: 'midwife_id',
 });
 
 // Post belongs to the user
@@ -23,8 +24,9 @@ Post.belongsTo(User, {
     foreignKey: 'user_id',
 });
 
+// User has many posts
 User.hasMany(Post, {
-    foreignKey: 'post_id',
+    foreignKey: 'user_id',
 });
 
 // -=- THIS WILL BE ASSOCIATED WITH THE MIDWIFE-=-
