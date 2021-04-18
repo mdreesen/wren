@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from "axios";
 
 function LoginModal() {
@@ -11,46 +11,15 @@ function LoginModal() {
     const loginFormHandler = async event => {
         event.preventDefault();
 
-        // const email = document.querySelector('#login-email-input').value.trim();
-        // const password = document.querySelector('#login-password-input').value.trim();
-
         const user = { email, password };
 
-
         const userLoginUrl = '/api/users/login'
-
 
         // create error message in conditional statement
         if (!email || !password) {
             console.log('should hit this');
         }
         if (email && password) {
-
-            // try {
-            //     const response = await fetch(userLoginUrl,{
-            //         method: 'post',
-            //         body: JSON.stringify({
-            //             email,
-            //             password
-            //         }),
-            //         headers: { 'Content-Type': 'application/json' },
-            //     })
-
-            //     if (response.ok) {
-            //         console.log('success');
-            //         localStorage.setItem('id', response.json(session))
-            //         console.log(response.json(session))
-            //         document.location.replace('/home')
-            //     } else {
-            //         console.log('what went wrong?')
-            //         console.log(response.statusCode)
-            //         // console.log(response.statusText === true)
-            //     }
-
-
-            // } catch (err) {
-            //     console.error(err.message);
-            // }
 
         const user_url = userLoginUrl
         const response = await axios.post(user_url, 
@@ -61,9 +30,16 @@ function LoginModal() {
         localStorage.setItem('user', response.data.user.id)
         console.log(response.data)
 
-        // setUser(responseJson)
         }
     }
+
+    useEffect(() => {
+        const loggedInUser = localStorage.getItem("user");
+        if (loggedInUser) {
+          const foundUser = JSON.parse(loggedInUser);
+          setUser(foundUser);
+        }
+      }, []);
 
     return(
         <div>

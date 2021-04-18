@@ -11,6 +11,15 @@ body {
   scroll-behavior: smooth;
 }
 
+.navbar-css {
+  justify-content: space-around;
+  margin: 8px;
+}
+
+.nav-item {
+  margin: 0px 12px 0px 12px;
+}
+
 .footer {
   position: sticky;
   background: black;
