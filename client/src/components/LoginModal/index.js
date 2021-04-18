@@ -1,14 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
+import axios from "axios";
 
 function LoginModal() {
 
-    async function loginFormHandler(event) {
+    const [user, setUser] = useState()
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('')
+
+    // async function loginFormHandler(event) {
+    const loginFormHandler = async event => {
         event.preventDefault();
 
-        const email = document.querySelector('#login-email-input').value.trim();
-        const password = document.querySelector('#login-password-input').value.trim();
+        // const email = document.querySelector('#login-email-input').value.trim();
+        // const password = document.querySelector('#login-password-input').value.trim();
+
+        const user = { email, password };
+
 
         const userLoginUrl = '/api/users/login'
+
 
         // create error message in conditional statement
         if (!email || !password) {
@@ -16,29 +26,42 @@ function LoginModal() {
         }
         if (email && password) {
 
-            try {
-                const response = await fetch(userLoginUrl,{
-                    method: 'post',
-                    body: JSON.stringify({
-                        email,
-                        password
-                    }),
-                    headers: { 'Content-Type': 'application/json' },
-                })
+            // try {
+            //     const response = await fetch(userLoginUrl,{
+            //         method: 'post',
+            //         body: JSON.stringify({
+            //             email,
+            //             password
+            //         }),
+            //         headers: { 'Content-Type': 'application/json' },
+            //     })
 
-                if (response.ok) {
-                    console.log('success');
-                    document.location.replace('/home')
-                } else {
-                    console.log('what went wrong?')
-                    console.log(response.statusCode)
-                    // console.log(response.statusText === true)
-                }
+            //     if (response.ok) {
+            //         console.log('success');
+            //         localStorage.setItem('id', response.json(session))
+            //         console.log(response.json(session))
+            //         document.location.replace('/home')
+            //     } else {
+            //         console.log('what went wrong?')
+            //         console.log(response.statusCode)
+            //         // console.log(response.statusText === true)
+            //     }
 
 
-            } catch (err) {
-                console.error(err.message);
-            }
+            // } catch (err) {
+            //     console.error(err.message);
+            // }
+
+        const user_url = userLoginUrl
+        const response = await axios.post(user_url, 
+            user
+        );
+        // const responseJson = await response.json();
+        setUser(response.data)
+        localStorage.setItem('user', response.data.user.id)
+        console.log(response.data)
+
+        // setUser(responseJson)
         }
     }
 
@@ -61,15 +84,15 @@ function LoginModal() {
                         {/* Modal Body (inputs and buttons) */}
                         <div className="modal-body">
                         <form>
-                        <div>
-                                <label id="usernameLabel" htmlFor="login-username">email</label>
-                                <div><input id="login-email-input" name="Username" /></div>
+                            <div>
+                                <label id="usernameLabel" htmlFor="login-username" >email</label>
+                                <div><input id="login-email-input" name="Username" value={email} onChange={({ target }) => setEmail(target.value)} /></div>
                             </div>
                             <div>
                             <br />
                             <div>
                                 <label id="passwordLabel" htmlFor="login-password">Password</label>
-                                <div><input id="login-password-input" type="password" name="login-password" autoComplete="on"/></div>
+                                <div><input id="login-password-input" type="password" name="login-password" autoComplete="on" value={password} onChange={({ target}) => setPassword(target.value)}/></div>
                             </div>
                             </div>
                         </form>
