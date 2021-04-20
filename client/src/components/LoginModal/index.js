@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import axios from "axios";
+import { Redirect } from 'react-router-dom';
 
 function LoginModal() {
 
     const [user, setUser] = useState()
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('')
+    // let history = useHistory();
 
     // async function loginFormHandler(event) {
     const loginFormHandler = async event => {
@@ -25,11 +27,14 @@ function LoginModal() {
         const response = await axios.post(user_url, 
             user
         );
-        // const responseJson = await response.json();
+        const userId = response.data.user.id
         setUser(response.data)
-        localStorage.setItem('user', response.data.user.id)
-        console.log(response.data)
-
+        localStorage.setItem('user', userId);
+        console.log(localStorage)
+        console.log(response.data.user)
+        }
+        if (localStorage.getItem('user') === null) {
+            <Redirect to="/" />
         }
     }
 

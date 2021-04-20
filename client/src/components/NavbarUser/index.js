@@ -29,6 +29,7 @@ function Navbar() {
 
             if (response.ok) {
                 console.log(response);
+                localStorage.clear();
                 document.location.replace('/')
             } else {
                 alert(response.status);
@@ -40,6 +41,10 @@ function Navbar() {
             console.log(err.message);
         }
     }
+
+    // const handleLogout = () => {
+    //     localStorage.clear();
+    //   };
 
     return(
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
