@@ -11,8 +11,6 @@ import LoginMidwife from './components/LoginMidwife';
 import SecondaryLoginForm from './components/SecondaryLoginForm';
 import WorkerPage from './pages/WorkerPage';
 
-
-
 function App() {
 
   return (
