@@ -1,3 +1,0 @@
-DROP DATABASE IF EXISTS wren_db;
-
-CREATE DATABASE wren_db;
