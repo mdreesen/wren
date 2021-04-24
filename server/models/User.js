@@ -7,17 +7,22 @@ const UserSchema = new Schema({
     email: {
         type: String
     },
-    firstname: {
+    firstName: {
         type: String
     },
-    lastname: {
+    lastName: {
         type: String
     },
     password: {
         type: String
     },
-    createdat: {
+    createdAt: {
         type: Date,
         default: Date.now
     }
 })
+
+// Create the User Model using the UserSchema
+const User = model('User', UserSchema);
+
+module.exports = User;

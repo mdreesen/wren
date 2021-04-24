@@ -1,6 +1,6 @@
 const { Schema, model } = require('mongoose');
 
-const BirthWorkerSchema = new Schema({
+const BirthworkerSchema = new Schema({
     username: {
         type: String
     },
@@ -19,8 +19,8 @@ const BirthWorkerSchema = new Schema({
     }
 })
 // Create the BirthWorker Model using the BirthWorkerSchema
-const BirthWorker = model('BirthWorker', BirthWorkerSchema);
+const Birthworker = model('BirthWorker', BirthworkerSchema);
 
 // export the BirthWorker Model
-module.exports = BirthWorker;
+module.exports = Birthworker;
 
