@@ -1,26 +1,69 @@
 const { Schema, model } = require('mongoose');
+const bcrypt = require('bcrypt');
 
-const BirthworkerSchema = new Schema({
+// The birthworker Schema uses regex to validate the email
+
+const birthworkerSchema = new Schema(
+  {
     username: {
-        type: String
+      type: String,
+      required: true,
+      unique: true,
+      trim: true
     },
     email: {
-        type: String
+      type: String,
+      required: true,
+      unique: true,
+      match: [/.+@.+\..+/, 'Must match an email address!']
     },
-    firstName: {
-        type: String
+    password: {
+      type: String,
+      required: true,
+      minlength: 5
     },
-    lastName: {
-        type: String
+    firstname: {
+        type: String,
+        required: true,
+        unique: false,
+        trim: true
     },
-    createdAt: {
-        type: Date,
-        default: Date.now
+    // Users that will be associated with the birthworker
+    associatedUser: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'User'
+      }
+    ],
+  },
+  {
+    toJSON: {
+      virtuals: true
     }
-})
-// Create the BirthWorker Model using the BirthWorkerSchema
-const Birthworker = model('BirthWorker', BirthworkerSchema);
+  }
+);
 
-// export the BirthWorker Model
+// set up pre-save middleware to create password
+// This checks to see if the password is new or has been modified
+userSchema.pre('save', async function(next) {
+  if (this.isNew || this.isModified('password')) {
+    const saltRounds = 10;
+    this.password = await bcrypt.hash(this.password, saltRounds);
+  }
+
+  next();
+});
+
+// compare the incoming password with the hashed password
+birthworkerSchema.methods.isCorrectPassword = async function(password) {
+  return bcrypt.compare(password, this.password);
+};
+
+// May think about adding friends to this
+birthworkerSchema.virtual('Users').get(function() {
+  return this.associatedUser.length;
+});
+
+const Birthworker = model('User', birthworkerSchema);
+
 module.exports = Birthworker;
-
