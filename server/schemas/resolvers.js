@@ -12,6 +12,11 @@ const resolvers = {
         helloWorld: () => {
             return 'Hello World';
         },
+        me: async (parent, args) => {
+            const userData = await User.findOne({})
+                .select('-__v -password')
+            return userData
+        },
         // Get all users
         users: async () => {
             return User.find()
