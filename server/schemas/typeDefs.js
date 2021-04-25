@@ -25,7 +25,7 @@ type User {
 
 type Mutation {
     login(email: String!, password: String!): User
-    addUser(email: String!, password: String!): User
+    addUser(username: String!, firstname: String!, lastname: String!, email: String!, password: String!): User
 }
 `;
 

@@ -1,3 +1,5 @@
+const { User } = require('../models');
+
 // NOTES
 // resolvers is an object with a query nested inside that holds a series of methods
 // these methods get the same name of the query or mutation they are resolvers
@@ -21,8 +23,9 @@ const resolvers = {
     },
 
     Mutation: {
-        addUser: async () => {
-
+        addUser: async (parent, args) => {
+            const user = await User.create(args);
+            return user;
         },
         login: async () => {
 
