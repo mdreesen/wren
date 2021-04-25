@@ -45,7 +45,7 @@ const birthworkerSchema = new Schema(
 
 // set up pre-save middleware to create password
 // This checks to see if the password is new or has been modified
-userSchema.pre('save', async function(next) {
+birthworkerSchema.pre('save', async function(next) {
   if (this.isNew || this.isModified('password')) {
     const saltRounds = 10;
     this.password = await bcrypt.hash(this.password, saltRounds);
@@ -64,6 +64,6 @@ birthworkerSchema.virtual('Users').get(function() {
   return this.associatedUser.length;
 });
 
-const Birthworker = model('User', birthworkerSchema);
+const Birthworker = model('Birthworker', birthworkerSchema);
 
 module.exports = Birthworker;

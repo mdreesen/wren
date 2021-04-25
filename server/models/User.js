@@ -11,6 +11,18 @@ const userSchema = new Schema(
       unique: true,
       trim: true
     },
+    firstname: {
+        type: String,
+        required: true,
+        unique: false,
+        trim: true
+    },
+    lastname: {
+        type: String,
+        required: true,
+        unique: false,
+        trim: true
+    },
     email: {
       type: String,
       required: true,
@@ -22,19 +34,13 @@ const userSchema = new Schema(
       required: true,
       minlength: 5
     },
-    firstname: {
-        type: String,
-        required: true,
-        unique: false,
-        trim: true
-    },
     // may not need this but going to keep this here
-    Birthworker: [
-      {
-        type: Schema.Types.ObjectId,
-        ref: 'Birthworker'
-      }
-    ],
+    // Birthworker: [
+    //   {
+    //     type: Schema.Types.ObjectId,
+    //     ref: 'Birthworker'
+    //   }
+    // ],
   },
   {
     toJSON: {
