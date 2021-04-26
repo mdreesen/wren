@@ -1,4 +1,4 @@
-const { User } = require('../models');
+const { User, Birthworker } = require('../models');
 const { AuthenticationError }  = require('apollo-server-express');
 const { signToken } = require('../utils/auth');
 
@@ -21,7 +21,7 @@ const resolvers = {
             }
             throw new AuthenticationError('Not logged in');
           },
-
+          // -=- User Resolvers -=- //
           users: async () => {
             return User.find()
               .select('-__v -password')
@@ -31,6 +31,12 @@ const resolvers = {
             return User.findOne({ username })
               .select('-__v -password')
           },
+
+          // -=- Birthworker Resolvers -=- //
+          Birthworkers: async () => {
+            return Birthworker.find()
+              .select('-__v -password')
+          }
     },
 
     Mutation: {
