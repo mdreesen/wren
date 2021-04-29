@@ -58,6 +58,18 @@ const resolvers = {
             const token = signToken(user);
             return { token, user };
           },
+
+          addMidwife: async (parent, {midwifeId}, context) => {
+            if (context.user) {
+              const updatedUser = await User.findOneAndUpdate(
+                { _id: context.user._id },
+                { $addToSet: { midwife: midwifeId } },
+                { new: true }
+              ).populate('midwife');
+              return updatedUser;
+            }
+            throw new AuthenticationError('You need to be logged in!')
+          }
     }
 };
 

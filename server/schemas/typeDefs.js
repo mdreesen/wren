@@ -45,8 +45,8 @@ type Mutation {
 
     login(email: String!, password: String!): Auth
     addUser(username: String!, firstname: String!, lastname: String!, email: String!, password: String!): Auth
-
     addBirthworker(username: String!, email: String!, password: String!): Auth
+    addMidwife(midwifeId: ID!): User
 }
 `;
 
