@@ -3,7 +3,7 @@ import { Link, useParams } from 'react-router-dom';
 
 function Navbar() {
 
-    const { user_id } = useParams();
+    // const { user_id } = useParams();
 
     // const [userInfo, setUserInfo] = useState({});
 
@@ -46,6 +46,9 @@ function Navbar() {
     //     localStorage.clear();
     //   };
 
+    // const { id: user_id } = useParams()
+    // console.log(user_id)
+
     return(
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -64,7 +67,7 @@ function Navbar() {
                     </Link>
                 </li>
                 <li className="nav-item">
-                    <Link to={`/settings/${user_id}`} className="nav-link">
+                    <Link to={`/settings/:id`} className="nav-link">
                         Settings
                     </Link>
                 </li>

@@ -2,6 +2,8 @@
 // This file imports the Mongoose and MongoDB connection (from /config/connection.js)
 const express = require('express');
 const { ApolloServer } = require('apollo-server-express');
+const path = require('path');
+
 
 // typeDefs and resolvers
 const { typeDefs, resolvers } = require('./schemas');
@@ -28,6 +30,18 @@ server.applyMiddleware({ app });
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
+
+/////////////////////////////////////////////////////////////////////////////
+// -=- This only comes into effect in PRODUCTION -=- //
+// serve up static assets from the build folder
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, '../client/build')));
+}
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../client/build/index.html'));
+})
+/////////////////////////////////////////////////////////////////////////////
 
 // Listen for the connection here
 // Upon a successful connection, we start the server

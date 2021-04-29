@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import { BrowserRouter as Router, Route, Switch, useParams, Redirect } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { ApolloProvider } from '@apollo/react-hooks';
 import ApolloClient from 'apollo-boost';
 
@@ -14,8 +14,9 @@ import SecondaryLoginForm from './components/SecondaryLoginForm';
 import WorkerPage from './pages/WorkerPage';
 
 // making the connection to the graphql backend server
+// "uri" = Uniform Resource Identifier
 const client = new ApolloClient({
-  uri: 'http://localhost:3001/graphql'
+  uri: '/graphql'
 });
 
 function App() {
@@ -26,7 +27,7 @@ function App() {
         <div className="App">
           <Switch>
             <Route exact path="/" component={Landing}/>
-            <Route exact path="/settings/:user_id" component={UserInfoPage} />
+            <Route exact path="/settings/:id" component={UserInfoPage} />
             <Route exact path="/home" component={Home}/>
             <Route exact path="/worker-login" component={LoginMidwife}/>
             <Route exact path="/user-login" component={SecondaryLoginForm} />
