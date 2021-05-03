@@ -5,20 +5,10 @@ import { ADD_USER } from '../../utils/mutations';
 // import conditionals
 
 const SignupModal = () => {
-    const [formState, setFormState] = useState({ username: '', firstName: '', lastName: '', email: '', newPassword: '', confirmPassword: '' });
+    const [formState, setFormState] = useState({ username: '', firstname: 'firstname', lastname: 'lastname', email: '', password: 'password' });
     const [addUser, { error }] = useMutation(ADD_USER);
 
-    // update state based on form input changes
-    const handleChange = event => {
-        const { name, value } = event.target;
-    
-        setFormState({
-          ...formState,
-          [name]: value
-        });
-      };
-    
-    const signupFormHandler = async event => {
+    const handleFormSubmit = async event => {
         event.preventDefault();
     
         try {
@@ -30,6 +20,17 @@ const SignupModal = () => {
             console.log(e)
         }
     };
+
+    // update state based on form input changes
+    const handleChange = event => {
+        const { name, value } = event.target;
+    
+        setFormState({
+          ...formState,
+          [name]: value
+        });
+      };
+
 
     
     return(
@@ -58,12 +59,12 @@ const SignupModal = () => {
                         <br />
                         <div>
                             <label id="signupFirstNameLabel" htmlFor="signup-firstName">First Name</label>
-                            <div><input value={formState.firstName} onChange={handleChange} id="signup-firstname-input" name="firstName" placeholder="Required" /></div>
+                            <div><input value={formState.firstname} onChange={handleChange} id="signup-firstname-input" name="firstName" placeholder="Required" /></div>
                         </div>
                         <br />
                         <div>
                             <label id="signupLastNameLabel" htmlFor="signup-lastName">Last Name</label>
-                            <div><input value={formState.lastName} onChange={handleChange} id="signup-lastname-input" name="lastName" placeholder="Required" /></div>
+                            <div><input value={formState.lastname} onChange={handleChange} id="signup-lastname-input" name="lastName" placeholder="Required" /></div>
                         </div>
                         <br />
                         <div>
@@ -73,7 +74,7 @@ const SignupModal = () => {
                         <br />
                         <div>
                             <label id="signupPasswordLabel" htmlFor="signup-password">Password (minimum of 4 characters)</label>
-                            <div><input value={formState.email} onChange={handleChange} id="signup-password-input" type="password" name="signup-password-input" placeholder="Required" autoComplete="on"/></div>
+                            <div><input value={formState.password} onChange={handleChange} id="signup-password-input" type="password" name="signup-password-input" placeholder="Required" autoComplete="on"/></div>
                         </div>
                         <br />
                         <div>
@@ -83,7 +84,7 @@ const SignupModal = () => {
                     </form>
                 </div>
                 <div className="modal-footer">
-                    <button type="click" id="signupModalBtn" className="btn btn-primary" onClick={signupFormHandler}>Signup</button>
+                    <button type="click" id="signupModalBtn" className="btn btn-primary" onClick={handleFormSubmit} >Signup</button>
                 </div>
                 {error && <div>Please Try Again</div>}
                 </div>
