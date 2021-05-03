@@ -1,59 +1,37 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useMutation } from '@apollo/react-hooks';
+import { ADD_USER } from '../../utils/mutations';
 
 // import conditionals
 
-function SignupModal() {
+const SignupModal = () => {
+    const [formState, setFormState] = useState({ username: '', firstName: '', lastName: '', email: '', newPassword: '', confirmPassword: '' });
+    const [addUser, { error }] = useMutation(ADD_USER);
 
-    async function signupFormHandler(event) {
-        event.preventDefault();
-
-        const username = document.querySelector('#signup-username-input').value.trim();
-        const firstname = document.querySelector('#signup-firstname-input').value.trim();
-        const lastname = document.querySelector('#signup-lastname-input').value.trim();
-        const email = document.querySelector('#signup-email-input').value.trim();
-        const password = document.querySelector('#signup-password-input').value.trim();
-        const confirmPassword= document.querySelector('#signup-confirm-password-input').value.trim();
-
-        const userSignupUrl = '/api/users';
-
-        const signupFields = username && firstname && lastname && email && password && confirmPassword;
-
-        console.log('button was clicked, yeay!')
-
-        if (!signupFields) {
-            console.log('!signupFields')
-            return window.alert('All fields must be filled')
-        } else {
-            if (signupFields) {
-                try {
-                    const response = fetch(userSignupUrl, {
-                        method: 'post',
-                        body: JSON.stringify({
-                            username,
-                            firstname,
-                            lastname,
-                            email,
-                            password
-                        }),
-                        headers: { 'Content-Type': 'application/json' },
-                    })
-        
-                    console.log(response);
+    // update state based on form input changes
+    const handleChange = event => {
+        const { name, value } = event.target;
     
-                    if (response) {
-                        console.log('success');
-                        document.location.replace('/user-login')
-                    } else {
-                        console.log('oops')
-                    } 
-        
-                } catch (err) {
-                    console.error(err.message);
-                }
-            } 
+        setFormState({
+          ...formState,
+          [name]: value
+        });
+      };
+    
+    const signupFormHandler = async event => {
+        event.preventDefault();
+    
+        try {
+            const { data } = await addUser({
+                variables: {...formState}
+            });
+            console.log(data);
+        } catch(e) {
+            console.log(e)
         }
-    }
+    };
 
+    
     return(
         <div>
             {/* Button trigger modal */}
@@ -75,27 +53,27 @@ function SignupModal() {
                     <form>
                         <div>
                             <label id="signupUsernameLabel" htmlFor="signup-username">Username</label>
-                            <div><input id="signup-username-input" name="username" placeholder="Required" /></div>
+                            <div><input value={formState.username} onChange={handleChange} id="signup-username-input" name="username" placeholder="Required" /></div>
                         </div>
                         <br />
                         <div>
                             <label id="signupFirstNameLabel" htmlFor="signup-firstName">First Name</label>
-                            <div><input id="signup-firstname-input" name="firstName" placeholder="Required" /></div>
+                            <div><input value={formState.firstName} onChange={handleChange} id="signup-firstname-input" name="firstName" placeholder="Required" /></div>
                         </div>
                         <br />
                         <div>
                             <label id="signupLastNameLabel" htmlFor="signup-lastName">Last Name</label>
-                            <div><input id="signup-lastname-input" name="lastName" placeholder="Required" /></div>
+                            <div><input value={formState.lastName} onChange={handleChange} id="signup-lastname-input" name="lastName" placeholder="Required" /></div>
                         </div>
                         <br />
                         <div>
                             <label id="signupEmailLabel" htmlFor="signup-email">Email</label>
-                            <div><input id="signup-email-input" name="email" placeholder="Required" /></div>
+                            <div><input value={formState.email} onChange={handleChange} id="signup-email-input" name="email" placeholder="Required" /></div>
                         </div>
                         <br />
                         <div>
                             <label id="signupPasswordLabel" htmlFor="signup-password">Password (minimum of 4 characters)</label>
-                            <div><input id="signup-password-input" type="password" name="signup-password" placeholder="Required" autoComplete="on"/></div>
+                            <div><input value={formState.email} onChange={handleChange} id="signup-password-input" type="password" name="signup-password-input" placeholder="Required" autoComplete="on"/></div>
                         </div>
                         <br />
                         <div>
@@ -107,11 +85,12 @@ function SignupModal() {
                 <div className="modal-footer">
                     <button type="click" id="signupModalBtn" className="btn btn-primary" onClick={signupFormHandler}>Signup</button>
                 </div>
+                {error && <div>Please Try Again</div>}
                 </div>
             </div>
             </div>
         </div>
     );
-}
+};
 
 export default SignupModal;
