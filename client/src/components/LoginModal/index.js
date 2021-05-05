@@ -1,51 +1,45 @@
-import React, { useState, useEffect } from 'react';
-import axios from "axios";
-import { Redirect } from 'react-router-dom';
+import React, { useState } from 'react';
+// import Auth from '../../utils/'
+import { useMutation } from '@apollo/react-hooks';
+import { LOGIN_USER } from '../../utils/mutations';
 
-function LoginModal() {
 
-    const [user, setUser] = useState()
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('')
-    // let history = useHistory();
-
-    // async function loginFormHandler(event) {
+const LoginModal = props => {
+    const [formState, setFormState] = useState({ email: '', password: '' });
+    const [login, { error }] = useMutation(LOGIN_USER);
+  
+    // update state based on form input changes
+    const handleChange = event => {
+      const { name, value } = event.target;
+  
+      setFormState({
+        ...formState,
+        [name]: value
+      });
+    };
+  
+    // submit form
     const loginFormHandler = async event => {
-        event.preventDefault();
+      event.preventDefault();
+  
+      try {
+        const { data } = await login({
+          variables: { ...formState }
+        });
 
-        const user = { email, password };
-
-        const userLoginUrl = '/api/users/login'
-
-        // create error message in conditional statement
-        if (!email || !password) {
-            console.log('should hit this');
-        }
-        if (email && password) {
-
-        const user_url = userLoginUrl
-        const response = await axios.post(user_url, 
-            user
-        );
-        const userId = response.data.user.id
-        setUser(response.data)
-        localStorage.setItem('user', userId);
-        console.log(localStorage)
-        console.log(response.data.user)
-        }
-        if (localStorage.getItem('user') === null) {
-            <Redirect to="/" />
-        }
-    }
-
-    useEffect(() => {
-        const loggedInUser = localStorage.getItem("user");
-        if (loggedInUser) {
-          const foundUser = JSON.parse(loggedInUser);
-          setUser(foundUser);
-        }
-      }, []);
-
+        console.log(data)
+  
+        // Auth.login(data.login.token);
+      } catch (e) {
+        console.error(e);
+      }
+  
+      // clear form values
+      setFormState({
+        email: '',
+        password: ''
+      });
+    };
     return(
         <div>
             {/* Button trigger modal */}
@@ -64,23 +58,24 @@ function LoginModal() {
                         </div>
                         {/* Modal Body (inputs and buttons) */}
                         <div className="modal-body">
-                        <form>
+                        <form onClick={loginFormHandler}>
                             <div>
-                                <label id="usernameLabel" htmlFor="login-username" >email</label>
-                                <div><input id="login-email-input" name="Username" value={email} onChange={({ target }) => setEmail(target.value)} /></div>
+                                <label id="usernameLabel" htmlFor="login-username">email</label>
+                                <div><input id="login-email-input" name="Username" value={formState.email} onChange={handleChange}/></div>
                             </div>
                             <div>
                             <br />
                             <div>
                                 <label id="passwordLabel" htmlFor="login-password">Password</label>
-                                <div><input id="login-password-input" type="password" name="login-password" autoComplete="on" value={password} onChange={({ target}) => setPassword(target.value)}/></div>
+                                <div><input id="login-password-input" type="password" name="login-password" autoComplete="on" value={formState.value} onChange={handleChange}/></div>
                             </div>
                             </div>
                         </form>
                         </div>
                         <div className="modal-footer">
-                            <button type="button" id="loginModalBtn" className="btn btn-primary" onClick={loginFormHandler}>Login</button>
+                            <button type="submit" id="loginModalBtn" className="btn btn-primary">Login</button>
                         </div>
+                        {error && <div>Please Try Again</div>}
                     </div>
                 </div>
             </div>

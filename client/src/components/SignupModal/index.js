@@ -5,7 +5,7 @@ import { ADD_USER } from '../../utils/mutations';
 // import conditionals
 
 const SignupModal = () => {
-    const [formState, setFormState] = useState({ username: '', firstname: 'firstname', lastname: 'lastname', email: '', password: 'password' });
+    const [formState, setFormState] = useState({ username: '', firstname: '', lastname: "", email: '', password: '' });
     const [addUser, { error }] = useMutation(ADD_USER);
 
     const handleFormSubmit = async event => {
@@ -13,7 +13,7 @@ const SignupModal = () => {
     
         try {
             const { data } = await addUser({
-                variables: {...formState}
+                variables: { ...formState }
             });
             console.log(data);
         } catch(e) {
@@ -25,7 +25,11 @@ const SignupModal = () => {
     const handleChange = event => {
         const { name, value } = event.target;
     
+        console.log({ name, value })
+        // console.log(setFormState({ ...formState, [name]: value }))
+
         setFormState({
+
           ...formState,
           [name]: value
         });
