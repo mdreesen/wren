@@ -1,5 +1,6 @@
 import React from 'react';
-import session from 'express-session';
+import { useMutation } from '@apollo/react-hooks';
+// import session from 'express-session';
 
 
 // TODO
@@ -9,43 +10,43 @@ import session from 'express-session';
 
 function LoginMidwife() {
 
-    async function workerLoginFormHandler(event) {
-        event.preventDefault();
+    // async function workerLoginFormHandler(event) {
+    //     event.preventDefault();
 
-        const email = document.querySelector('#worker-login-email').value.trim();
-        const password = document.querySelector('#worker-login-password').value.trim();
+    //     const email = document.querySelector('#worker-login-email').value.trim();
+    //     const password = document.querySelector('#worker-login-password').value.trim();
 
-        const workerUrl = "/wpi/worker/login"
+    //     const workerUrl = "/wpi/worker/login"
 
-        // if (!workerEmail || !workerPassword) {
-        //     return window.alert('need email and password')
-        // }
+    //     if (!workerEmail || !workerPassword) {
+    //         return window.alert('need email and password')
+    //     }
 
-        if (email && password) {
+    //     if (email && password) {
 
-            try {
-                const response = await fetch(workerUrl,{
-                    method: 'post',
-                    body: JSON.stringify({
-                        email,
-                        password
-                    }),
-                    headers: { 'Content-Type': 'application/json' },
-                })
+    //         try {
+    //             const response = await fetch(workerUrl,{
+    //                 method: 'post',
+    //                 body: JSON.stringify({
+    //                     email,
+    //                     password
+    //                 }),
+    //                 headers: { 'Content-Type': 'application/json' },
+    //             })
 
-                if (response.ok && session) {
-                    console.log('success');
-                    document.location.replace('/worker-home')
-                } else {
-                    console.log('what went wrong?')
-                    console.log(response.statusCode)
-                    // console.log(response.statusText === true)
-                }
-            } catch (err) {
-                console.error(err.message);
-            }
-        }
-    }
+    //             if (response.ok && session) {
+    //                 console.log('success');
+    //                 document.location.replace('/worker-home')
+    //             } else {
+    //                 console.log('what went wrong?')
+    //                 console.log(response.statusCode)
+    //                 // console.log(response.statusText === true)
+    //             }
+    //         } catch (err) {
+    //             console.error(err.message);
+    //         }
+    //     }
+    // }
 
     return(
         <div className="workerPage">
@@ -63,7 +64,7 @@ function LoginMidwife() {
                     </div>
                     <div className="button-container">
                         <a href="/" className="btn btn-primary">back</a>
-                        <button onClick={workerLoginFormHandler} type="submit" className="btn btn-primary">Login</button>
+                        <button type="submit" className="btn btn-primary">Login</button>
                     </div>
                 </form>
             </div>
