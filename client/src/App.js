@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import { ApolloProvider } from '@apollo/react-hooks';
+import { ApolloProvider, operationName } from '@apollo/react-hooks';
 import ApolloClient from 'apollo-boost';
 
 // Import pages
@@ -15,7 +15,17 @@ import WorkerPage from './pages/WorkerPage';
 
 // making the connection to the graphql backend server
 // "uri" = Uniform Resource Identifier
+// this function also sets up looking at the user when logged in
 const client = new ApolloClient({
+  request: operation => {
+    const token = localStorage.getItem('id_token');
+
+    operation.setContext({
+      headers: {
+        authorization: token ? `Bearer ${token}` : ''
+      }
+    })
+  },
   uri: '/graphql'
 });
 

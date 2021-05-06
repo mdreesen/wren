@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Auth from '../../utils/auth';
 import { useMutation } from '@apollo/react-hooks';
 import { ADD_USER } from '../../utils/mutations';
 
@@ -11,10 +12,12 @@ const SignupModal = () => {
     const handleFormSubmit = async event => {
         event.preventDefault();
     
+        // if the user is created successfully, then they will be redirected to the "/home" page
         try {
             const { data } = await addUser({
                 variables: { ...formState }
             });
+            Auth.login(data.addUser.token)
             console.log(data);
         } catch(e) {
             console.log(e)
