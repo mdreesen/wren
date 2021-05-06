@@ -4,7 +4,7 @@ import { useMutation } from '@apollo/react-hooks';
 import { LOGIN_USER } from '../../utils/mutations';
 
 
-const LoginModal = props => {
+const LoginModal = () => {
     const [formState, setFormState] = useState({ email: '', password: '' });
     const [login, { error }] = useMutation(LOGIN_USER);
   
@@ -58,22 +58,22 @@ const LoginModal = props => {
                         </div>
                         {/* Modal Body (inputs and buttons) */}
                         <div className="modal-body">
-                        <form onClick={loginFormHandler}>
+                        <form>
                             <div>
                                 <label id="usernameLabel" htmlFor="login-username">email</label>
-                                <div><input id="login-email-input" name="Username" value={formState.email} onChange={handleChange}/></div>
+                                <div><input id="login-email-input" name="email" value={formState.email} onChange={handleChange} autoComplete="on" /></div>
                             </div>
                             <div>
                             <br />
                             <div>
                                 <label id="passwordLabel" htmlFor="login-password">Password</label>
-                                <div><input id="login-password-input" type="password" name="login-password" autoComplete="on" value={formState.value} onChange={handleChange}/></div>
+                                <div><input id="login-password-input" type="password" name="password" autoComplete="on" value={formState.value} onChange={handleChange} /></div>
                             </div>
                             </div>
                         </form>
                         </div>
                         <div className="modal-footer">
-                            <button type="submit" id="loginModalBtn" className="btn btn-primary">Login</button>
+                            <button type="submit" id="loginModalBtn" className="btn btn-primary" onClick={loginFormHandler}>Login</button>
                         </div>
                         {error && <div>Please Try Again</div>}
                     </div>

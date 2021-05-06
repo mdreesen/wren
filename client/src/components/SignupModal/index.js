@@ -5,7 +5,7 @@ import { ADD_USER } from '../../utils/mutations';
 // import conditionals
 
 const SignupModal = () => {
-    const [formState, setFormState] = useState({ username: '', firstname: '', lastname: "", email: '', password: '' });
+    const [formState, setFormState] = useState({ username: '', firstname: '', lastname: '', email: '', password: '' });
     const [addUser, { error }] = useMutation(ADD_USER);
 
     const handleFormSubmit = async event => {
@@ -63,12 +63,12 @@ const SignupModal = () => {
                         <br />
                         <div>
                             <label id="signupFirstNameLabel" htmlFor="signup-firstName">First Name</label>
-                            <div><input value={formState.firstname} onChange={handleChange} id="signup-firstname-input" name="firstName" placeholder="Required" /></div>
+                            <div><input value={formState.firstname} onChange={handleChange} id="signup-firstname-input" name="firstname" placeholder="Required" /></div>
                         </div>
                         <br />
                         <div>
                             <label id="signupLastNameLabel" htmlFor="signup-lastName">Last Name</label>
-                            <div><input value={formState.lastname} onChange={handleChange} id="signup-lastname-input" name="lastName" placeholder="Required" /></div>
+                            <div><input value={formState.lastname} onChange={handleChange} id="signup-lastname-input" name="lastname" placeholder="Required" /></div>
                         </div>
                         <br />
                         <div>
@@ -78,7 +78,7 @@ const SignupModal = () => {
                         <br />
                         <div>
                             <label id="signupPasswordLabel" htmlFor="signup-password">Password (minimum of 4 characters)</label>
-                            <div><input value={formState.password} onChange={handleChange} id="signup-password-input" type="password" name="signup-password-input" placeholder="Required" autoComplete="on"/></div>
+                            <div><input value={formState.password} onChange={handleChange} id="signup-password-input" type="password" name="password" placeholder="Required" autoComplete="on"/></div>
                         </div>
                         <br />
                         <div>
