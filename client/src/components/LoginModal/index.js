@@ -6,7 +6,7 @@ import { LOGIN_USER } from '../../utils/mutations';
 
 const LoginModal = () => {
     const [formState, setFormState] = useState({ email: '', password: '' });
-    const [login, { error }] = useMutation(LOGIN_USER);
+    const [userLogin, { error }] = useMutation(LOGIN_USER);
   
     // update state based on form input changes
     const handleChange = event => {
@@ -23,14 +23,11 @@ const LoginModal = () => {
       event.preventDefault();
   
       try {
-        const { data } = await login({
+        const { data } = await userLogin({
           variables: { ...formState }
         });
-
         console.log(data)
-  
-
-        Auth.login(data.login.token);
+        Auth.login(data.userLogin.token);
       } catch (e) {
         console.error(e);
       }

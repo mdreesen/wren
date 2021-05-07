@@ -1,7 +1,13 @@
 import React, { useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
+import Auth from '../../utils/auth';
 
 function Navbar() {
+
+    const logout = event => {
+        event.preventDefault();
+        Auth.logout();
+    }
 
     // const { user_id } = useParams();
 
@@ -17,30 +23,30 @@ function Navbar() {
     // }
 
     // Logout function
-    async function logout() {
+    // async function logout() {
 
-        document.querySelector('#logout-btn')
+    //     document.querySelector('#logout-btn')
 
-        try {
-            const response = await fetch('/api/users/logout', {
-                method: 'post',
-                headers: { 'Content-type': 'application/json' }
-            });
+    //     try {
+    //         const response = await fetch('/api/users/logout', {
+    //             method: 'post',
+    //             headers: { 'Content-type': 'application/json' }
+    //         });
 
-            if (response.ok) {
-                console.log(response);
-                localStorage.clear();
-                document.location.replace('/')
-            } else {
-                alert(response.status);
-            }
+    //         if (response.ok) {
+    //             console.log(response);
+    //             localStorage.clear();
+    //             document.location.replace('/')
+    //         } else {
+    //             alert(response.status);
+    //         }
     
-            console.log(response);
+    //         console.log(response);
 
-        } catch (err) {
-            console.log(err.message);
-        }
-    }
+    //     } catch (err) {
+    //         console.log(err.message);
+    //     }
+    // }
 
     // const handleLogout = () => {
     //     localStorage.clear();
@@ -72,7 +78,7 @@ function Navbar() {
                     </Link>
                 </li>
                 <li className="nav-item">
-                <Link className="nav-link" onClick={logout}>Logout</Link>
+                <Link to="/" className="nav-link" onClick={logout}>Logout</Link>
                 </li>
             </ul>
         </div>
