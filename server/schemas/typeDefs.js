@@ -10,12 +10,14 @@ const { gql } = require('apollo-server-express');
 const typeDefs = gql `
 type Query {
     helloWorld: String
-    me: User
 
     users: [User]
     user(username: String!): User
 
-    Birthworkers: [Birthworker]
+    me: User
+
+    birthworkers: [User]
+    birthworker(username: String): User
 }
 
 type Auth {
@@ -42,11 +44,11 @@ type Birthworker {
 }
 
 type Mutation {
-
-    login(email: String!, password: String!): Auth
     addUser(username: String!, firstname: String!, lastname: String!, email: String!, password: String!): Auth
-    addBirthworker(username: String!, email: String!, password: String!): Auth
-    addMidwife(midwifeId: ID!): User
+    userLogin(email: String!, password: String!): Auth
+
+    addBirthworker(username: String!, firstname: String!, lastname: String!, email: String!, password: String!): Auth
+    loginBirthworker(email: String!, password: String!): Auth
 }
 `;
 

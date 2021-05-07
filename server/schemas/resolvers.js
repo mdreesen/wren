@@ -33,23 +33,24 @@ const resolvers = {
           },
 
           // -=- Birthworker Resolvers -=- //
-          Birthworkers: async () => {
+          birthworkers: async () => {
             return Birthworker.find()
               .select('-__v -password')
           }
     },
 
     Mutation: {
+        // -=- User Mutations -=-
         addUser: async (parent, args) => {
             const user = await User.create(args);
             const token = signToken(user);
             return { token, user };
           },
 
-          login: async (parent, { email, password }) => {
+          userLogin: async (parent, { email, password }) => {
             const user = await User.findOne({ email });
             if (!user) {
-              throw new AuthenticationError('Incorrect credentials');
+              throw new AuthenticationError('Incorrect Credentials');
             }
             const correctPw = await user.isCorrectPassword(password);
             if (!correctPw) {
@@ -59,17 +60,32 @@ const resolvers = {
             return { token, user };
           },
 
-          addMidwife: async (parent, {midwifeId}, context) => {
+
+          // -=- BirthWorker Mutations -=-
+          addBirthworker: async (parent, {bwId}, context) => {
             if (context.user) {
               const updatedUser = await User.findOneAndUpdate(
                 { _id: context.user._id },
-                { $addToSet: { midwife: midwifeId } },
+                { $addToSet: { midwife: bwId } },
                 { new: true }
               ).populate('midwife');
               return updatedUser;
             }
             throw new AuthenticationError('You need to be logged in!')
-          }
+          },
+
+          loginBirthworker: async (parent, { email, password }) => {
+            const birthworker = await Birthworker.findOne({ email });
+            if (!birthworker) {
+              throw new AuthenticationError('Incorrect Credentials');
+            }
+            const correctPw = await birthworker.isCorrectPassword(password);
+            if(!correctPw){
+              throw new AuthenticationError('Incorrect Credentials');
+            }
+            const token = signToken(birthworker);
+            return { token, birthworker };
+          },
     }
 };
 
