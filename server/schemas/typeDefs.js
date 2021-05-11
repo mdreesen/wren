@@ -16,13 +16,14 @@ type Query {
 
     me: User
 
-    birthworkers: [User]
-    birthworker(username: String): User
+    birthworkers: [Birthworker]
+    birthworker(username: String): Birthworker
 }
 
 type Auth {
     token: ID!
     user: User
+    birthworker: Birthworker
 }
 
 type User {

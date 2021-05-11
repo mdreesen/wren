@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 function Footer() {
 
@@ -10,7 +11,7 @@ function Footer() {
             <li>icon left</li>
             <li>icon left</li>
             <li>icon left</li>
-            <li><a href="/worker-login">worker login</a></li>
+            <li><Link to="/worker-login">worker login</Link></li>
         </ul>
     </div>
     <div className="icon-right">

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/react-hooks';
 // import session from 'express-session';
 
@@ -63,7 +64,7 @@ function LoginMidwife() {
                         <input type="password" className="form-control" id="worker-login-password" placeholder="Password" />
                     </div>
                     <div className="button-container">
-                        <a href="/" className="btn btn-primary">back</a>
+                        <Link to="/" className="btn btn-primary">back</Link>
                         <button type="submit" className="btn btn-primary">Login</button>
                     </div>
                 </form>

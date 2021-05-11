@@ -29,7 +29,7 @@ function Navbar() {
                     </Link>
                 </li>
                 <li className="nav-item">
-                    <Link to={`/settings/:id`} className="nav-link">
+                    <Link to="/settings" className="nav-link">
                         Settings
                     </Link>
                 </li>

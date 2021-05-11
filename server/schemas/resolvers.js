@@ -36,7 +36,7 @@ const resolvers = {
           birthworkers: async () => {
             return Birthworker.find()
               .select('-__v -password')
-          }
+          },
     },
 
     Mutation: {
@@ -62,16 +62,10 @@ const resolvers = {
 
 
           // -=- BirthWorker Mutations -=-
-          addBirthworker: async (parent, {bwId}, context) => {
-            if (context.user) {
-              const updatedUser = await User.findOneAndUpdate(
-                { _id: context.user._id },
-                { $addToSet: { midwife: bwId } },
-                { new: true }
-              ).populate('midwife');
-              return updatedUser;
-            }
-            throw new AuthenticationError('You need to be logged in!')
+          addBirthworker: async (parent, args) => {
+            const birthworker = await Birthworker.create(args);
+            const token = signToken(birthworker);
+            return { token, birthworker };
           },
 
           loginBirthworker: async (parent, { email, password }) => {

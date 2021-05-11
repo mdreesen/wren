@@ -37,7 +37,7 @@ function App() {
         <div className="App">
           <Switch>
             <Route exact path="/" component={Landing}/>
-            <Route exact path="/settings/:id" component={UserInfoPage} />
+            <Route exact path="/settings" component={UserInfoPage} />
             <Route exact path="/home" component={Home}/>
             <Route exact path="/worker-login" component={LoginMidwife}/>
             <Route exact path="/user-login" component={SecondaryLoginForm} />
