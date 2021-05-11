@@ -23,6 +23,10 @@ type Query {
 type Auth {
     token: ID!
     user: User
+}
+
+type Workerauth {
+    token: ID!
     birthworker: Birthworker
 }
 
