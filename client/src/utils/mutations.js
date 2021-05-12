@@ -1,5 +1,6 @@
 import gql from 'graphql-tag';
 
+// -=- USER MUTATIONS -=-
 export const LOGIN_USER = gql `
 mutation userLogin($email: String!, $password: String!) {
   userLogin(email: $email, password: $password) {
@@ -27,3 +28,34 @@ mutation($username: String!, $firstname: String!, $lastname: String!, $email: St
     }
   }
 `;
+
+
+// -=- BIRTHWORKER MUTATIONS -=-
+export const ADD_BIRTHWORKER = gql `
+mutation($username: String!, $firstname: String!, $lastname: String!, $email: String!, $password: String!) {
+  addBirthworker(username: $username, firstname: $firstname, lastname: $lastname, email: $email, password: $password) {
+    token
+		birthworker {
+      _id
+			email
+      firstname
+      username
+      lastname
+      password
+    }
+  }
+}
+`;
+
+export const LOGIN_BIRTHWORKER = gql `
+mutation($email: String!, $password: String!) {
+  loginBirthworker(email: $email, password: $password) {
+    token
+    birthworker {
+      email
+      password
+    }
+  }
+}
+`;
+

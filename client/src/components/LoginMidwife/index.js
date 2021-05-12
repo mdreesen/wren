@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import Auth from '../../utils/auth';
 import { useMutation } from '@apollo/react-hooks';
-// import session from 'express-session';
+import { LOGIN_BIRTHWORKER } from '../../utils/mutations';
 
 
 // TODO
@@ -11,43 +12,39 @@ import { useMutation } from '@apollo/react-hooks';
 
 function LoginMidwife() {
 
-    // async function workerLoginFormHandler(event) {
-    //     event.preventDefault();
-
-    //     const email = document.querySelector('#worker-login-email').value.trim();
-    //     const password = document.querySelector('#worker-login-password').value.trim();
-
-    //     const workerUrl = "/wpi/worker/login"
-
-    //     if (!workerEmail || !workerPassword) {
-    //         return window.alert('need email and password')
-    //     }
-
-    //     if (email && password) {
-
-    //         try {
-    //             const response = await fetch(workerUrl,{
-    //                 method: 'post',
-    //                 body: JSON.stringify({
-    //                     email,
-    //                     password
-    //                 }),
-    //                 headers: { 'Content-Type': 'application/json' },
-    //             })
-
-    //             if (response.ok && session) {
-    //                 console.log('success');
-    //                 document.location.replace('/worker-home')
-    //             } else {
-    //                 console.log('what went wrong?')
-    //                 console.log(response.statusCode)
-    //                 // console.log(response.statusText === true)
-    //             }
-    //         } catch (err) {
-    //             console.error(err.message);
-    //         }
-    //     }
-    // }
+    const [formState, setFormState] = useState({ email: '', password: '' });
+    const [workerLogin, { error }] = useMutation(LOGIN_BIRTHWORKER);
+  
+    // update state based on form input changes
+    const handleChange = event => {
+      const { name, value } = event.target;
+  
+      setFormState({
+        ...formState,
+        [name]: value
+      });
+    };
+  
+    // submit form
+    const loginFormHandler = async event => {
+      event.preventDefault();
+  
+      try {
+        const { data } = await workerLogin({
+          variables: { ...formState }
+        });
+        console.log(data)
+        Auth.login(data.workerLogin.token);
+      } catch (e) {
+        console.error(e);
+      }
+  
+      // clear form values
+      setFormState({
+        email: '',
+        password: ''
+      });
+    };
 
     return(
         <div className="workerPage">
@@ -57,16 +54,17 @@ function LoginMidwife() {
                     <h3>Worker Login</h3>
                     <div className="form-group">
                         <label for="workerEmail">Email address</label>
-                        <input type="email" className="form-control" id="worker-login-email" aria-describedby="emailInput" placeholder="Enter email" />
+                        <input type="email" name="email" value={formState.email} onChange={handleChange} className="form-control" id="worker-login-email" aria-describedby="emailInput" placeholder="Enter email" />
                     </div>
                     <div className="form-group">
                         <label for="workerPassword">Password</label>
-                        <input type="password" className="form-control" id="worker-login-password" placeholder="Password" />
+                        <input type="password" name="password" value={formState.password} onChange={handleChange} className="form-control" id="worker-login-password" placeholder="Password" />
                     </div>
                     <div className="button-container">
                         <Link to="/" className="btn btn-primary">back</Link>
-                        <button type="submit" className="btn btn-primary">Login</button>
+                        <button type="submit" className="btn btn-primary" onClick={loginFormHandler}>Login</button>
                     </div>
+                    {error && <div>Incorrect Login</div>}
                 </form>
             </div>
         </div>

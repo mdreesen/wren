@@ -27,7 +27,8 @@ module.exports = {
       // if token was signed locally
       // if(token.length < 500) {
       const { data } = jwt.verify(token, secret, { maxAge: expiration });
-      req.user = data;
+      req.user = data,
+      req.birthworker = data
       // console.log(data)
     } catch { 
       console.log('Invalid token');

@@ -63,9 +63,9 @@ const resolvers = {
 
           // -=- BirthWorker Mutations -=-
           addBirthworker: async (parent, args) => {
-            const birthworker = await Birthworker.create(args);
-            const token = signToken(birthworker);
-            return { token, birthworker };
+            const birthworkers = await Birthworker.create(args);
+            const token = signToken(birthworkers);
+            return { token, birthworkers };
           },
 
           loginBirthworker: async (parent, { email, password }) => {

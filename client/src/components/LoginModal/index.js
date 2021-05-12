@@ -73,7 +73,7 @@ const LoginModal = () => {
                         <div className="modal-footer">
                             <button type="submit" id="loginModalBtn" className="btn btn-primary" onClick={loginFormHandler}>Login</button>
                         </div>
-                        {error && <div>Please Try Again</div>}
+                        {error && <div>Incorrect Login</div>}
                     </div>
                 </div>
             </div>
