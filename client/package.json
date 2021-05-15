@@ -2,6 +2,9 @@
   "name": "client",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": "13.x"
+  },
   "dependencies": {
     "@apollo/react-hooks": "^4.0.0",
     "@testing-library/jest-dom": "^5.11.4",
