@@ -29,7 +29,7 @@ const LoginModal = () => {
           variables: { ...formState }
         });
         console.log(data)
-        Auth.login(data.userLogin.token);
+        Auth.userLogin(data.userLogin.token);
       } catch (e) {
         console.error(e);
       }
