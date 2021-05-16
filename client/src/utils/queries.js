@@ -11,6 +11,18 @@ export const QUERY_USER = gql`
     }
 `;
 
+export const QUERY_BIRTHWORKERS = gql `
+query {
+    birthworkers {
+      _id
+      username
+      firstname
+      lastname
+      email
+    }
+  }
+`;
+
 // This is a different query
 // We are not passing variables to this query
 // we can just name this query and graphql will handle it

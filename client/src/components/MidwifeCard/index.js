@@ -3,8 +3,6 @@ import { Link, useParams } from "react-router-dom";
 
 
 const SearchMidwifeCard = (props) => {
-    // const { id } = useParams
-
 
     return (
         <>

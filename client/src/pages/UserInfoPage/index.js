@@ -1,4 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+import { useQuery } from '@apollo/react-hooks';
+import { QUERY_BIRTHWORKERS } from '../../utils/queries';
+import Auth from '../../utils/auth';
 
 import UserInfo from '../../components/UserInfo';
 import MidwifeCard from '../../components/MidwifeCard';
@@ -6,34 +9,36 @@ import NavbarUser from '../../components/NavbarUser';
 
 function UserInfoPage() {
 
-    // using useState to set the midwife card
-    // if there is nothing, return an empty array -> useState([]);
-    const [midwifeCard, setMidwifeCard] = useState([]);
+    // getting the data from the query
+    const { loading, data } = useQuery(QUERY_BIRTHWORKERS);
+    console.log(data)
 
-    // midwifeSearch function to get all midwife data from the database
-     const midwifeSearch = async () => {
-        const url = "/wpi/worker"
-        const response = await fetch(url);
-        const responseJson = await response.json();
+    // if no birthworkers then bring back an empty array
+    const birthworkers = data?.birthworkers || [];
         // console.log(responseJson);
+    //    const key= data.birthworkers
 
-        setMidwifeCard(responseJson)
+    if (loading) {
+        return <div>Loading birthworkers</div>
     }
-
-    useEffect(() => {
-        midwifeSearch();
-    }, [])
 
     return(
 
         <div>
             <NavbarUser />
-            <UserInfo />
-            <div className="row-container">
-                <div className='row'>
-                    <MidwifeCard midwifeCard={midwifeCard}/>
+            {Auth.loggedIn() ? (
+                <div>
+                <UserInfo />
+                <div className="row-container">
+                    <div className='row'>
+                        <MidwifeCard midwifeCard={birthworkers} />
+                    </div>
                 </div>
-            </div>
+                </div>
+
+            ) : (
+                <h5>Please log in to to be a part of our community!</h5>
+            )}
         </div>
     );
 }
