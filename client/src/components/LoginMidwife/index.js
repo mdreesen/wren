@@ -11,40 +11,42 @@ import { LOGIN_BIRTHWORKER } from '../../utils/mutations';
 // it is switching to other pages after email and password is put in, but need to handle this better
 
 function LoginMidwife() {
+  const [formState, setFormState] = useState({ email: '', password: '' });
+  const [loginBirthWorker, { error }] = useMutation(LOGIN_BIRTHWORKER);
 
-    const [formState, setFormState] = useState({ email: '', password: '' });
-    const [workerLogin, { error }] = useMutation(LOGIN_BIRTHWORKER);
-  
-    // update state based on form input changes
-    const handleChange = event => {
-      const { name, value } = event.target;
-  
-      setFormState({
-        ...formState,
-        [name]: value
+  // update state based on form input changes
+  const handleChange = event => {
+    const { name, value } = event.target;
+
+    console.log({ name, value })
+
+    setFormState({
+      ...formState,
+      [name]: value
+    });
+  };
+
+  // submit form
+  const loginFormHandler = async event => {
+    event.preventDefault();
+
+    try {
+      const { data } = await loginBirthWorker({
+        variables: { ...formState }
       });
-    };
-  
-    // submit form
-    const loginFormHandler = async event => {
-      event.preventDefault();
-  
-      try {
-        const { data } = await workerLogin({
-          variables: { ...formState }
-        });
-        console.log(data)
-        Auth.login(data.workerLogin.token);
-      } catch (e) {
-        console.error(e);
-      }
-  
-      // clear form values
-      setFormState({
-        email: '',
-        password: ''
-      });
-    };
+      console.log(data)
+      console.log(data.loginWorker)
+      Auth.workerLogin(data.loginBirthworker.token);
+    } catch (e) {
+      console.error(e);
+    }
+
+    // clear form values
+    setFormState({
+      email: '',
+      password: ''
+    });
+  };
 
     return(
         <div className="workerPage">

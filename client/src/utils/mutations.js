@@ -52,6 +52,7 @@ mutation($email: String!, $password: String!) {
   loginBirthworker(email: $email, password: $password) {
     token
     birthworker {
+      _id
       email
       password
     }

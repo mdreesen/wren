@@ -44,6 +44,12 @@ class AuthService {
         window.location.assign('/home');
     }
 
+    workerLogin(idToken) {
+        localStorage.setItem('id_token', idToken)
+
+        window.location.assign('/worker-home')
+    }
+
     // clear token from local storage and force logout with reload
     logout() {
         // clear user token and profile data from local storage
