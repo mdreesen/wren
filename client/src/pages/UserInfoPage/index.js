@@ -11,12 +11,10 @@ function UserInfoPage() {
 
     // getting the data from the query
     const { loading, data } = useQuery(QUERY_BIRTHWORKERS);
-    console.log(data)
+    // console.log({ data })
 
     // if no birthworkers then bring back an empty array
     const birthworkers = data?.birthworkers || [];
-        // console.log(responseJson);
-    //    const key= data.birthworkers
 
     if (loading) {
         return <div>Loading birthworkers</div>
