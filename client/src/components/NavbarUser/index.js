@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import React from 'react';
+import { Link } from 'react-router-dom';
 import Auth from '../../utils/auth';
 
 function Navbar() {
@@ -24,8 +24,8 @@ function Navbar() {
                     </Link>
                 </li>
                 <li className="nav-item">
-                    <Link to="" className="nav-link">
-                        Link-Two
+                    <Link to="/user-documents" className="nav-link">
+                        Documents
                     </Link>
                 </li>
                 <li className="nav-item">
