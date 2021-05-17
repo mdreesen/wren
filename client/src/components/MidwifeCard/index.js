@@ -7,7 +7,7 @@ const SearchMidwifeCard = (props) => {
     return (
         <>
             {props.midwifeCard.map((midwife, index) => (
-                <div key={midwife.id} className="card" style={{width: '18rem'}}>
+                <div key={midwife._id} className="card" style={{width: '18rem'}}>
                     <div className="card-body">
                         <h5 className="card-title">{midwife.firstname}</h5>
                         <h5 className="card-title">{midwife.lastname}</h5>

@@ -6,7 +6,8 @@ import ApolloClient from 'apollo-boost';
 
 // Import pages
 import Landing from './pages/Landing';
-import UserInfoPage from './pages/UserInfoPage';
+import UserSettings from './pages/UserSettings';
+import AllBirthworkers from './pages/Birthworkers';
 import Home from './pages/Home';
 import NotAPage from './pages/NotAPage';
 import LoginMidwife from './components/LoginMidwife';
@@ -37,7 +38,8 @@ function App() {
         <div className="App">
           <Switch>
             <Route exact path="/" component={Landing}/>
-            <Route exact path="/settings" component={UserInfoPage} />
+            <Route exact path="/settings" component={UserSettings} />
+            <Route exact path="/all-workers" component={AllBirthworkers} />
             <Route exact path="/home" component={Home}/>
             <Route exact path="/worker-login" component={LoginMidwife}/>
             <Route exact path="/user-login" component={SecondaryLoginForm} />

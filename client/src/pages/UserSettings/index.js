@@ -1,13 +1,14 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { useQuery } from '@apollo/react-hooks';
 import { QUERY_BIRTHWORKERS } from '../../utils/queries';
 import Auth from '../../utils/auth';
 
 import UserInfo from '../../components/UserInfo';
-import MidwifeCard from '../../components/MidwifeCard';
+// import MidwifeCard from '../../components/MidwifeCard';
 import NavbarUser from '../../components/NavbarUser';
 
-function UserInfoPage() {
+function UserSettings() {
 
     // getting the data from the query
     const { loading, data } = useQuery(QUERY_BIRTHWORKERS);
@@ -26,12 +27,10 @@ function UserInfoPage() {
             <NavbarUser />
             {Auth.loggedIn() ? (
                 <div>
-                <UserInfo />
-                <div className="row-container">
-                    <div className='row'>
-                        <MidwifeCard midwifeCard={birthworkers} />
+                    <UserInfo />
+                    <div>
+                        <Link to="/all-workers">See all workers</Link>
                     </div>
-                </div>
                 </div>
 
             ) : (
@@ -41,4 +40,4 @@ function UserInfoPage() {
     );
 }
 
-export default UserInfoPage;
+export default UserSettings;
