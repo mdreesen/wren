@@ -29,6 +29,18 @@ mutation($username: String!, $firstname: String!, $lastname: String!, $email: St
   }
 `;
 
+export const ASSOCIATE_WITH_MIDWIFE = gql `
+  mutation associateWithBirthworker($id: ID!) {
+    associateWithWorker(associateWorkerId: $id) {
+    _id
+      username
+      firstname
+      lastname
+      email
+    }
+  } 
+`;
+
 
 // -=- BIRTHWORKER MUTATIONS -=-
 export const ADD_BIRTHWORKER = gql `

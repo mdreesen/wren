@@ -47,6 +47,7 @@ type Birthworker {
 type Mutation {
     addUser(username: String!, firstname: String!, lastname: String!, email: String!, password: String!): Auth
     userLogin(email: String!, password: String!): Auth
+    associateWithWorker(associateWorkerId: ID!): Birthworker
 
     addBirthworker(username: String!, firstname: String!, lastname: String!, email: String!, password: String!): Auth
     loginBirthworker(email: String!, password: String!): Auth

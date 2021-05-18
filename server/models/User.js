@@ -34,13 +34,13 @@ const userSchema = new Schema(
       required: true,
       minlength: 5
     },
-    // may not need this but going to keep this here
-    // Birthworker: [
-    //   {
-    //     type: Schema.Types.ObjectId,
-    //     ref: 'Birthworker'
-    //   }
-    // ],
+    // User can be associated with a birthworker
+    associateWithBirthworker: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'Birthworker'
+      }
+    ],
   },
   {
     toJSON: {
@@ -64,11 +64,6 @@ userSchema.pre('save', async function(next) {
 userSchema.methods.isCorrectPassword = async function(password) {
   return bcrypt.compare(password, this.password);
 };
-
-// May think about adding friends to this
-// userSchema.virtual('friendCount').get(function() {
-//   return this.friends.length;
-// });
 
 const User = model('User', userSchema);
 

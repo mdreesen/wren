@@ -60,6 +60,20 @@ const resolvers = {
             return { token, user };
           },
 
+          associateWithWorker: async (parent, { associateWorkerId }, context) => {
+            if (context.user) {
+              const updatedUser = await User.findOneAndUpdate(
+                { _id: context.birthworker._id },
+                { $addToSet: { associateWithWorker: associateWorkerId } },
+                { new: true }
+              ).populate('associateWithWorker');
+      
+              return updatedUser;
+            }
+      
+            throw new AuthenticationError('You need to be logged in!');
+          },
+
 
           // -=- BirthWorker Mutations -=-
           addBirthworker: async (parent, args) => {

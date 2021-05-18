@@ -20,6 +20,10 @@ function AllBirthworkers() {
         return <div>Loading birthworkers</div>
     }
 
+    if (!birthworkers) {
+        return <div>No Midwives Yet</div>
+    }
+
     return(
 
         <div>
