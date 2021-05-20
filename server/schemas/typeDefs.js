@@ -18,6 +18,8 @@ type Query {
 
     birthworkers: [Birthworker]
     birthworker(username: String!): Birthworker
+
+    associationWorker: [User]
 }
 
 type Auth {
@@ -47,7 +49,7 @@ type Birthworker {
 type Mutation {
     addUser(username: String!, firstname: String!, lastname: String!, email: String!, password: String!): Auth
     userLogin(email: String!, password: String!): Auth
-    associateWithWorker(workerId: ID!): User
+    associateWithWorker(associateWithWorkerId: ID!): User
 
     addBirthworker(username: String!, firstname: String!, lastname: String!, email: String!, password: String!): Auth
     loginBirthworker(email: String!, password: String!): Auth

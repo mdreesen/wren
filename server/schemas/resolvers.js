@@ -60,17 +60,43 @@ const resolvers = {
             return { token, user };
           },
 
-          associateWithWorker: async (parent, { workerId }, context) => {
+
+          // May have the ability to add friends later on
+          // addFriend: async (parent, { friendId }, context) => {
+          //   if (context.user) {
+          //     const updatedUser = await User.findOneAndUpdate(
+          //       { _id: context.user._id },
+          //       { $addToSet: { friends: friendId } },
+          //       { new: true }
+          //     ).populate('friends');
+          
+          //     return updatedUser;
+          //   }
+          
+          //   throw new AuthenticationError('You need to be logged in!');
+          // }
+
+
+          associateWithWorker: async (parent, { associateWithWorkerId }, context) => {
             if (context.user) {
               const updatedUser = await User.findOneAndUpdate(
                 { _id: context.user._id },
-                { $addToSet: { userToWorker: workerId } },
+                { $addToSet: { associationWorker: associateWithWorkerId } },
                 { new: true }
-              ).populate('userToWorker');
-      
+              ).populate('associationWorker');
+          
               return updatedUser;
             }
-      
+            if (birthworker) {
+              const updateBirthworker = await Birthworker.findOneAndUpdate(
+                { _id: birthworker._id }, 
+                { $addToSet: { associationUser: associateWithUserId} },
+                { new: true}
+              ).populate('associationUser');
+
+              return updateBirthworker;
+            }
+          
             throw new AuthenticationError('You need to be logged in!');
           },
 
