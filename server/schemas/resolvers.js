@@ -60,13 +60,13 @@ const resolvers = {
             return { token, user };
           },
 
-          associateWithWorker: async (parent, { associateWorkerId }, context) => {
+          associateWithWorker: async (parent, { workerId }, context) => {
             if (context.user) {
               const updatedUser = await User.findOneAndUpdate(
-                { _id: context.birthworker._id },
-                { $addToSet: { associateWithWorker: associateWorkerId } },
+                { _id: context.user._id },
+                { $addToSet: { userToWorker: workerId } },
                 { new: true }
-              ).populate('associateWithWorker');
+              ).populate('userToWorker');
       
               return updatedUser;
             }
