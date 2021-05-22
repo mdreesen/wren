@@ -3,8 +3,12 @@ import { Link } from "react-router-dom";
 import { useMutation } from '@apollo/react-hooks';
 import { ASSOCIATE_WITH_WORKER } from '../../utils/mutations';
 
+import birthworkerProfile from '../../pages/Birthworkerprofile';
+
 
 const SearchMidwifeCard = (props) => {
+
+
 
 
     return (
@@ -15,7 +19,7 @@ const SearchMidwifeCard = (props) => {
                         <h5 className="card-title">{midwife.firstname}</h5>
                         <h5 className="card-title">{midwife.lastname}</h5>
                         <p className="card-text">Description maybe?</p>
-                        {/* <button onClick={associateWorker} className="btn btn-primary">Affiliate</button> */}
+                        <button onClick={birthworkerProfile} className="btn btn-primary">View Profile</button>
                         {/* <a href="#" className="btn btn-primary">Affiliate</a> */}
                     </div>
                 </div>

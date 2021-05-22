@@ -14,6 +14,7 @@ import NotAPage from './pages/NotAPage';
 import LoginMidwife from './components/LoginMidwife';
 import SecondaryLoginForm from './components/SecondaryLoginForm';
 import WorkerPage from './pages/WorkerPage';
+import BirthworkerProfile from './pages/Birthworkerprofile';
 
 // making the connection to the graphql backend server
 // "uri" = Uniform Resource Identifier
@@ -46,6 +47,7 @@ function App() {
             <Route exact path="/worker-login" component={LoginMidwife}/>
             <Route exact path="/user-login" component={SecondaryLoginForm} />
             <Route exact path="/worker-home" component={WorkerPage}/>
+            <Route exact path="/profile/birthworker/:username" component={BirthworkerProfile}/>
             <Route component={NotAPage}/>
           </Switch>
         </div>

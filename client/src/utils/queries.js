@@ -22,8 +22,11 @@ export const QUERY_USER = gql`
 export const QUERY_BIRTHWORKER = gql `
 query birthworker($username: String!) {
     birthworker(username: $username) {
-      _id
-      username
+        _id
+        username
+        firstname
+        lastname
+        email
       associateWithUser {
         _id
         username
