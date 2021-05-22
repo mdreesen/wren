@@ -8,10 +8,10 @@ function Mood() {
                 How are you feeling?
             </div>
             <ul className="list-group list-group-flush">
-                <button className="btn btn-primary">happy</button>
+                <button className="btn btn-success">happy</button>
                 <button className="btn btn-primary">eh, alright</button>
-                <button className="btn btn-primary">not great</button>
-                <button className="btn btn-primary">don't wanna talk about it</button>
+                <button className="btn btn-warning">not great</button>
+                <button className="btn btn-danger">don't wanna talk about it</button>
             </ul>
         </div>
     );
