@@ -29,16 +29,22 @@ mutation($username: String!, $firstname: String!, $lastname: String!, $email: St
   }
 `;
 
-export const ASSOCIATE_WITH_MIDWIFE = gql `
-  mutation associateWithBirthworker($id: ID!) {
-    associateWithWorker(associateWorkerId: $id) {
-    _id
+export const ASSOCIATE_WITH_WORKER = gql `
+  mutation associateWorker($awwId: ID!) {
+    associateWorker(awwId: $awwId) {
+      _id
       username
-      firstname
-      lastname
-      email
     }
-  } 
+  }
+`;
+
+export const ASSOCIATE_WITH_USER = gql `
+  mutation associateUser($awuId: ID!) {
+    associateUser(awuId: $awuId) {
+      _id
+      username
+    }
+  }
 `;
 
 
