@@ -3,7 +3,7 @@ import React from 'react';
 function Mood() {
 
     return (
-        <div className="card" style={{width: '18rem'}}>
+        <div className="card mood-card box-shadow-back" style={{width: '18rem'}}>
             <div className="card-header">
                 How are you feeling?
             </div>

@@ -7,7 +7,7 @@ function Footer() {
 <nav className="footer navbar-expand-lg">
     {/* <a className="navbar-brand" href="#">Hidden brand</a> */}
     <div className="icon-left">
-        <ul>
+        <ul className="icon-column">
             <li>icon left</li>
             <li>icon left</li>
             <li>icon left</li>
@@ -15,10 +15,10 @@ function Footer() {
         </ul>
     </div>
     <div className="icon-right">
-        <ul>
-            <li>social icon</li>
-            <li>social icon</li>
-            <li>social icon</li>
+        <ul className="icon-column">
+            <a>icon1</a>
+            <a>icon2</a>
+            <a>icon3</a>
         </ul>
     </div>
 </nav>

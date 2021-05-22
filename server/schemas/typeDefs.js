@@ -12,6 +12,8 @@ type Query {
     helloWorld: String
 
     me: User
+    viewBirthworkerProfile: Birthworker
+
     users: [User]
     user(username: String!): User
 

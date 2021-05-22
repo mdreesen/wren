@@ -1,16 +1,41 @@
 // importing graphql
 import gql from 'graphql-tag';
 
+// querying single user
 export const QUERY_USER = gql`
     query user($username: String!) {
         user(username: $username) {
+        _id
+        username
+        associateWithWorker {
             _id
             username
+            firstname
+            lastname
             email
         }
     }
+}
 `;
 
+// querying single birthworker
+export const QUERY_BIRTHWORKER = gql `
+query birthworker($username: String!) {
+    birthworker(username: $username) {
+      _id
+      username
+      associateWithUser {
+        _id
+        username
+        firstname
+        lastname
+        email
+      }
+    }
+  }
+`;
+
+// querying all birthworkers
 export const QUERY_BIRTHWORKERS = gql `
 query {
     birthworkers {
@@ -36,6 +61,7 @@ export const QUERY_ME = gql `
     }
 `;
 
+// querying the logged in user
 export const QUERY_ME_BASIC = gql `
     {
         me {

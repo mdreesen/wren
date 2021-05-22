@@ -27,12 +27,23 @@ const resolvers = {
               .select('-__v -password')
           },
 
+          // Getting user by username
           user: async (parent, { username }) => {
             return User.findOne({ username })
               .select('-__v -password')
+              .populate('associateWithWorker')
           },
 
           // -=- Birthworker Resolvers -=- //
+
+
+          // Getting birthworker by username
+          birthworker: async (parent, { username }) => {
+            return Birthworker.findOne({ username })
+              .select('-__v -password')
+              .populate('associateWithUser')
+          },
+
           birthworkers: async () => {
             return Birthworker.find()
               .select('-__v -password')
