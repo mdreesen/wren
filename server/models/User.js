@@ -35,12 +35,10 @@ const userSchema = new Schema(
       minlength: 5
     },
     // User can be associated with a birthworker
-    associateWithWorker: [
-      {
-        type: Schema.Types.ObjectId,
-        ref: 'Birthworker'
-      }
-    ],
+    associateWithWorker: [{
+      type: Schema.Types.ObjectId,
+      ref: 'Birthworker'
+    }]
   },
   {
     toJSON: {

@@ -11,15 +11,12 @@ const typeDefs = gql `
 type Query {
     helloWorld: String
 
+    me: User
     users: [User]
     user(username: String!): User
 
-    me: User
-
     birthworkers: [Birthworker]
     birthworker(username: String!): Birthworker
-
-    associationWorker: [User]
 }
 
 type Auth {
@@ -35,6 +32,7 @@ type User {
     lastname: String
     email: String
     password: String
+    associateWithWorker: [Birthworker]
 }
 
 type Birthworker {
@@ -44,12 +42,15 @@ type Birthworker {
     lastname: String
     email: String
     password: String
+    associateWithUser: [User]
 }
 
 type Mutation {
     addUser(username: String!, firstname: String!, lastname: String!, email: String!, password: String!): Auth
     userLogin(email: String!, password: String!): Auth
-    associateWithWorker(associateWithWorkerId: ID!): User
+
+    associateWorker(awwId: ID!): User
+    associateWithUser(awuId: ID!): Birthworker
 
     addBirthworker(username: String!, firstname: String!, lastname: String!, email: String!, password: String!): Auth
     loginBirthworker(email: String!, password: String!): Auth

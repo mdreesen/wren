@@ -29,12 +29,12 @@ const birthworkerSchema = new Schema(
         trim: true
     },
     // Users that will be associated with the birthworker
-    // associatedUser: [
-    //   {
-    //     type: Schema.Types.ObjectId,
-    //     ref: 'User'
-    //   }
-    // ],
+    associateWithUser: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'User'
+      }
+    ],
   },
   {
     toJSON: {

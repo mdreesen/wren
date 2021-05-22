@@ -60,46 +60,20 @@ const resolvers = {
             return { token, user };
           },
 
-
-          // May have the ability to add friends later on
-          // addFriend: async (parent, { friendId }, context) => {
-          //   if (context.user) {
-          //     const updatedUser = await User.findOneAndUpdate(
-          //       { _id: context.user._id },
-          //       { $addToSet: { friends: friendId } },
-          //       { new: true }
-          //     ).populate('friends');
-          
-          //     return updatedUser;
-          //   }
-          
-          //   throw new AuthenticationError('You need to be logged in!');
-          // }
-
-
-          associateWithWorker: async (parent, { associateWithWorkerId }, context) => {
+          // -=- Association -=- //
+          associateWorker: async (parent, { awwId }, context) => {
             if (context.user) {
               const updatedUser = await User.findOneAndUpdate(
                 { _id: context.user._id },
-                { $addToSet: { associationWorker: associateWithWorkerId } },
+                { $addToSet: { associateWithWorker: awwId } },
                 { new: true }
-              ).populate('associationWorker');
+              ).populate('associateWithWorker')
           
-              return updatedUser;
-            }
-            if (birthworker) {
-              const updateBirthworker = await Birthworker.findOneAndUpdate(
-                { _id: birthworker._id }, 
-                { $addToSet: { associationUser: associateWithUserId} },
-                { new: true}
-              ).populate('associationUser');
-
-              return updateBirthworker;
+              return updatedUser
             }
           
             throw new AuthenticationError('You need to be logged in!');
           },
-
 
           // -=- BirthWorker Mutations -=-
           addBirthworker: async (parent, args) => {
