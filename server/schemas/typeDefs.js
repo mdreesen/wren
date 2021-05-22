@@ -50,7 +50,7 @@ type Mutation {
     userLogin(email: String!, password: String!): Auth
 
     associateWorker(awwId: ID!): User
-    associateWithUser(awuId: ID!): Birthworker
+    associateUser(awuId: ID!): Birthworker
 
     addBirthworker(username: String!, firstname: String!, lastname: String!, email: String!, password: String!): Auth
     loginBirthworker(email: String!, password: String!): Auth

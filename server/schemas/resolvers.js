@@ -75,6 +75,20 @@ const resolvers = {
             throw new AuthenticationError('You need to be logged in!');
           },
 
+          associateUser: async (parent, { awuId }, context) => {
+            if (context.birthworker) {
+              const updatedUser = await Birthworker.findOneAndUpdate(
+                { _id: context.birthworker._id },
+                { $addToSet: { associateWithUser: awuId } },
+                { new: true }
+              ).populate('associateWithUser')
+          
+              return updatedUser
+            }
+          
+            throw new AuthenticationError('You need to be logged in!');
+          },
+
           // -=- BirthWorker Mutations -=-
           addBirthworker: async (parent, args) => {
             const birthworkers = await Birthworker.create(args);
