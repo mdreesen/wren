@@ -2,6 +2,7 @@ import React from 'react';
 
 // import components
 import NavbarUser from '../../components/NavbarUser';
+import Mood from '../../components/Mood';
 import Auth from '../../utils/auth';
 
 function Home() {
@@ -10,7 +11,8 @@ function Home() {
             <NavbarUser/>
             {Auth.loggedIn() ? (
                 <>
-                <div>loggedIn users should see this text</div>
+                <div>Hey Good Lookin'</div>
+                <Mood />
                 </>
             ) : (
                 <>
