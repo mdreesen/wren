@@ -37,6 +37,9 @@ export const ASSOCIATE_WITH_WORKER = gql `
       associateWithWorker {
         _id
         username
+        firstname
+        lastname
+        email
       }
     }
   }
