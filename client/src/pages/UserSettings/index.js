@@ -15,7 +15,7 @@ function UserSettings() {
     // console.log({ data })
 
     // if no birthworkers then bring back an empty array
-    const birthworkers = data?.birthworkers || [];
+    // const birthworkers = data?.birthworkers || [];
 
     if (loading) {
         return <div>Loading birthworkers</div>

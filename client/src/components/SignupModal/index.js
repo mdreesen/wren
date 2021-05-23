@@ -17,7 +17,7 @@ const SignupModal = () => {
             const { data } = await addUser({
                 variables: { ...formState }
             });
-            Auth.login(data.addUser.token)
+            Auth.userLogin(data.addUser.token)
             console.log(data);
         } catch(e) {
             console.log(e)
