@@ -30,13 +30,16 @@ mutation($username: String!, $firstname: String!, $lastname: String!, $email: St
 `;
 
 export const ASSOCIATE_WITH_WORKER = gql `
-  mutation associateWorker($awwId: ID!) {
-    associateWorker(awwId: $awwId) {
+  mutation associateWorker($id: ID!) {
+    associateWorker(awwId: $id) {
       _id
       username
       associateWithWorker {
         _id
         username
+        firstname
+        lastname
+        email
       }
     }
   }

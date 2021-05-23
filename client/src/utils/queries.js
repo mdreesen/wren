@@ -22,8 +22,11 @@ export const QUERY_USER = gql`
 export const QUERY_BIRTHWORKER = gql `
 query birthworker($username: String!) {
     birthworker(username: $username) {
-      _id
-      username
+        _id
+        username
+        firstname
+        lastname
+        email
       associateWithUser {
         _id
         username
@@ -52,22 +55,37 @@ query {
 // We are not passing variables to this query
 // we can just name this query and graphql will handle it
 export const QUERY_ME = gql `
-    {
-        me {
-            _id
-            username
-            email
-        }
+{
+    me {
+      _id
+      username
+      firstname
+      lastname
+      email
+      associateWithWorker {
+        _id
+        username
+        firstname
+        lastname
+        email
+      }
     }
+  }
 `;
 
 // querying the logged in user
 export const QUERY_ME_BASIC = gql `
-    {
-        me {
-            _id
-            username
-            email
-        }
+{
+    me {
+      _id
+      username
+      associateWithWorker {
+        _id
+        username
+        firstname
+        lastname
+        email
+      }
     }
+  }
 `;
