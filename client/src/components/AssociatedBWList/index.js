@@ -7,16 +7,6 @@ import { Link } from 'react-router-dom';
         console.log('associateWithWorker' ,associateWithWorker)
         console.log('birthworkerCount' ,birthworkerCount)
 
-        // if (!birthworkerCount || !username || !associateWithWorker) {
-        //     return (
-        //         <div className="card mood-card box-shadow-back" style={{width: '18rem'}}>
-        //         <div className="card-body">
-        //             <p>No Associated Birthworkers</p>
-        //         </div>
-        //     </div> 
-        //     );
-        // }
-
         if (!associateWithWorker || !associateWithWorker.length) {
           return (
             <div className="card mood-card box-shadow-back" style={{width: '18rem'}}>

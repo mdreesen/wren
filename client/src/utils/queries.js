@@ -79,6 +79,10 @@ export const QUERY_ME_BASIC = gql `
     me {
       _id
       username
+      firstname
+      lastname
+      email
+      birthworkerCount
       associateWithWorker {
         _id
         username

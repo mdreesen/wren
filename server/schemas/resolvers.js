@@ -25,6 +25,7 @@ const resolvers = {
           users: async () => {
             return User.find()
               .select('-__v -password')
+              .populate('associateWithWorker')
           },
 
           // Getting user by username
@@ -47,6 +48,7 @@ const resolvers = {
           birthworkers: async () => {
             return Birthworker.find()
               .select('-__v -password')
+              .populate('associateWithUser')
           },
     },
 

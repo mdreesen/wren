@@ -34,6 +34,7 @@ type User {
     lastname: String
     email: String
     password: String
+    birthworkerCount: Int
     associateWithWorker: [Birthworker]
 }
 
