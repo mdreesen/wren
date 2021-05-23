@@ -34,9 +34,6 @@ export const ASSOCIATE_WITH_WORKER = gql `
     associateWorker(awwId: $id) {
       _id
       username
-      firstname
-      lastname
-      email
       associateWithWorker {
         _id
         username

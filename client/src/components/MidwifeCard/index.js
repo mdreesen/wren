@@ -6,7 +6,7 @@ const SearchMidwifeCard = (props) => {
     return (
         <>
             {props.midwifeCard.map((midwife, index) => (
-                <div key={`each-card-${midwife.username}`} className="card box-shadow-back" style={{width: '18rem'}}>
+                <div key={`each-card-${midwife._id}`} className="card box-shadow-back" style={{width: '18rem'}}>
                     <div className="card-body">
                         <h5 className="card-title">{midwife.firstname}</h5>
                         <h5 className="card-title">{midwife.lastname}</h5>

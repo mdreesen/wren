@@ -6,7 +6,7 @@ import { useQuery, useMutation } from '@apollo/react-hooks';
 import { QUERY_BIRTHWORKER } from '../../utils/queries';
 import { ASSOCIATE_WITH_WORKER } from '../../utils/mutations';
 
-function BirthWorkerProfile() {
+function BirthWorkerProfile(props) {
     const [associateWithWorker] = useMutation(ASSOCIATE_WITH_WORKER)
     const { username: userParam } = useParams();
 
@@ -14,6 +14,7 @@ function BirthWorkerProfile() {
         variables: { username: userParam }
     })
 
+    // aww = "associateWithWorker"
     const aww = async () => {
         try {
             await associateWithWorker({
@@ -27,6 +28,7 @@ function BirthWorkerProfile() {
     // console.log(data)
 
     const birthworker = data?.birthworker || {};
+
 
     if(loading) {
         return <div>Loading BirthWorker's Profile</div>

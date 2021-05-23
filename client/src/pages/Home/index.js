@@ -8,7 +8,7 @@ import Auth from '../../utils/auth';
 import { useQuery } from '@apollo/react-hooks';
 import { QUERY_ME } from '../../utils/queries';
 
-function Home() {
+function Home(props) {
     const { data: userData } = useQuery(QUERY_ME);
     console.log(userData)
 
