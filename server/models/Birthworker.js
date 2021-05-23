@@ -60,9 +60,9 @@ birthworkerSchema.methods.isCorrectPassword = async function(password) {
 };
 
 // May think about adding friends to this
-// birthworkerSchema.virtual('Users').get(function() {
-//   return this.associatedUser.length;
-// });
+birthworkerSchema.virtual('userCount').get(function() {
+  return this.associateWithUser.length;
+});
 
 const Birthworker = model('Birthworker', birthworkerSchema);
 
