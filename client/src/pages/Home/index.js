@@ -18,12 +18,14 @@ function Home(props) {
             <NavbarUser/>
                 {userData && Auth.loggedIn() ? (
                     <>
-                    <Mood />
-                    <AssociatedBWList 
-                        username={userData.me.username}
-                        birthworkerCount={userData.me.birthworkerCount}
-                        associateWithWorker={userData.me.associateWithWorker}
-                    />
+                    <div className="home-cards">
+                        <Mood />
+                        <AssociatedBWList 
+                            username={userData.me.username}
+                            birthworkerCount={userData.me.birthworkerCount}
+                            associateWithWorker={userData.me.associateWithWorker}
+                        />
+                    </div>
                     </>
                 ) : (
                     <>

@@ -12,7 +12,7 @@ type Query {
     helloWorld: String
 
     me: User
-    viewBirthworkerProfile: Birthworker
+    viewBirthworker: Birthworker
 
     users: [User]
     user(username: String!): User

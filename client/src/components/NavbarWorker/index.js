@@ -1,25 +1,13 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import Auth from '../../utils/auth';
 
 function Navbar() {
 
     // Logout function
-    function logout() {
-
-        document.querySelector('#logout-btn')
-
-        const response = fetch('/wpi/worker/logout', {
-            method: 'post',
-            headers: { 'Content-type': 'application/json' }
-        });
-
-        console.log(response);
-
-        if (response) {
-            console.log('success');
-            document.location.replace('/')
-        } else {
-            console.log('oops')
-        }
+    const logout = event => {
+        event.preventDefault();
+        Auth.logout();
     }
 
     return(
@@ -27,7 +15,8 @@ function Navbar() {
         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon" />
         </button>
-        <div className="collapse navbar-collapse" id="navbarNav">
+        <div className="collapse navbar-collapse navbar-css" id="navbarNav">
+        {Auth.workerLogin() ? (
             <ul className="navbar-nav">
                 <li className="nav-item active">
                     <a className="nav-link" href="/home">Home<span className="sr-only">(current)</span></a>
@@ -39,9 +28,18 @@ function Navbar() {
                     <a href="/user-info" className="nav-link">Settings</a>
                 </li>
                 <li className="nav-item">
-                    <button type="button" id="logout-btn" className="btn btn-primary" onClick={logout}>Logout</button>
+                    <Link to="/" className="nav-link" onClick={logout}>Logout</Link>
                 </li>
             </ul>
+        ) : (
+            <ul className="navbar-nav">
+                <li className="nav-item">
+                    <Link to="/" className="nav-link">
+                        back
+                    </Link>
+                </li>
+            </ul>
+        )}
         </div>
         </nav>
 

@@ -103,6 +103,10 @@ body {
     border-radius: 5px;
   }
 
+  .home-cards {
+    display: flex;
+  }
+
   /* Update User Profile */
   .form-check {
     margin: 2rem 0rem 2rem 0rem;

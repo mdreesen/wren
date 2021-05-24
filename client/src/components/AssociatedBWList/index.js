@@ -20,7 +20,7 @@ import { Link } from 'react-router-dom';
     return (
         <div className="card mood-card box-shadow-back" style={{width: '18rem'}}>
             <div className="card-header">
-                {username}'s {birthworkerCount} {birthworkerCount === 1 ? 'associated birthworker' : 'associated birthworkers'}
+                Your {birthworkerCount} {birthworkerCount === 1 ? 'associated birthworker' : 'associated birthworkers'}
             </div>
             <ul className="list-group list-group-flush">
             {associateWithWorker.map(birthworker => (

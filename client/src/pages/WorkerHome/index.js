@@ -2,7 +2,7 @@ import React from 'react';
 
 import NavbarWorker from '../../components/NavbarWorker';
 
-function WorkerPage() {
+function WorkerHome() {
     return(
         <div>
             <NavbarWorker />
@@ -11,4 +11,4 @@ function WorkerPage() {
     );
 }
 
-export default WorkerPage;
+export default WorkerHome;

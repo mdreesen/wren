@@ -28,6 +28,12 @@ const birthworkerSchema = new Schema(
         unique: false,
         trim: true
     },
+    lastname: {
+      type: String,
+      required: true,
+      unique: false,
+      trim: true
+  },
     // Users that will be associated with the birthworker
     associateWithUser: [
       {
