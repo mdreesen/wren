@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-
     const AssociatedBWList = ({ birthworkerCount, username, associateWithWorker }) => {
+
         console.log('username' ,username)
         console.log('associateWithWorker' ,associateWithWorker)
         console.log('birthworkerCount' ,birthworkerCount)
