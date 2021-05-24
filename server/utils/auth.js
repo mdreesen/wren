@@ -35,6 +35,7 @@ module.exports = {
     }
 
     console.log(req.user);
+    console.log(req.birthworker)
     return req;
   },
 

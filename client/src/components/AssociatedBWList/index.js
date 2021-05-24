@@ -7,16 +7,6 @@ import { Link } from 'react-router-dom';
         console.log('associateWithWorker' ,associateWithWorker)
         console.log('birthworkerCount' ,birthworkerCount)
 
-        // if (!birthworkerCount || !username || !associateWithWorker) {
-        //     return (
-        //         <div className="card mood-card box-shadow-back" style={{width: '18rem'}}>
-        //         <div className="card-body">
-        //             <p>No Associated Birthworkers</p>
-        //         </div>
-        //     </div> 
-        //     );
-        // }
-
         if (!associateWithWorker || !associateWithWorker.length) {
           return (
             <div className="card mood-card box-shadow-back" style={{width: '18rem'}}>
@@ -30,7 +20,7 @@ import { Link } from 'react-router-dom';
     return (
         <div className="card mood-card box-shadow-back" style={{width: '18rem'}}>
             <div className="card-header">
-                {username}'s {birthworkerCount} {birthworkerCount === 1 ? 'associated birthworker' : 'associated birthworkers'}
+                Your {birthworkerCount} {birthworkerCount === 1 ? 'associated birthworker' : 'associated birthworkers'}
             </div>
             <ul className="list-group list-group-flush">
             {associateWithWorker.map(birthworker => (

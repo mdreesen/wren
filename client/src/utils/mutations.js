@@ -57,19 +57,19 @@ export const ASSOCIATE_WITH_USER = gql `
 
 // -=- BIRTHWORKER MUTATIONS -=-
 export const ADD_BIRTHWORKER = gql `
-mutation($username: String!, $firstname: String!, $lastname: String!, $email: String!, $password: String!) {
-  addBirthworker(username: $username, firstname: $firstname, lastname: $lastname, email: $email, password: $password) {
-    token
-		birthworker {
-      _id
-			email
-      firstname
-      username
-      lastname
-      password
+  mutation($username: String!, $firstname: String!, $lastname: String!, $email: String!, $password: String!) {
+    addBirthworker(username: $username, firstname: $firstname, lastname: $lastname, email: $email, password: $password) {
+      token
+      birthworker {
+        _id
+        username
+        firstname
+        lastname
+        email
+        password
+      }
     }
   }
-}
 `;
 
 export const LOGIN_BIRTHWORKER = gql `

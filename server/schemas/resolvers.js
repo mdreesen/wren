@@ -13,6 +13,7 @@ const resolvers = {
             return 'Hello World';
         },
 
+        // Logged in user information
         me: async (parent, args, context) => {
             if (context.user) {
               const userData = await User.findOne({ _id: context.user._id })
@@ -25,6 +26,7 @@ const resolvers = {
           users: async () => {
             return User.find()
               .select('-__v -password')
+              .populate('associateWithWorker')
           },
 
           // Getting user by username
@@ -35,8 +37,15 @@ const resolvers = {
           },
 
           // -=- Birthworker Resolvers -=- //
-
-
+        // Logged in birthworker information
+        viewBirthworker: async (parent, args, context) => {
+          if (context.birthworker) {
+            const birthworkerData = await Birthworker.findOne({ _id: context.birthworker._id })
+              .select('-__v -password')
+            return birthworkerData;
+          }
+          throw new AuthenticationError('Not logged in');
+        },
           // Getting birthworker by username
           birthworker: async (parent, { username }) => {
             return Birthworker.findOne({ username })
@@ -47,6 +56,7 @@ const resolvers = {
           birthworkers: async () => {
             return Birthworker.find()
               .select('-__v -password')
+              .populate('associateWithUser')
           },
     },
 
@@ -102,9 +112,9 @@ const resolvers = {
 
           // -=- BirthWorker Mutations -=-
           addBirthworker: async (parent, args) => {
-            const birthworkers = await Birthworker.create(args);
-            const token = signToken(birthworkers);
-            return { token, birthworkers };
+            const birthworker = await Birthworker.create(args);
+            const token = signToken(birthworker);
+            return { token, birthworker };
           },
 
           loginBirthworker: async (parent, { email, password }) => {
