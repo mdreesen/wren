@@ -24,8 +24,9 @@ import { Link } from 'react-router-dom';
             </div>
             <ul className="list-group list-group-flush">
             {associateWithWorker.map(birthworker => (
-                    <li className="btn btn-primary" key={birthworker._id}>
-                    <Link to={`/profile/${birthworker.username}`}>{birthworker.username}</Link>
+                    <li key={birthworker._id}>
+                        <h6 className="associated-birthworker-name">{birthworker.username}</h6>
+                        <Link to={`/profile/birthworker/${birthworker.username}`} className="btn btn-primary associated-midwife-btn">View Profile</Link>
                     </li>
                 ))}
             </ul>
