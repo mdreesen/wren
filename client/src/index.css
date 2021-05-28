@@ -24,20 +24,43 @@ body {
   position: sticky;
   background: black;
   height: 8rem;
+  padding: 12px;
+  color: white;
+}
+
+.footer-link {
+  margin: 4px;
+  color: white;
+  list-style: none;
+}
+
+a {
+  color: white;
+}
+
+a::before {
+  color: white;
+}
+
+a::after {
+  color: #252425;
 }
 
 .icon-column {
   display: grid;
+  color: white;
 }
 
 .icon-left {
   position: absolute;
   text-align: left;
+  z-index: 1;
 }
 
 .icon-right {
   position: relative;
   text-align: right;
+  width: 98%;
 }
 
 .workerLoginBtn {
