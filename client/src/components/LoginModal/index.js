@@ -61,13 +61,13 @@ const LoginModal = () => {
                         <form>
                             <div>
                                 <label id="usernameLabel" htmlFor="login-username">Email</label>
-                                <div><input id="login-email-input" name="email" value={formState.email} onChange={handleChange} autoComplete="on" /></div>
+                                <div><input id="login-email-input" name="email" value={formState.email} onChange={handleChange} autoComplete="on" placeholder="Enter your email" /></div>
                             </div>
                             <div>
                             <br />
                             <div>
                                 <label id="passwordLabel" htmlFor="login-password">Password</label>
-                                <div><input id="login-password-input" type="password" name="password" autoComplete="on" value={formState.value} onChange={handleChange} /></div>
+                                <div><input id="login-password-input" type="password" name="password" autoComplete="on" value={formState.value} onChange={handleChange} placeholder="Enter your password" /></div>
                             </div>
                             </div>
                         </form>
