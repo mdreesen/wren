@@ -60,7 +60,7 @@ const LoginModal = () => {
                         <div className="modal-body">
                         <form>
                             <div>
-                                <label id="usernameLabel" htmlFor="login-username">email</label>
+                                <label id="usernameLabel" htmlFor="login-username">Email</label>
                                 <div><input id="login-email-input" name="email" value={formState.email} onChange={handleChange} autoComplete="on" /></div>
                             </div>
                             <div>
