@@ -34,7 +34,7 @@ body {
   list-style: none;
 }
 
-a {
+/* a {
   color: white;
 }
 
@@ -44,7 +44,7 @@ a::before {
 
 a::after {
   color: #252425;
-}
+} */
 
 .icon-column {
   display: grid;

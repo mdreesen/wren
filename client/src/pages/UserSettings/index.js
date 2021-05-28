@@ -29,7 +29,7 @@ function UserSettings() {
                 <div>
                     <UserInfo />
                     <div>
-                        <Link to="/all-workers">See all workers</Link>
+                        <a><Link to="/all-workers">See all workers</Link></a>
                     </div>
                 </div>
 
