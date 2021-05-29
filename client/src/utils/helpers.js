@@ -1,5 +1,3 @@
-import { resolve } from "path";
-
 export function idbPromise(storeName, method, object) {
     return new Promise((resolve, reject) => {
         // open connection to the database "wren", with the version of 1
