@@ -108,6 +108,16 @@ a::after {
     background: linear-gradient(rgba(0, 0, 0, .8), rgba(0, 0, 0, .8))
   }
 
+  .modal-header, 
+  .modal-footer {
+    border-bottom: none;
+    border-top: none;
+  }
+
+  .close {
+    color: red;
+  }
+
   /* Homepage */
   .box-shadow-back {
     box-shadow:
