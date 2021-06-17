@@ -12,7 +12,7 @@ import { LOGIN_BIRTHWORKER } from '../../utils/mutations';
 
 function LoginMidwife() {
   const [formState, setFormState] = useState({ email: '', password: '' });
-  const [loginBirthWorker, { error }] = useMutation(LOGIN_BIRTHWORKER);
+  const [workerLogin, { error }] = useMutation(LOGIN_BIRTHWORKER);
 
   // update state based on form input changes
   const handleChange = event => {
@@ -31,12 +31,14 @@ function LoginMidwife() {
     event.preventDefault();
 
     try {
-      const { data } = await loginBirthWorker({
+      const { data } = await workerLogin({
         variables: { ...formState }
       });
       console.log(data)
       console.log(data.loginWorker)
-      Auth.workerLogin(data.loginBirthworker.token);
+      debugger;
+      Auth.workerLogin(data.workerLogin.token);
+      debugger;
     } catch (e) {
       console.error(e);
     }

@@ -118,7 +118,7 @@ const resolvers = {
             return { token, birthworker };
           },
 
-          loginBirthworker: async (parent, { email, password }) => {
+          workerLogin: async (parent, { email, password }) => {
             const birthworker = await Birthworker.findOne({ email });
             if (!birthworker) {
               throw new AuthenticationError('Incorrect Credentials');

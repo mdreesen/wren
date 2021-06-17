@@ -46,8 +46,14 @@ class AuthService {
 
     workerLogin(idToken) {
         localStorage.setItem('id_token', idToken)
-
-        window.location.assign('/worker-home')
+        if (idToken) {
+            return window.location.assign('/worker-home');
+        }
+        else {
+            debugger;
+            return window.location.assign('/worker-login')
+        }
+        // window.location.assign('/worker-home');
     }
 
     // clear token from local storage and force logout with reload
