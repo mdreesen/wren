@@ -14,6 +14,7 @@ import NotAPage from './pages/NotAPage';
 import LoginMidwife from './components/LoginMidwife';
 import SecondaryLoginForm from './components/SecondaryLoginForm';
 import WorkerHome from './pages/WorkerHome';
+import AssociatedUsers from './pages/Users';
 import BirthworkerProfile from './pages/Birthworkerprofile';
 import BirthworkerSignup from './pages/BirthworkerSignup';
 
@@ -50,6 +51,8 @@ function App() {
             <Route exact path="/user-login" component={SecondaryLoginForm} />
             <Route exact path="/worker-home" component={WorkerHome}/>
             <Route exact path="/profile/birthworker/:username" component={BirthworkerProfile}/>
+
+            <Route exact path="/worker/users" component={AssociatedUsers}/>
             <Route component={NotAPage}/>
           </Switch>
         </div>

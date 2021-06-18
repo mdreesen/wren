@@ -18,6 +18,23 @@ export const QUERY_USER = gql`
 }
 `;
 
+/* Using this query to find associated users */
+export const QUERY_ASSOCIATED_USER = gql `
+  query {
+    users {
+      _id
+      email
+      associateWithWorker {
+        _id
+        username
+        firstname
+        lastname
+        email
+      }
+    }
+  }
+`;
+
 // querying single birthworker
 export const QUERY_BIRTHWORKER = gql `
 query birthworker($username: String!) {
