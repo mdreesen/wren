@@ -93,3 +93,22 @@ export const QUERY_ME_BASIC = gql `
     }
   }
 `;
+
+export const QUERY_WORKER_BASIC = gql `
+  {
+    worker {
+      _id
+      username
+      firstname
+      lastname
+      email
+      associateWithUser {
+        _id
+        username
+        firstname
+        lastname
+        email
+      }
+    }
+  }
+`;

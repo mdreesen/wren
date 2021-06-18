@@ -16,7 +16,7 @@ function Navbar() {
             <span className="navbar-toggler-icon" />
         </button>
         <div className="collapse navbar-collapse navbar-css" id="navbarNav">
-        {Auth.workerLogin() ? (
+        {Auth.loggedIn() ? (
             <ul className="navbar-nav">
                 <li className="nav-item active">
                     <a className="nav-link" href="/home">Home<span className="sr-only">(current)</span></a>

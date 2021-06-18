@@ -36,24 +36,29 @@ class AuthService {
         return localStorage.getItem('id_token');
     }
 
+    workerLogin(idTokenWorker) {
+        if (idTokenWorker) {
+            localStorage.setItem('id_token', idTokenWorker);
+            window.location.assign('/worker-home');
+        } else {
+            window.location.assign('/');
+        }
+//         localStorage.setItem('id_token', idTokenWorker);
+// debugger;
+//         window.location.assign('/worker-home');
+    }
+
     // set token to local storage and reload to homepage
     userLogin(idToken) {
         // saves user token to local storage
-        localStorage.setItem('id_token', idToken);
-
-        window.location.assign('/home');
-    }
-
-    workerLogin(idToken) {
-        localStorage.setItem('id_token', idToken)
         if (idToken) {
-            return window.location.assign('/worker-home');
+            localStorage.setItem('id_token', idToken);
+            window.location.assign('/home');
+
+        } else {
+            window.location.assign('/');
         }
-        else {
-            debugger;
-            return window.location.assign('/worker-login')
-        }
-        // window.location.assign('/worker-home');
+        // window.location.assign('/home');
     }
 
     // clear token from local storage and force logout with reload

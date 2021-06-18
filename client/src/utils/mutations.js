@@ -73,13 +73,12 @@ export const ADD_BIRTHWORKER = gql `
 `;
 
 export const LOGIN_BIRTHWORKER = gql `
-  mutation($email: String!, $password: String!) {
+  mutation workerLogin($email: String!, $password: String!) {
     workerLogin(email: $email, password: $password) {
       token
       birthworker {
         _id
         email
-        password
       }
     }
   }

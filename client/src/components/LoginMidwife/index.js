@@ -35,10 +35,10 @@ function LoginMidwife() {
         variables: { ...formState }
       });
       console.log(data)
-      console.log(data.loginWorker)
-      debugger;
+      console.log(data.workerLogin)
+      console.log(data.workerLogin.token)
+      // debugger;
       Auth.workerLogin(data.workerLogin.token);
-      debugger;
     } catch (e) {
       console.error(e);
     }
@@ -62,7 +62,7 @@ function LoginMidwife() {
                     </div>
                     <div className="form-group">
                         <label for="workerPassword">Password</label>
-                        <input type="password" name="password" value={formState.password} onChange={handleChange} className="form-control" id="worker-login-password" placeholder="Password" />
+                        <input type="password" name="password" value={formState.value} onChange={handleChange} className="form-control" id="worker-login-password" placeholder="Password" />
                     </div>
                     <div className="button-container">
                         <Link to="/" className="btn btn-primary">back</Link>

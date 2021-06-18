@@ -17,6 +17,8 @@ type Query {
     users: [User]
     user(username: String!): User
 
+    worker: Birthworker
+
     birthworkers: [Birthworker]
     birthworker(username: String!): Birthworker
 }
