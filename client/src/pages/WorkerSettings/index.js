@@ -1,27 +1,24 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useQuery } from '@apollo/react-hooks';
-import { QUERY_ASSOCIATED_USER  } from '../../utils/queries';
+import { QUERY_USERS } from '../../utils/queries';
 import Auth from '../../utils/auth';
 
-import UserCard from '../../components/UserCard';
+import WorkerInfo from '../../components/WorkerInfo';
+// import MidwifeCard from '../../components/MidwifeCard';
 import NavbarWorker from '../../components/NavbarWorker';
 
-function AllUsers() {
+function WorkerSettings() {
 
     // getting the data from the query
-    const { loading, data } = useQuery(QUERY_ASSOCIATED_USER);
+    const { loading, data } = useQuery(QUERY_USERS);
     console.log({ data })
 
-    // if no users then bring back an empty array
-    const users = data?.users || [];
+    // if no birthworkers then bring back an empty array
+    // const birthworkers = data?.birthworkers || [];
 
     if (loading) {
-        return <div>Loading users</div>
-    }
-
-    if (!users) {
-        return <div>No Users Yet</div>
+        return <div>Loading birthworkers</div>
     }
 
     return(
@@ -30,10 +27,8 @@ function AllUsers() {
             <NavbarWorker />
             {Auth.loggedIn() ? (
                 <div>
-                    <div className="row-container">
-                        <div className='row'>
-                            <UserCard userCard={users} />
-                        </div>
+                    {/* <WorkerInfo /> */}
+                    <div>
                     </div>
                 </div>
 
@@ -44,4 +39,4 @@ function AllUsers() {
     );
 }
 
-export default AllUsers;
+export default WorkerSettings;

@@ -18,17 +18,17 @@ function Navbar() {
         <div className="collapse navbar-collapse navbar-css" id="navbarNav">
         {Auth.loggedIn() ? (
             <ul className="navbar-nav">
-                <li className="nav-item active">
-                    <a className="nav-link" href="/home">Home<span className="sr-only">(current)</span></a>
-                </li>
+                    <Link to="/worker-home" className="nav-link">
+                        Home
+                    </Link>  
                 <li className="nav-item">
                     <Link to="/worker/users" className="nav-link">
                         Users
                     </Link>                
                 </li>
-                <li className="nav-item">
-                    <a href="/user-info" className="nav-link">Settings</a>
-                </li>
+                    <Link to="/worker/settings" className="nav-link">
+                        Settings
+                    </Link>
                 <li className="nav-item">
                     <Link to="/" className="nav-link" onClick={logout}>Logout</Link>
                 </li>

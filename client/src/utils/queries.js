@@ -18,6 +18,22 @@ export const QUERY_USER = gql`
 }
 `;
 
+export const QUERY_USERS = gql `
+  query {
+    users {
+      _id
+      username
+      firstname
+      lastname
+      email
+      associateWithWorker {
+        username
+        firstname
+      }
+    }
+  }
+`;
+
 /* Using this query to find associated users */
 export const QUERY_ASSOCIATED_USER = gql `
   query {

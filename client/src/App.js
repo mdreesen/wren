@@ -18,6 +18,9 @@ import AssociatedUsers from './pages/Users';
 import BirthworkerProfile from './pages/Birthworkerprofile';
 import BirthworkerSignup from './pages/BirthworkerSignup';
 
+// import worker pages
+import WorkerSettings from './pages/WorkerSettings';
+
 // making the connection to the graphql backend server
 // "uri" = Uniform Resource Identifier
 // this function also sets up looking at the user when logged in
@@ -53,6 +56,7 @@ function App() {
             <Route exact path="/profile/birthworker/:username" component={BirthworkerProfile}/>
 
             <Route exact path="/worker/users" component={AssociatedUsers}/>
+            <Route exact path='/worker/settings' component={WorkerSettings} />
             <Route component={NotAPage}/>
           </Switch>
         </div>
