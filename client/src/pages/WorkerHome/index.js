@@ -9,13 +9,13 @@ import AssociatedUserList from '../../components/AssociatedUserList';
 
 function WorkerHome() {
 
-    const { data: workerData } = useQuery(QUERY_WORKER_BASIC);
-    console.log('worker data', workerData);
+    const { data: viewBirthworker } = useQuery(QUERY_WORKER_BASIC);
+    console.log('worker data', viewBirthworker);
 
     return(
         <div>
             <NavbarWorker />
-            {workerData && Auth.loggedIn() ? (
+            {viewBirthworker && Auth.loggedIn() ? (
                 <>
                 <p>This is the worker page</p>
                 <AssociatedUserList/>
