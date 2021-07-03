@@ -92,6 +92,19 @@ const resolvers = {
       return { token, user };
     },
 
+    mood: async (parent, context) => {
+      if (context.user) {
+        const updatedUser = await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { new: true }
+        ).populate('mood')
+
+        return updatedUser
+      }
+
+      throw new AuthenticationError('You need to be logged in!');
+    },
+
     // -=- Association -=- //
     associateWorker: async (parent, { awwId }, context) => {
       if (context.user) {
