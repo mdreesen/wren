@@ -54,7 +54,7 @@ type Birthworker {
 type Mutation {
     addUser(username: String!, firstname: String!, lastname: String!, email: String!, password: String!): Auth
     userLogin(email: String!, password: String!): Auth
-    mood(top: String!, topMid: String!, mid: String!, bottomMid: String!, bottom: String!): User
+    mood(mood: String): User
 
     associateWorker(awwId: ID!): User
     associateUser(awuId: ID!): Birthworker
