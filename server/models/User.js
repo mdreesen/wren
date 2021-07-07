@@ -34,11 +34,12 @@ const userSchema = new Schema(
       required: true,
       minlength: 5
     },
-    mood: {
-      type: String,
-      required: false,
-      trim: true
-    },
+    mood: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'Mood'
+      }
+    ],
     // User can be associated with a birthworker
     associateWithWorker: [{
       type: Schema.Types.ObjectId,

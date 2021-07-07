@@ -21,6 +21,8 @@ type Query {
 
     birthworkers: [Birthworker]
     birthworker(username: String!): Birthworker
+
+    mood(username: String!): [Mood]
 }
 
 type Auth {
@@ -36,7 +38,7 @@ type User {
     lastname: String
     email: String
     password: String
-    mood: String
+    mood: [Mood]
     birthworkerCount: Int
     associateWithWorker: [Birthworker]
 }
@@ -51,10 +53,17 @@ type Birthworker {
     associateWithUser: [User]
 }
 
+type Mood {
+    _id: ID
+    moodText: String
+    createdAt: String
+    username: String
+}
+
 type Mutation {
     addUser(username: String!, firstname: String!, lastname: String!, email: String!, password: String!): Auth
     userLogin(email: String!, password: String!): Auth
-    mood(mood: String): User
+    addMood(moodText: String!): Mood
 
     associateWorker(awwId: ID!): User
     associateUser(awuId: ID!): Birthworker

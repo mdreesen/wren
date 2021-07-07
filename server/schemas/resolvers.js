@@ -1,4 +1,4 @@
-const { User, Birthworker } = require('../models');
+const { User, Birthworker, Mood } = require('../models');
 const { AuthenticationError } = require('apollo-server-express');
 const { signToken } = require('../utils/auth');
 
@@ -64,11 +64,20 @@ const resolvers = {
         .populate('associateWithUser')
     },
 
+    // Finds all birthworkers
     birthworkers: async () => {
       return Birthworker.find()
         .select('-__v -password')
         .populate('associateWithUser')
     },
+
+    // -=- MOOD RESOLVERS -=-
+
+    // Finds all moods per user
+    mood: async (parent, { username }) => {
+      const params = username ? { username } : {};
+      return Mood.find(params).sort({ createdAt: -1 });
+    }
   },
 
   Mutation: {
@@ -90,19 +99,6 @@ const resolvers = {
       }
       const token = signToken(user);
       return { token, user };
-    },
-
-    mood: async (parent, context) => {
-      if (context.user) {
-        const updatedUser = await User.findOneAndUpdate(
-          { _id: context.user._id },
-          { new: true }
-        ).populate('mood')
-
-        return updatedUser
-      }
-
-      throw new AuthenticationError('You need to be logged in!');
     },
 
     // -=- Association -=- //

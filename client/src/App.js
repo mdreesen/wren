@@ -7,6 +7,7 @@ import ApolloClient from 'apollo-boost';
 // Import pages
 import Landing from './pages/Landing';
 import UserDocuments from './pages/UserDocuments';
+import UserMood from './pages/Mood';
 import UserSettings from './pages/UserSettings';
 import AllBirthworkers from './pages/Birthworkers';
 import Home from './pages/Home';
@@ -47,6 +48,7 @@ function App() {
             <Route exact path="/" component={Landing}/>
             <Route exact path="/user-documents" component={UserDocuments} />
             <Route exact path="/settings" component={UserSettings} />
+            <Route exact path="/mood/:id" component={UserMood}/>
             <Route exact path="/all-workers" component={AllBirthworkers} />
             <Route exact path="/home" component={Home}/>
             <Route exact path="/worker-login" component={LoginMidwife}/>
