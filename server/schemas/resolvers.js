@@ -1,4 +1,4 @@
-const { User, Birthworker } = require('../models');
+const { User, Birthworker, Feeling } = require('../models');
 const { AuthenticationError } = require('apollo-server-express');
 const { signToken } = require('../utils/auth');
 
@@ -35,6 +35,14 @@ const resolvers = {
       return User.findOne({ username })
         .select('-__v -password')
         .populate('associateWithWorker')
+    },
+
+    feelings: async (parent, { username }) => {
+      const params = username ? { username } : {};
+      return Feeling.find(params).sort({ createdAt: -1 });
+    },
+    feeling: async (parent, { _id }) => {
+      return Feeling.findOne({ _id });
     },
 
     // -=- Birthworker Resolvers -=- //
@@ -92,16 +100,16 @@ const resolvers = {
       return { token, user };
     },
 
-    mood: async (parent, context) => {
+    addFeeling: async (parent, args, context) => {
       if (context.user) {
-        const updatedUser = await User.findOneAndUpdate(
+        const feeling = await Feeling.create({ ...args, username: context.user.username });
+        await User.findOneAndUpdate(
           { _id: context.user._id },
+          { $push: { feelings: feeling._id } },
           { new: true }
-        ).populate('mood')
-
-        return updatedUser
+        );
+        return feeling;
       }
-
       throw new AuthenticationError('You need to be logged in!');
     },
 

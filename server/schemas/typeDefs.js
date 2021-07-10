@@ -21,6 +21,9 @@ type Query {
 
     birthworkers: [Birthworker]
     birthworker(username: String!): Birthworker
+
+    feelings(username: String): [Feeling]
+    feeling(_id: ID!): Feeling
 }
 
 type Auth {
@@ -51,6 +54,13 @@ type Birthworker {
     associateWithUser: [User]
 }
 
+type Feeling {
+    _id: ID
+    feelingText: String
+    createdAt: String
+    username: String
+  }
+
 type Mutation {
     addUser(username: String!, firstname: String!, lastname: String!, email: String!, password: String!): Auth
     userLogin(email: String!, password: String!): Auth
@@ -61,6 +71,8 @@ type Mutation {
 
     addBirthworker(username: String!, firstname: String!, lastname: String!, email: String!, password: String!): Auth
     workerLogin(email: String!, password: String!): Auth
+
+    addFeeling(feelingText: String!): Feeling
 }
 `;
 
