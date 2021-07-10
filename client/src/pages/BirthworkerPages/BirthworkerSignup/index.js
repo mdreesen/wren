@@ -1,6 +1,6 @@
 import React from 'react';
 
-import SignupModalWorker from '../../components/SignupModalWorker'
+import SignupModalWorker from '../../../components/SignupModalWorker'
 
 function BirthworkerSignup() {
     return(

@@ -1,12 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useQuery } from '@apollo/react-hooks';
-import { QUERY_WORKER_BASIC } from '../../utils/queries';
-import Auth from '../../utils/auth';
+import { QUERY_WORKER_BASIC } from '../../../utils/queries';
+import Auth from '../../../utils/auth';
 
-import WorkerInfo from '../../components/WorkerInfo';
+import WorkerInfo from '../../../components/WorkerInfo';
 // import MidwifeCard from '../../components/MidwifeCard';
-import NavbarWorker from '../../components/NavbarWorker';
+import NavbarWorker from '../../../components/NavbarWorker';
 
 function WorkerSettings() {
 

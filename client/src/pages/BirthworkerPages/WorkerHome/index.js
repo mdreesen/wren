@@ -1,11 +1,11 @@
 import React from 'react';
 import { useQuery } from '@apollo/react-hooks';
-import Auth from '../../utils/auth';
-import { QUERY_WORKER_BASIC } from '../../utils/queries';
+import Auth from '../../../utils/auth';
+import { QUERY_WORKER_BASIC } from '../../../utils/queries';
 
 // import components
-import NavbarWorker from '../../components/NavbarWorker';
-import AssociatedUserList from '../../components/AssociatedUserList';
+import NavbarWorker from '../../../components/NavbarWorker';
+import AssociatedUserList from '../../../components/AssociatedUserList';
 
 function WorkerHome() {
 
