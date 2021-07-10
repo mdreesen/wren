@@ -15,15 +15,15 @@ type Query {
     viewBirthworker: Birthworker
 
     users: [User]
-    user(username: String!): User
+    user(email: String!): User
 
     worker: Birthworker
 
     birthworkers: [Birthworker]
-    birthworker(username: String!): Birthworker
+    birthworker(email: String!): Birthworker
 
-    feelings(username: String): [Feeling]
-    feeling(_id: ID!): Feeling
+    feelings(email: String): [Feeling]
+    feeling(email: String!): Feeling
 }
 
 type Auth {
@@ -42,6 +42,7 @@ type User {
     mood: String
     birthworkerCount: Int
     associateWithWorker: [Birthworker]
+    feelings: [Feeling]
 }
 
 type Birthworker {
@@ -58,7 +59,7 @@ type Feeling {
     _id: ID
     feelingText: String
     createdAt: String
-    username: String
+    email: String
   }
 
 type Mutation {

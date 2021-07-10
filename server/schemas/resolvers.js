@@ -30,19 +30,19 @@ const resolvers = {
         .populate('associateWithWorker')
     },
 
-    // Getting user by username
-    user: async (parent, { username }) => {
-      return User.findOne({ username })
+    // Getting user by email
+    user: async (parent, { email }) => {
+      return User.findOne({ email })
         .select('-__v -password')
         .populate('associateWithWorker')
     },
 
-    feelings: async (parent, { username }) => {
-      const params = username ? { username } : {};
+    feelings: async (parent, { email }) => {
+      const params = email ? { email } : {};
       return Feeling.find(params).sort({ createdAt: -1 });
     },
-    feeling: async (parent, { _id }) => {
-      return Feeling.findOne({ _id });
+    feeling: async (parent, { email }) => {
+      return Feeling.findOne({ email });
     },
 
     // -=- Birthworker Resolvers -=- //
@@ -65,9 +65,9 @@ const resolvers = {
       }
       throw new AuthenticationError('Not logged in');
     },
-    // Getting birthworker by username
-    birthworker: async (parent, { username }) => {
-      return Birthworker.findOne({ username })
+    // Getting birthworker by email
+    birthworker: async (parent, { email }) => {
+      return Birthworker.findOne({ email })
         .select('-__v -password')
         .populate('associateWithUser')
     },
@@ -102,7 +102,7 @@ const resolvers = {
 
     addFeeling: async (parent, args, context) => {
       if (context.user) {
-        const feeling = await Feeling.create({ ...args, username: context.user.username });
+        const feeling = await Feeling.create({ ...args, email: context.user.email });
         await User.findOneAndUpdate(
           { _id: context.user._id },
           { $push: { feelings: feeling._id } },

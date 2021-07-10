@@ -14,7 +14,7 @@ const feelingSchema = new Schema(
       type: Date,
       default: Date.now,
     },
-    username: {
+    email: {
       type: String,
       required: true
     },
@@ -25,10 +25,6 @@ const feelingSchema = new Schema(
     }
   }
 );
-
-// thoughtSchema.virtual('reactionCount').get(function() {
-//   return this.reactions.length;
-// });
 
 const Feeling = model('Feeling', feelingSchema);
 
