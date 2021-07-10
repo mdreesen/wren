@@ -1,8 +1,8 @@
 import React from 'react';
 
 // import components
-import NavbarUser from '../../../components/NavbarUser';
-import Auth from '../../../utils/auth';
+import NavbarUser from '../../components/NavbarUser';
+import Auth from '../../utils/auth';
 
 function Documents() {
     return (

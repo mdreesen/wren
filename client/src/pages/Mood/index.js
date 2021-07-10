@@ -2,8 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 // import { useQuery } from '@apollo/react-hooks';
 // import { QUERY_BIRTHWORKERS } from '../../utils/queries';
-import NavbarUser from '../../../components/NavbarUser';
-import Auth from '../../../utils/auth';
+import NavbarUser from '../../components/NavbarUser';
+import Auth from '../../utils/auth';
 
 
 function UserMood() {

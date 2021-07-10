@@ -1,10 +1,10 @@
 import React from 'react';
-import Auth from '../../../utils/auth';
-import NavbarUser from '../../../components/NavbarUser';
+import Auth from '../../utils/auth';
+import NavbarUser from '../../components/NavbarUser';
 import { useParams } from 'react-router-dom';
 import { useQuery, useMutation } from '@apollo/react-hooks';
-import { QUERY_BIRTHWORKER } from '../../../utils/queries';
-import { ASSOCIATE_WITH_WORKER } from '../../../utils/mutations';
+import { QUERY_BIRTHWORKER } from '../../utils/queries';
+import { ASSOCIATE_WITH_WORKER } from '../../utils/mutations';
 
 function BirthWorkerProfile(props) {
     const [associateWithWorker] = useMutation(ASSOCIATE_WITH_WORKER)

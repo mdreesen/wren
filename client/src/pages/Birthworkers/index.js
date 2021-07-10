@@ -1,11 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useQuery } from '@apollo/react-hooks';
-import { QUERY_BIRTHWORKERS } from '../../../utils/queries';
-import Auth from '../../../utils/auth';
+import { QUERY_BIRTHWORKERS } from '../../utils/queries';
+import Auth from '../../utils/auth';
 
-import MidwifeCard from '../../../components/MidwifeCard';
-import NavbarUser from '../../../components/NavbarUser';
+import MidwifeCard from '../../components/MidwifeCard';
+import NavbarUser from '../../components/NavbarUser';
 
 function AllBirthworkers() {
 
