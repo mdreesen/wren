@@ -25,12 +25,12 @@
   },
   "homepage": "https://github.com/mdreesen/wren#readme",
   "dependencies": {
-    "bootstrap": "^4.6.0",
+    "bootstrap": "^5.1.3",
     "concurrently": "^6.0.0",
     "connect-session-sequelize": "^7.1.1",
     "express-session": "^1.17.1",
     "if-env": "^1.0.4",
-    "react-bootstrap": "^1.5.0",
+    "react-bootstrap": "^1.6.4",
     "react-router-dom": "^5.2.0",
     "serve": "^11.3.2"
   }

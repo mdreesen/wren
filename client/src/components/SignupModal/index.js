@@ -18,7 +18,8 @@ const SignupModal = () => {
                 variables: { ...formState }
             });
             Auth.userLogin(data.addUser.token)
-            console.log(data);
+            window.location.assign('/user-questions');
+
         } catch(e) {
             console.log(e)
         }
