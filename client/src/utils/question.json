@@ -1,76 +1,98 @@
 {
     "aboutMother": [
         {
-            "question": "If I have a preferred name"
+            "question": "If I have a preferred name",
+            "name": "preferredName"
         },
         {
-            "question": "Language"
+            "question": "Language",
+            "name": "language"
         },
         {
-            "question": "Date of birth"
+            "question": "Date of birth",
+            "name": "dateOfBirth"
         },
         {
-            "question": "Maiden name"
+            "question": "Maiden name",
+            "name": "maidenName"
         },
         {
-            "question": "Place of Birth (city, state, country)"
+            "question": "Place of Birth (city, state, country)",
+            "name": "placeOfBirth"
         },
         {
-            "question": "Social Security Num"
+            "question": "Social Security Num",
+            "name": "socialSecurityNumber"
         },
         {
-            "question": "Marital status"
+            "question": "Marital status",
+            "name": "maritalStatus"
         },
         {
-            "question": "Ethnicity (race)"
+            "question": "Ethnicity (race)",
+            "name": "ethnicity"
         },
         {
-            "question": "Occupation/employer"
+            "question": "Occupation/employer",
+            "name": "occupation"
         },
         {
-            "question": "Religion"
+            "question": "Religion",
+            "name": "religion"
         },
         {
-            "question": "Highest education"
+            "question": "Highest education",
+            "name": "highestEducation"
         },
         {
             "question": "Do you have a living will",
-            "boolean": "true"
+            "boolean": "true",
+            "name": "livingWill"
         },
         {
             "question": "organ donor",
-            "boolean": "true"
+            "boolean": "true",
+            "name": "organDonor"
         },
         {
-            "question": " If you have religious cultural or ethnic preferences"
+            "question": " If you have religious cultural or ethnic preferences",
+            "name": "culturalPreferences"
         },
         {
-            "question": " Address"
+            "question": "Primary Address",
+            "name": "primaryAddress"
         },
         {
-            "question": " Mailing address is the same",
-            "boolean": "true"
+            "question": "Secondary Address",
+            "name": "secondaryAddress"
         },
         {
-            "question": "Who referred you?"
+            "question": "Who referred you?",
+            "name": "referral"
         },
         {
-            "question": "Primary phone"
+            "question": "Primary phone",
+            "name": "primaryPhone"
         },
         {
-            "question": "Address is with city limits"
+            "question": "Secondary phone",
+            "name": "secondaryPhone"
         },
         {
-            "question": "Route not to contact (prefer not to call work phone, email etc…)"
+            "question": "Route not to contact (prefer not to call work phone, email etc…)",
+            "name": "doNotContactRoute"
         },
         {
-            "question": "Grant people to access health information"
+            "question": "Grant people to access health information",
+            "name": "grantPermission"
         },
         {
-            "question": "Preferred method of contact"
+            "question": "Preferred method of contact",
+            "name": "preferredMethodOfContact"
         },
         {
-            "question": "emergency contact (name, relationship, phone number, email (optional))"
+            "question": "emergency contact (name, relationship, phone number, email (optional))",
+            "name": "emergencyContact"
         }
     ],
     "currentPregnancy": [

@@ -34,6 +34,116 @@ const userSchema = new Schema(
       required: true,
       minlength: 5
     },
+    preferredName: {
+      type: String,
+      required: false,
+      trim: true
+    },
+    language: {
+      type: String,
+      required: false,
+      trim: true
+    },
+    dateOfBirth: {
+      type: String,
+      required: false,
+      trim: true
+    },
+    maidenName: {
+      type: String,
+      required: false,
+      trim: true
+    },
+    socialSecurityNumber: {
+      type: String,
+      required: false,
+      trim: true
+    },
+    maritalStatus: {
+      type: String,
+      required: false,
+      trim: true
+    },
+    ethnicity: {
+      type: String,
+      required: false,
+      trim: true
+    },
+    occupation: {
+      type: String,
+      required: false,
+      trim: true
+    },
+    religion: {
+      type: String,
+      required: false,
+      trim: true
+    },
+    highestEducation: {
+      type: String,
+      required: false,
+      trim: true
+    },
+    livingWill: {
+      type: String,
+      required: false,
+      trim: true
+    },
+    organDonor: {
+      type: String,
+      required: false,
+      trim: true
+    },
+    culturalPreferences: {
+      type: String,
+      required: false,
+      trim: true
+    },
+    primaryAddress: {
+      type: String,
+      required: false,
+      trim: true
+    },
+    secondaryAddress: {
+      type: String,
+      required: false,
+      trim: true
+    },
+    referral: {
+      type: String,
+      required: false,
+      trim: true
+    },
+    primaryPhone: {
+      type: String,
+      required: false,
+      trim: true
+    },
+    secondaryPhone: {
+      type: String,
+      required: false,
+      trim: true
+    },
+    doNotContactRoute: {
+      type: String,
+      required: false,
+      trim: true
+    },
+    grantPermission: {
+      type: String,
+      required: false,
+      trim: true
+    },
+    preferredMethodOfContact: {
+      type: String,
+      required: false,
+      trim: true
+    },
+    emergencyContact: {
+      type: String,
+      required: false,
+      trim: true
+    },
     feelings: [
       {
         type: Schema.Types.ObjectId,
