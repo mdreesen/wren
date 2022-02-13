@@ -1,4 +1,4 @@
-const { User, Birthworker, Feeling } = require('../models');
+const { User, Birthworker } = require('../models');
 const { AuthenticationError } = require('apollo-server-express');
 const { signToken } = require('../utils/auth');
 
@@ -35,14 +35,6 @@ const resolvers = {
       return User.findOne({ email })
         .select('-__v -password')
         .populate('associateWithWorker')
-    },
-
-    feelings: async (parent, { email }) => {
-      const params = email ? { email } : {};
-      return Feeling.find(params).sort({ createdAt: -1 });
-    },
-    feeling: async (parent, { email }) => {
-      return Feeling.findOne({ email });
     },
 
     // -=- Birthworker Resolvers -=- //
@@ -87,18 +79,6 @@ const resolvers = {
       return { token, user };
     },
 
-    addAboutUser: async (parent, args) => {
-      if (context.user) {
-        const User = await User.create({ ...args, email: context.user.email });
-        await User.findOneAndUpdate(
-          { _id: context.user._id },
-          { new: true }
-        );
-        return User;
-      }
-      throw new AuthenticationError('You need to be logged in!');
-    },
-
     userLogin: async (parent, { email, password }) => {
       const user = await User.findOne({ email });
       if (!user) {
@@ -110,19 +90,6 @@ const resolvers = {
       }
       const token = signToken(user);
       return { token, user };
-    },
-
-    addFeeling: async (parent, args, context) => {
-      if (context.user) {
-        const feeling = await Feeling.create({ ...args, email: context.user.email });
-        await User.findOneAndUpdate(
-          { _id: context.user._id },
-          { $push: { feelings: feeling._id } },
-          { new: true }
-        );
-        return feeling;
-      }
-      throw new AuthenticationError('You need to be logged in!');
     },
 
     // -=- Association -=- //

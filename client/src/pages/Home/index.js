@@ -2,7 +2,6 @@ import React from 'react';
 
 // import components
 import NavbarUser from '../../components/NavbarUser';
-import Mood from '../../components/Mood';
 import AssociatedBWList from '../../components/AssociatedBWList';
 import Auth from '../../utils/auth';
 import { useQuery } from '@apollo/react-hooks';

@@ -144,12 +144,6 @@ const userSchema = new Schema(
       required: false,
       trim: true
     },
-    feelings: [
-      {
-        type: Schema.Types.ObjectId,
-        ref: 'Feeling'
-      }
-    ],
     // User can be associated with a birthworker
     associateWithWorker: [{
       type: Schema.Types.ObjectId,

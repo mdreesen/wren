@@ -21,9 +21,6 @@ type Query {
 
     birthworkers: [Birthworker]
     birthworker(email: String!): Birthworker
-
-    feelings(email: String): [Feeling]
-    feeling(email: String!): Feeling
 }
 
 type Auth {
@@ -39,10 +36,33 @@ type User {
     lastname: String
     email: String
     password: String
-    mood: String
+
+    preferredName: String
+    language: String
+    dateOfBirth: String
+    maidenName: String
+    placeOfBirth: String
+    ssn: String
+    maritalStatus: String
+    ethnicity: String
+    occupation: String
+    religion: String
+    highestEducation: String
+    livingWill: String
+    organDonor: String
+    culturalPreferences: String
+    primaryAddress: String
+    secondaryAddress: String
+    referral: String
+    primaryPhone: String
+    secondaryPhone: String
+    doNotContactRoute: String
+    grantPermission: String
+    preferredMethodOfContact: String
+    emergencyContact: String
+
     birthworkerCount: Int
     associateWithWorker: [Birthworker]
-    feelings: [Feeling]
 }
 
 type Birthworker {
@@ -55,25 +75,15 @@ type Birthworker {
     associateWithUser: [User]
 }
 
-type Feeling {
-    _id: ID
-    feelingText: String
-    createdAt: String
-    email: String
-  }
-
 type Mutation {
     addUser(username: String!, firstname: String!, lastname: String!, email: String!, password: String!): Auth
     userLogin(email: String!, password: String!): Auth
-    mood(mood: String): User
 
     associateWorker(awwId: ID!): User
     associateUser(awuId: ID!): Birthworker
 
     addBirthworker(username: String!, firstname: String!, lastname: String!, email: String!, password: String!): Auth
     workerLogin(email: String!, password: String!): Auth
-
-    addFeeling(feelingText: String!): Feeling
 }
 `;
 
