@@ -54,7 +54,7 @@ const userSchema = new Schema(
       required: false,
       trim: true
     },
-    socialSecurityNumber: {
+    ssn: {
       type: String,
       required: false,
       trim: true
