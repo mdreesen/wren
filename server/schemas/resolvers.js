@@ -79,6 +79,11 @@ const resolvers = {
       return { token, user };
     },
 
+    updateClientUser: async (parent, args) => {
+      const updateUser = await User.findOneAndUpdate({ _id: args._id }, { email: args.email }, { new: true });
+      return { updateUser };
+    },
+
     userLogin: async (parent, { email, password }) => {
       const user = await User.findOne({ email });
       if (!user) {

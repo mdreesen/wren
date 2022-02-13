@@ -78,6 +78,7 @@ type Birthworker {
 type Mutation {
     addUser(username: String!, firstname: String!, lastname: String!, email: String!, password: String!): Auth
     userLogin(email: String!, password: String!): Auth
+    updateClientUser(_id: ID!, email: String!, firstname: String!, lastname: String!, email: String!, password: String!, preferredName: String!, language: String!, dateOfBirth: String!, maidenName: String!, ssn: String!, maritalStatus: String!, ethnicity: String!, occupation: String!, religion: String!, highestEducation: String!, livingWill: String!, organDonor: String!, culturalPreferences: String!, primaryAddress: String!, secondaryAddress: String!, referral: String!, primaryPhone: String!, secondaryPhone: String!, doNotContactRoute: String!, grantPermission: String!, preferredMethodOfContact: String!, emergencyContact: String!): Auth
 
     associateWorker(awwId: ID!): User
     associateUser(awuId: ID!): Birthworker
