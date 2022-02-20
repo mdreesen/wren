@@ -6,6 +6,7 @@ import Auth from '../../utils/auth';
 function UserInfo() {
 
     const { data: userData } = useQuery(QUERY_ME_BASIC);
+    console.log(userData?.me)
 
     const loggedIn = Auth.loggedIn();
 

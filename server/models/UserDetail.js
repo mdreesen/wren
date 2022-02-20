@@ -112,24 +112,29 @@ const userDetailSchema = new Schema(
         required: false,
         trim: true
       },
+  },
+  {
+    toJSON: {
+      getters: true
+    }
   }
 );
 
 // set up pre-save middleware to create password
 // This checks to see if the password is new or has been modified
-userDetailSchema.pre('save', async function(next) {
-  if (this.isNew || this.isModified('password')) {
-    const saltRounds = 10;
-    this.password = await bcrypt.hash(this.password, saltRounds);
-  }
+// userDetailSchema.pre('save', async function(next) {
+//   if (this.isNew || this.isModified('password')) {
+//     const saltRounds = 10;
+//     this.password = await bcrypt.hash(this.password, saltRounds);
+//   }
 
-  next();
-});
+//   next();
+// });
 
 // compare the incoming password with the hashed password
-userDetailSchema.methods.isCorrectPassword = async function(password) {
-  return bcrypt.compare(password, this.password);
-};
+// userDetailSchema.methods.isCorrectPassword = async function(password) {
+//   return bcrypt.compare(password, this.password);
+// };
 
 const UserDetail = model('UserDetail', userDetailSchema);
 

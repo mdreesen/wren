@@ -1,4 +1,4 @@
-const { User, Birthworker } = require('../models');
+const { User, Birthworker, UserDetail } = require('../models');
 const { AuthenticationError } = require('apollo-server-express');
 const { signToken } = require('../utils/auth');
 
@@ -35,6 +35,10 @@ const resolvers = {
       return User.findOne({ email })
         .select('-__v -password')
         .populate('associateWithWorker')
+    },
+
+    userDetail: async (parent, { _id }) => {
+      return UserDetail.findOne({ _id });
     },
 
     // -=- Birthworker Resolvers -=- //
@@ -79,13 +83,6 @@ const resolvers = {
       return { token, user };
     },
 
-    updateClientUser: async (parent, args, context) => {
-      const updateUser = await User.findOneAndUpdate(
-        { email: args.email }, 
-        { new: true });
-      return { updateUser };
-    },
-
     userLogin: async (parent, { email, password }) => {
       const user = await User.findOne({ email });
       if (!user) {
@@ -97,6 +94,22 @@ const resolvers = {
       }
       const token = signToken(user);
       return { token, user };
+    },
+
+    addUserDetail: async (parent, args, context) => {
+      if (context.user) {
+        const userDetail = await UserDetail.create({ ...args, email: context.user.email });
+    
+        await UserDetail.findByIdAndUpdate(
+          { _id: context.user._id },
+          { $push: { userDetails: userDetail._id } },
+          { new: true }
+        );
+    
+        return userDetail;
+      }
+    
+      throw new AuthenticationError('You need to be logged in!');
     },
 
     // -=- Association -=- //

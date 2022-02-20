@@ -115,6 +115,31 @@ export const QUERY_ME_BASIC = gql `
       firstname
       lastname
       email
+      userDetail {
+        preferredName
+        language
+        dateOfBirth
+        maidenName
+        placeOfBirth
+        ssn
+        maritalStatus
+        ethnicity
+        occupation
+        religion
+        highestEducation
+        livingWill
+        organDonor
+        culturalPreferences
+        primaryAddress
+        secondaryAddress
+        referral
+        primaryPhone
+        secondaryPhone
+        doNotContactRoute
+        grantPermission
+        preferredMethodOfContact
+        emergencyContact
+      }
       birthworkerCount
       associateWithWorker {
         _id

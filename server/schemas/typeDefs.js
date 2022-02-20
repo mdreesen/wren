@@ -16,7 +16,7 @@ type Query {
 
     users: [User]
     user(email: String!): User
-    userDetail(email: String!): UserDetail
+    userDetail(_id: ID!): UserDetail
 
     worker: Birthworker
 
@@ -31,6 +31,7 @@ type Auth {
 }
 
 type UserDetail {
+    _id: ID
     preferredName: String
     language: String
     dateOfBirth: String
@@ -82,7 +83,7 @@ type Birthworker {
 type Mutation {
     addUser(username: String!, firstname: String!, lastname: String!, email: String!, password: String!): Auth
     userLogin(email: String!, password: String!): Auth
-    updateClientUser(email: String, firstname: String, lastname: String, email: String, password: String, preferredName: String, language: String, placeOfBirth: String, dateOfBirth: String, maidenName: String, ssn: String, maritalStatus: String, ethnicity: String, occupation: String, religion: String, highestEducation: String, livingWill: String, organDonor: String, culturalPreferences: String, primaryAddress: String, secondaryAddress: String, referral: String, primaryPhone: String, secondaryPhone: String, doNotContactRoute: String, grantPermission: String, preferredMethodOfContact: String, emergencyContact: String): User
+    addUserDetail(preferredName: String, language: String, placeOfBirth: String, dateOfBirth: String, maidenName: String, ssn: String, maritalStatus: String, ethnicity: String, occupation: String, religion: String, highestEducation: String, livingWill: String, organDonor: String, culturalPreferences: String, primaryAddress: String, secondaryAddress: String, referral: String, primaryPhone: String, secondaryPhone: String, doNotContactRoute: String, grantPermission: String, preferredMethodOfContact: String, emergencyContact: String): UserDetail
 
     associateWorker(awwId: ID!): User
     associateUser(awuId: ID!): Birthworker

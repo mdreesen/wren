@@ -35,7 +35,7 @@ const userSchema = new Schema(
       minlength: 5
     },
     // User Detail
-    userDetail: [{
+    userDetails: [{
       type: Schema.Types.ObjectId,
       ref: 'UserDetail'
     }],
